@@ -1,0 +1,39 @@
+.header {
+	font-family: var(--main-font);
+	height: 50px;
+	box-shadow: 0px 3px 4px rgba(92, 92, 92, 0.25);
+	i {
+		font-size: 24px;
+		margin: 0 12px;
+	}
+}
+.logo {
+	display: flex;
+	align-items: center;
+	h2 {
+		font-family: var(--main-font);
+		// font-size: 16px;
+		height: 100%;
+		margin: 0;
+	}
+}
+.row {
+	height: 100%;
+}
+
+.buttonBlock {
+	display: flex;
+	justify-content: flex-end;
+}
+.button {
+	font-family: var(--main-font);
+	font-size: 16px;
+	color: var(--color-black);
+}
+
+.headerWrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: auto;
+	height: 100%;
+}

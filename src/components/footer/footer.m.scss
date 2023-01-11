@@ -1,0 +1,14 @@
+.footerLinks {
+	color: var(--color-black);
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	padding: 12px;
+	i {
+		margin-right: 8px;
+	}
+}
+.footerDivider {
+	margin: 0;
+	// margin-top: 24px;
+}
