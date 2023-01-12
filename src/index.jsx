@@ -6,8 +6,7 @@ import { setupStore } from "./store/store.js";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { Button } from "antd";
-import Registration from "./components/registration/registration";
-import Layout from "./components/layout/layout";
+import App from "./app";
 
 // import App from "@/pages/App";
 
@@ -17,9 +16,7 @@ root.render(
 	<React.StrictMode>
 		<Provider store={setupStore}>
 			<BrowserRouter>
-				<Layout>
-					<Registration></Registration>
-				</Layout>
+				<App></App>
 			</BrowserRouter>
 		</Provider>
 	</React.StrictMode>

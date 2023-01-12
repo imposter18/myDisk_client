@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
-import styles from "./registration.m.scss";
+import styles from "./registrationForm.m.scss";
 
-const Registration = () => {
+const RegistrationForm = () => {
 	const onFinish = (values) => {
 		console.log("Success:", values);
 	};
@@ -12,9 +12,8 @@ const Registration = () => {
 	};
 
 	return (
-		<div className={styles.registration}>
+		<>
 			<Form
-				className={styles.form}
 				name="basic"
 				labelCol={{ span: 4 }}
 				// wrapperCol={{ span: 20 }}
@@ -70,8 +69,8 @@ const Registration = () => {
 					</Col>
 				</Row>
 			</Form>
-		</div>
+		</>
 	);
 };
 
-export default Registration;
+export default RegistrationForm;

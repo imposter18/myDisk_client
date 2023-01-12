@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./header.m.scss";
 import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
-const Header = () => {
+import { memo } from "react";
+const Header = memo(() => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerWrapper}>
@@ -12,18 +13,21 @@ const Header = () => {
 						<h2>My disk</h2>
 					</Col>
 					<Col className={styles.buttonBlock} span={16}>
-						<Button className={styles.button} type="link" size={"large"}>
-							Вход
-							<Link to={"/"}></Link>
-						</Button>
-						<Button className={styles.button} type="link" size={"large"}>
-							Авторизация
-						</Button>
+						<Link to={"/auth"}>
+							<Button className={styles.button} type="link" size={"large"}>
+								Sign in
+							</Button>
+						</Link>
+						<Link to={"/registration"}>
+							<Button className={styles.button} size={"large"}>
+								Sign up
+							</Button>
+						</Link>
 					</Col>
 				</Row>
 			</div>
 		</header>
 	);
-};
+});
 
 export default Header;
