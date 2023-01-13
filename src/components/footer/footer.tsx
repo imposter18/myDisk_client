@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Divider } from "antd";
-import styles from "./footer.m.scss";
+import * as styles from "./footer.m.scss";
 
 const Footer = memo(() => {
 	return (
@@ -8,7 +8,7 @@ const Footer = memo(() => {
 			<Divider className={styles.footerDivider} />
 
 			<a href="#" className={styles.footerLinks}>
-				<i class="bi bi-github"></i>
+				<i className="bi bi-github"></i>
 				GitHub
 			</a>
 		</footer>

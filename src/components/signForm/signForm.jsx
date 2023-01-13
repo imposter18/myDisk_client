@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./signForm.m.scss";
+import * as styles from "./signForm.m.scss";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 
 const SignForm = ({ children }) => {

@@ -4,7 +4,7 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
 	mode: "development",
-
+	// strictExportPresence: true,
 	devtool: "inline-source-map",
 
 	devServer: {
@@ -25,8 +25,10 @@ module.exports = merge(common, {
 						loader: "css-loader",
 						options: {
 							sourceMap: true,
+							esModule: true,
 							importLoaders: 1,
 							modules: {
+								namedExport: true,
 								localIdentName: "[name]__[local]--[hash:base64:5]",
 							},
 						},

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
-import styles from "./authForm.m.scss";
+import * as styles from "./authForm.m.scss";
 
 const AuthForm = () => {
 	const onFinish = (values) => {

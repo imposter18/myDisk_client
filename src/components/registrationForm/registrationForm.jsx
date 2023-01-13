@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
-import styles from "./registrationForm.m.scss";
+import * as styles from "./registrationForm.m.scss";
 
 const RegistrationForm = () => {
 	const onFinish = (values) => {
