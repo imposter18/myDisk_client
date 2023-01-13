@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import * as styles from "./layout.m.scss";
+import * as styles from "./layout.module.scss";
 
 const Layout = ({ children }: any) => {
 	return (

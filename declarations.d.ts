@@ -1,13 +1,9 @@
-// declare module "*.scss";
-
-// declare module "*.scss" {
-//     export default {
-//       [index: string]: string;
-//     }
-//   }
-declare module "*.m.css";
-declare module "*.m.scss";
-// declare module "*.m.scss" {
-// 	const styles: { [className: string]: string };
-// 	export default styles;
-// }
+declare module "*css";
+declare module "*.module.css" {
+	const classes: { [key: string]: string };
+	export default classes;
+}
+declare module "*.module.scss" {
+	const classes: { [key: string]: string };
+	export default classes;
+}

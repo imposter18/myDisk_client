@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Divider } from "antd";
-import * as styles from "./footer.m.scss";
+import * as styles from "./footer.module.scss";
 
 const Footer = memo(() => {
 	return (

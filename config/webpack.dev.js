@@ -18,9 +18,10 @@ module.exports = merge(common, {
 	module: {
 		rules: [
 			{
-				test: /\.m?(sass|scss|css)$/,
+				test: /\.(sass|scss|css)$/,
 				use: [
 					"style-loader",
+					// "@teamsupercell/typings-for-css-modules-loader",
 					{
 						loader: "css-loader",
 						options: {

@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./header.m.scss";
+import * as styles from "./header.module.scss";
 import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 import { memo } from "react";
