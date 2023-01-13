@@ -4,3 +4,33 @@
 .confirmBtn {
 	text-align: right;
 }
+.form {
+	input {
+		background-color: var(--input-color);
+	}
+	:global {
+		.ant-form-item-label {
+			color: var(--font-color);
+			label {
+				color: var(--font-color);
+			}
+		}
+		.ant-form-item-control-input-content {
+			input {
+				color: var(--font-color);
+			}
+			label {
+				color: var(--font-color);
+				// background-color: var(--font-color);
+			}
+			.ant-input-password-icon {
+				color: var(--font-color);
+			}
+		}
+		.ant-form-item-control-input-content {
+			.ant-input-affix-wrapper {
+				background-color: var(--input-color);
+			}
+		}
+	}
+}

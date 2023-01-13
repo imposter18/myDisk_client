@@ -1,5 +1,5 @@
 .footerLinks {
-	color: var(--color-black);
+	color: var(--font-color);
 	text-decoration: none;
 	display: block;
 	text-align: center;
@@ -10,14 +10,5 @@
 }
 .footerDivider {
 	margin: 0;
-	// margin-top: 24px;
-}
-.foooggg {
-	display: inline;
-}
-.gooool {
-	color: black;
-}
-.dao {
-	color: azure;
+	border-block-start: 1px solid var(--color-border);
 }

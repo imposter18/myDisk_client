@@ -12,3 +12,24 @@
 	--color-primary: #005382;
 	--color-dark-primary: #003f63;
 }
+:root[data-theme="light"] {
+	--background-color: #fafafa;
+	--font-color: #000;
+	--color-border: rgba(5, 5, 5, 0.06);
+	--input-color: #fff;
+	--form-background: #fafafa;
+	--btn-color: #fff;
+	--btn-hover: #1677ff;
+	--btn-hover-border: #1677ff;
+}
+
+:root[data-theme="dark"] {
+	--background-color: #0d1117;
+	--font-color: #fff;
+	--color-border: #30363d;
+	--input-color: #0d1117;
+	--form-background: #161b22;
+	--btn-color: #1677ff;
+	--btn-hover: #fff;
+	--btn-hover-border: #0d1117;
+}

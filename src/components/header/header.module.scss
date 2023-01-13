@@ -24,13 +24,37 @@
 .buttonBlock {
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 }
 .button {
 	font-family: var(--main-font);
 	font-size: 16px;
-	color: var(--color-black);
 }
-
+.buttonSignIn {
+	color: var(--font-color);
+}
+.buttonSignUp {
+	background-color: var(--btn-color);
+	color: #161b22;
+	border-color: var(--color-border);
+	:hover {
+		border-color: var(--btn-hover-border);
+	}
+}
+.linkSingUp {
+	transition: 0.1s linear;
+	span {
+		transition: 0.1s linear;
+	}
+}
+.linkSingUp:hover {
+	.buttonSignUp {
+		border-color: var(--btn-hover-border);
+	}
+	span {
+		color: var(--btn-hover);
+	}
+}
 .headerWrapper {
 	max-width: 1200px;
 	width: 100%;

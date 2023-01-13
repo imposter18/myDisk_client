@@ -14,6 +14,7 @@ const RegistrationForm = () => {
 	return (
 		<>
 			<Form
+				className={styles.form}
 				name="basic"
 				labelCol={{ span: 4 }}
 				// wrapperCol={{ span: 20 }}

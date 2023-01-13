@@ -4,7 +4,8 @@
 	width: 100%;
 	margin: 200px auto;
 	border-radius: 10px;
-	border: 1px solid var(--color-grey);
+	border: 1px solid var(--color-border);
+	background-color: var(--form-background);
 }
 
 .form {

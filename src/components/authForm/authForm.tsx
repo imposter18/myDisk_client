@@ -3,17 +3,18 @@ import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import * as styles from "./authForm.module.scss";
 
 const AuthForm = () => {
-	const onFinish = (values) => {
+	const onFinish = (values: any) => {
 		console.log("Success:", values);
 	};
 
-	const onFinishFailed = (errorInfo) => {
+	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
 	};
 
 	return (
 		<>
 			<Form
+				className={styles.form}
 				name="basic"
 				labelCol={{ span: 4 }}
 				// wrapperCol={{ span: 20 }}
@@ -23,6 +24,7 @@ const AuthForm = () => {
 				autoComplete="off"
 			>
 				<Form.Item
+					// className={styles.authLabel}
 					label="Email"
 					name="Email"
 					rules={[{ required: true, message: "Please input your email!" }]}

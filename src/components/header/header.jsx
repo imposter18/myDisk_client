@@ -3,23 +3,45 @@ import * as styles from "./header.module.scss";
 import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 import { memo } from "react";
+import Toggle from "../themeToggle/themeToggle";
+import { ThemeContext, themes } from "../theme/ThemeContext";
+import classNames from "classnames";
 const Header = memo(() => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerWrapper}>
 				<Row className={styles.row} align="middle">
-					<Col className={styles.logo} span={8} push={1}>
+					<Col className={styles.logo} span={16} push={1}>
 						<i className="bi bi-disc-fill"></i>
 						<h2>My disk</h2>
 					</Col>
-					<Col className={styles.buttonBlock} span={16}>
+
+					<Col className={styles.buttonBlock} span={8}>
+						<ThemeContext.Consumer>
+							{({ theme, setTheme }) => (
+								<Toggle
+									onChange={() => {
+										if (theme === themes.light) setTheme(themes.dark);
+										if (theme === themes.dark) setTheme(themes.light);
+									}}
+									value={theme === themes.dark}
+								/>
+							)}
+						</ThemeContext.Consumer>
 						<Link to={"/auth"}>
-							<Button className={styles.button} type="link" size={"large"}>
+							<Button
+								className={`${styles.buttonSignIn} ${styles.button}`}
+								type="link"
+								size={"large"}
+							>
 								Sign in
 							</Button>
 						</Link>
-						<Link to={"/registration"}>
-							<Button className={styles.button} size={"large"}>
+						<Link className={styles.linkSingUp} to={"/registration"}>
+							<Button
+								className={`${styles.buttonSignUp} ${styles.button}`}
+								size={"large"}
+							>
 								Sign up
 							</Button>
 						</Link>

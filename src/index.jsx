@@ -5,8 +5,8 @@ import { createRoot } from "react-dom/client";
 import { setupStore } from "./store/store.js";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { Button } from "antd";
 import App from "./app";
+import ThemeProvider from "./components/theme/ThemeProvider";
 
 // import App from "@/pages/App";
 
@@ -16,7 +16,9 @@ root.render(
 	<React.StrictMode>
 		<Provider store={setupStore}>
 			<BrowserRouter>
-				<App></App>
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
 			</BrowserRouter>
 		</Provider>
 	</React.StrictMode>
