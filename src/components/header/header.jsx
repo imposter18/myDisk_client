@@ -13,7 +13,7 @@ const Header = memo(() => {
 				<Row className={styles.row} align="middle">
 					<Col className={styles.logo} span={16} push={1}>
 						<i className="bi bi-disc-fill"></i>
-						<h2>My disk</h2>
+						<h2>MyDisk</h2>
 					</Col>
 
 					<Col className={styles.buttonBlock} span={8}>

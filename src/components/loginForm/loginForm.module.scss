@@ -1,5 +1,6 @@
 .button {
 	width: 120px;
+	font-family: var(--main-font);
 }
 .confirmBtn {
 	text-align: right;
@@ -13,14 +14,18 @@
 			color: var(--font-color);
 			label {
 				color: var(--font-color);
+				font-family: var(--main-font);
+				letter-spacing: 0.2px;
 			}
 		}
 		.ant-form-item-control-input-content {
 			input {
 				color: var(--font-color);
+				font-family: var(--main-font);
 			}
 			label {
 				color: var(--font-color);
+				font-family: var(--main-font);
 				// background-color: var(--font-color);
 			}
 			.ant-input-password-icon {
@@ -32,6 +37,11 @@
 				background-color: var(--input-color);
 			}
 		}
+		// .ant-checkbox-input:not(:checked) {
+		// 	.ant-checkbox-inner {
+		// 		background-color: var(--main-color);
+		// 	}
+		// }
 	}
 }
 // .authLabel {

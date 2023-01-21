@@ -35,26 +35,39 @@
 }
 .buttonSignUp {
 	background-color: var(--btn-color);
-	color: #161b22;
+	color: var(--font-color);
 	border-color: var(--color-border);
-	:hover {
-		border-color: var(--btn-hover-border);
-	}
 }
 .linkSingUp {
 	transition: 0.1s linear;
 	span {
-		transition: 0.1s linear;
+		transition: 0.1s;
+	}
+	:global(.ant-btn) {
+		&:hover {
+			border-color: var(--btn-hover-border);
+			background-color: var(--btn-bg-color);
+			color: var(--font-color);
+		}
 	}
 }
-.linkSingUp:hover {
-	.buttonSignUp {
-		border-color: var(--btn-hover-border);
-	}
-	span {
-		color: var(--btn-hover);
-	}
-}
+// .buttonSignUp:hover {
+// 	span {
+// 		color: var(--btn-hover);
+// 		background-color: var(--btn-bg-color);
+// 	}
+// }
+
+// .linkSingUp:hover {
+// 	.buttonSignUp {
+// 		// border-color: var(--btn-hover-border);
+// 		// background-color: var(--btn-bg-color);
+// 		span {
+// 			// color: var(--font-color);
+// 			// background-color: var(--btn-bg-color);
+// 		}
+// 	}
+// }
 .headerWrapper {
 	max-width: 1200px;
 	width: 100%;

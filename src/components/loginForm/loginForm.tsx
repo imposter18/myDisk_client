@@ -1,10 +1,20 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
-import * as styles from "./authForm.module.scss";
+import * as styles from "./loginForm.module.scss";
+import { useAppDispatch } from "../../hooks/redux";
+import { loginUser } from "../../store/reducers/AuthUserSlice";
 
 const AuthForm = () => {
-	const onFinish = (values: any) => {
-		console.log("Success:", values);
+	const dispatch = useAppDispatch();
+	const onFinish = (values: {
+		Email: string;
+		password: string;
+		remember: boolean;
+	}) => {
+		console.log(values, "values");
+		const { Email, password } = values;
+
+		dispatch(loginUser({ email: Email, password }));
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
