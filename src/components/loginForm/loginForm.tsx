@@ -1,17 +1,18 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import * as styles from "./loginForm.module.scss";
-import { useAppDispatch } from "../../hooks/redux";
-import { loginUser } from "../../store/reducers/AuthUserSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { loginUser } from "../../store/reducers/authUser/AT-loginUser";
 
 const AuthForm = () => {
+	const auth = useAppSelector((state) => state.userReducer.isAuth);
 	const dispatch = useAppDispatch();
 	const onFinish = (values: {
 		Email: string;
 		password: string;
 		remember: boolean;
 	}) => {
-		console.log(values, "values");
+		// console.log(values, "values");
 		const { Email, password } = values;
 
 		dispatch(loginUser({ email: Email, password }));
@@ -19,6 +20,9 @@ const AuthForm = () => {
 
 	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
+	};
+	const onValuesChange = (value: any) => {
+		// console.log(value);
 	};
 
 	return (
@@ -31,8 +35,10 @@ const AuthForm = () => {
 				initialValues={{ remember: true }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
+				onValuesChange={onValuesChange}
 				autoComplete="off"
 			>
+				{auth ? "юсер авторизован " : "не авторизован"}
 				<Form.Item
 					// className={styles.authLabel}
 					label="Email"
