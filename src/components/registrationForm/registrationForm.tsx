@@ -1,13 +1,23 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import * as styles from "./registrationForm.module.scss";
+import { useAppDispatch } from "../../hooks/redux";
+import { registrationUser } from "../../store/reducers/authUser/AT-registrationUser";
 
 const RegistrationForm = () => {
-	const onFinish = (values) => {
-		console.log("Success:", values);
+	const dispatch = useAppDispatch();
+	const onFinish = (values: {
+		username: string;
+		Email: string;
+		password: string;
+		remember: boolean;
+	}) => {
+		console.log(values);
+		const { username, Email, password, remember } = values;
+		dispatch(registrationUser({ email: Email, password, userName: username }));
 	};
 
-	const onFinishFailed = (errorInfo) => {
+	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
 	};
 

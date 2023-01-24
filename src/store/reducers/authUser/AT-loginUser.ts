@@ -3,6 +3,10 @@ import { AuthResponse } from "../../../models/response/AuthResponse";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import AuthService from "../../../service/AuthService";
 
+interface IResponseError {
+	errprs: Array<string> | [];
+	message: string;
+}
 interface ILoginPrors {
 	email: string;
 	password: string;
@@ -10,7 +14,7 @@ interface ILoginPrors {
 export const loginUser = createAsyncThunk<
 	AuthResponse,
 	ILoginPrors,
-	{ rejectValue: AxiosError }
+	{ rejectValue: AxiosError<IResponseError> }
 >("user/loginUser", async function ({ email, password }, { rejectWithValue }) {
 	try {
 		const res = await AuthService.login(email, password);

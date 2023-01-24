@@ -37,13 +37,15 @@ export const UserSlice = createSlice({
 			state.isLoaging = false;
 			state.isAuth = true;
 			state.currentUser = action.payload.user;
+			console.log(action, "action");
+			console.log(state, "state");
 		});
 		builder.addCase(loginUser.rejected, (state, action) => {
 			state.isLoaging = false;
 			if (action) {
-				state.error = action.payload.message;
+				state.error = action.payload?.response?.data?.message;
 			} else {
-				state.error = action.error.message;
+				state.error = action.payload.message;
 			}
 		});
 		//registration

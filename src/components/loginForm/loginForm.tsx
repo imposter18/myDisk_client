@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import * as styles from "./loginForm.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { loginUser } from "../../store/reducers/authUser/AT-loginUser";
+import AuthService from "../../service/AuthService";
+import { logoutUser } from "../../store/reducers/authUser/AT-logoutUser";
+import { Link } from "react-router-dom";
 
-const AuthForm = () => {
-	const auth = useAppSelector((state) => state.userReducer.isAuth);
+const loginForm = () => {
+	const { isAuth, currentUser, isLoaging } = useAppSelector(
+		(state) => state.userReducer
+	);
 	const dispatch = useAppDispatch();
 	const onFinish = (values: {
 		Email: string;
@@ -17,13 +22,15 @@ const AuthForm = () => {
 
 		dispatch(loginUser({ email: Email, password }));
 	};
-
 	const onFinishFailed = (errorInfo: any) => {
-		console.log("Failed:", errorInfo);
+		// console.log("Failed:", errorInfo);
 	};
 	const onValuesChange = (value: any) => {
 		// console.log(value);
 	};
+	if (isLoaging) {
+		return <div>Loading</div>;
+	}
 
 	return (
 		<>
@@ -38,7 +45,6 @@ const AuthForm = () => {
 				onValuesChange={onValuesChange}
 				autoComplete="off"
 			>
-				{auth ? "юсер авторизован " : "не авторизован"}
 				<Form.Item
 					// className={styles.authLabel}
 					label="Email"
@@ -75,6 +81,7 @@ const AuthForm = () => {
 							>
 								Submit
 							</Button>
+							<Link to={"/main"}>link</Link>
 						</Form.Item>
 					</Col>
 				</Row>
@@ -83,4 +90,4 @@ const AuthForm = () => {
 	);
 };
 
-export default AuthForm;
+export default loginForm;
