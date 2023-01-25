@@ -9,15 +9,15 @@ import { logoutUser } from "./AT-logoutUser";
 import { checkAuth } from "./AT-checkAuth";
 
 interface IinitialState {
-	currentUser: {} | IUser;
+	currentUser: IUser;
 	isLoaging: boolean;
 	isAuth: boolean;
 	error: string | null | undefined;
 }
 
 const initialState: IinitialState = {
-	currentUser: {},
-	isLoaging: true,
+	currentUser: {} as IUser,
+	isLoaging: false,
 	isAuth: false,
 	error: null,
 };

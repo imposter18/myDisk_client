@@ -1,10 +1,13 @@
 import React from "react";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import * as styles from "./registrationForm.module.scss";
-import { useAppDispatch } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { registrationUser } from "../../store/reducers/authUser/AT-registrationUser";
 
 const RegistrationForm = () => {
+	const { isAuth, currentUser, isLoaging } = useAppSelector(
+		(state) => state.userReducer
+	);
 	const dispatch = useAppDispatch();
 	const onFinish = (values: {
 		username: string;
@@ -58,24 +61,30 @@ const RegistrationForm = () => {
 				</Form.Item>
 				<Row>
 					<Col span={12} push={1}>
-						<Form.Item
+						{/* <Form.Item
 							name="remember"
 							valuePropName="checked"
 							// wrapperCol={{ offset: 0, span: 12 }}
 							// labelCol={{ span: 8 }}
 						>
 							<Checkbox>Remember me</Checkbox>
-						</Form.Item>
+						</Form.Item> */}
 					</Col>
 					<Col className={styles.confirmBtn} span={12}>
 						<Form.Item>
-							<Button
-								className={styles.button}
-								type="primary"
-								htmlType="submit"
-							>
-								Submit
-							</Button>
+							{isLoaging ? (
+								<Button className={styles.button} type="primary" loading>
+									Loading
+								</Button>
+							) : (
+								<Button
+									className={styles.button}
+									type="primary"
+									htmlType="submit"
+								>
+									Submit
+								</Button>
+							)}
 						</Form.Item>
 					</Col>
 				</Row>

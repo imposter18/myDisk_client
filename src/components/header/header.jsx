@@ -6,7 +6,54 @@ import { memo } from "react";
 import Toggle from "../themeToggle/themeToggle";
 import { ThemeContext, themes } from "../theme/ThemeContext";
 import classNames from "classnames";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
+import { logoutUser } from "../../store/reducers/authUser/AT-logoutUser";
 const Header = memo(() => {
+	const { isAuth } = useAppSelector((state) => state.userReducer);
+	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
+	const dispatch = useAppDispatch();
+	const logout = () => {
+		dispatch(logoutUser());
+	};
+	const btnBlock = () => {
+		return (
+			<>
+				<Link to={"/auth"}>
+					<Button
+						className={`${styles.buttonSignIn} ${styles.button}`}
+						type="link"
+						size={"large"}
+					>
+						Sign in
+					</Button>
+				</Link>
+				<Link className={styles.linkSingUp} to={"/registration"}>
+					<Button
+						className={`${styles.buttonSignUp} ${styles.button}`}
+						size={"large"}
+					>
+						Sign up
+					</Button>
+				</Link>
+			</>
+		);
+	};
+	const userBlock = () => {
+		return (
+			<>
+				<div className={styles.user}>{userName}</div>
+				<Button
+					onClick={logout}
+					className={`${styles.buttonSignIn} ${styles.button}`}
+					type="link"
+					size={"large"}
+				>
+					logout
+				</Button>
+			</>
+		);
+	};
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.headerWrapper}>
@@ -28,23 +75,7 @@ const Header = memo(() => {
 								/>
 							)}
 						</ThemeContext.Consumer>
-						<Link to={"/auth"}>
-							<Button
-								className={`${styles.buttonSignIn} ${styles.button}`}
-								type="link"
-								size={"large"}
-							>
-								Sign in
-							</Button>
-						</Link>
-						<Link className={styles.linkSingUp} to={"/registration"}>
-							<Button
-								className={`${styles.buttonSignUp} ${styles.button}`}
-								size={"large"}
-							>
-								Sign up
-							</Button>
-						</Link>
+						{isAuth ? userBlock() : btnBlock()}
 					</Col>
 				</Row>
 			</div>

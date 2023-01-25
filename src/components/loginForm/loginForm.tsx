@@ -6,6 +6,7 @@ import { loginUser } from "../../store/reducers/authUser/AT-loginUser";
 import AuthService from "../../service/AuthService";
 import { logoutUser } from "../../store/reducers/authUser/AT-logoutUser";
 import { Link } from "react-router-dom";
+import { PoweroffOutlined } from "@ant-design/icons";
 
 const loginForm = () => {
 	const { isAuth, currentUser, isLoaging } = useAppSelector(
@@ -18,7 +19,10 @@ const loginForm = () => {
 		remember: boolean;
 	}) => {
 		// console.log(values, "values");
-		const { Email, password } = values;
+		const { Email, password, remember } = values;
+		if (remember) {
+			// localStorage.setItem("authData", values);
+		}
 
 		dispatch(loginUser({ email: Email, password }));
 	};
@@ -28,9 +32,9 @@ const loginForm = () => {
 	const onValuesChange = (value: any) => {
 		// console.log(value);
 	};
-	if (isLoaging) {
-		return <div>Loading</div>;
-	}
+	// if (isLoaging) {
+	// 	return <div>Loading</div>;
+	// }
 
 	return (
 		<>
@@ -43,7 +47,7 @@ const loginForm = () => {
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
 				onValuesChange={onValuesChange}
-				autoComplete="off"
+				autoComplete="on"
 			>
 				<Form.Item
 					// className={styles.authLabel}
@@ -74,14 +78,19 @@ const loginForm = () => {
 					</Col>
 					<Col className={styles.confirmBtn} span={12}>
 						<Form.Item>
-							<Button
-								className={styles.button}
-								type="primary"
-								htmlType="submit"
-							>
-								Submit
-							</Button>
-							<Link to={"/main"}>link</Link>
+							{isLoaging ? (
+								<Button className={styles.button} type="primary" loading>
+									Loading
+								</Button>
+							) : (
+								<Button
+									className={styles.button}
+									type="primary"
+									htmlType="submit"
+								>
+									Submit
+								</Button>
+							)}
 						</Form.Item>
 					</Col>
 				</Row>

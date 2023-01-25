@@ -1,0 +1,15 @@
+import React from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../hooks/redux";
+
+const PublicRoute = ({ children }: any) => {
+	const { isAuth } = useAppSelector((state) => state.userReducer);
+	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
+	const navigate = useNavigate();
+	if (isAuth) {
+		return <Navigate to={`/${userName}`} />;
+	}
+
+	return <Outlet />;
+};
+export default PublicRoute;
