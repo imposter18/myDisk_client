@@ -16,16 +16,16 @@ const App = () => {
 	// const { isAuth, isLoaging } = useAppSelector((state) => state.userReducer);
 	// const { userName } = useAppSelector((state) => state.userReducer.currentUser);
 	const dispath = useAppDispatch();
+	const { firstLoading } = useAppSelector((state) => state.userReducer);
 	useEffect(() => {
-		if (localStorage.getItem("token")) {
-			dispath(checkAuth());
-		}
+		dispath(checkAuth());
 	}, []);
-	// useEffect(() => {
-	// 	if (isAuth && userName) {
-	// 		navigate(`${userName}`);
-	// 	}
-	// }, [isAuth]);
+
+	if (firstLoading) {
+		return (
+			<h1 style={{ margin: "100px auto", textAlign: "center" }}>Loading...</h1>
+		);
+	}
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>

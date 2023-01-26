@@ -1,0 +1,26 @@
+.userName {
+	font-family: var(--main-font);
+	font-size: 20px;
+	font-weight: 700;
+	padding: 10px;
+	transition: 0.09s;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+// .userName {
+// 	transform: scale(0.7);
+// }
+.popup {
+	position: absolute;
+	max-width: 200px;
+	max-height: 400px;
+	min-width: 100px;
+	min-height: 200px;
+	background-color: var(--color-border);
+}
+.button {
+	font-family: var(--main-font);
+	font-size: 16px;
+	color: var(--font-color);
+}

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as styles from "./header.module.scss";
 import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 import { memo } from "react";
 import Toggle from "../themeToggle/themeToggle";
 import { ThemeContext, themes } from "../theme/ThemeContext";
-import classNames from "classnames";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { logoutUser } from "../../store/reducers/authUser/AT-logoutUser";
+import Popup from "../popup/popup";
 const Header = memo(() => {
+	const ref = useRef();
 	const { isAuth } = useAppSelector((state) => state.userReducer);
 	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
 	const dispatch = useAppDispatch();
@@ -38,21 +39,24 @@ const Header = memo(() => {
 			</>
 		);
 	};
-	const userBlock = () => {
-		return (
-			<>
-				<div className={styles.user}>{userName}</div>
-				<Button
-					onClick={logout}
-					className={`${styles.buttonSignIn} ${styles.button}`}
-					type="link"
-					size={"large"}
-				>
-					logout
-				</Button>
-			</>
-		);
-	};
+	// const userBlock = () => {
+	// 	return (
+	// 		<>
+	// 			<div className={styles.user} ref={ref}>
+	// 				{userName}
+	// 			</div>
+
+	// 			<Button
+	// 				onClick={logout}
+	// 				className={`${styles.buttonSignIn} ${styles.button}`}
+	// 				type="link"
+	// 				size={"large"}
+	// 			>
+	// 				logout
+	// 			</Button>
+	// 		</>
+	// 	);
+	// };
 
 	return (
 		<header className={styles.header}>
@@ -75,7 +79,7 @@ const Header = memo(() => {
 								/>
 							)}
 						</ThemeContext.Consumer>
-						{isAuth ? userBlock() : btnBlock()}
+						{isAuth ? <Popup userName={userName} /> : btnBlock()}
 					</Col>
 				</Row>
 			</div>

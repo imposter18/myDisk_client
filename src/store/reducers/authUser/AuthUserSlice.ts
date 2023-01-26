@@ -13,6 +13,7 @@ interface IinitialState {
 	isLoaging: boolean;
 	isAuth: boolean;
 	error: string | null | undefined;
+	firstLoading: boolean;
 }
 
 const initialState: IinitialState = {
@@ -20,6 +21,7 @@ const initialState: IinitialState = {
 	isLoaging: false,
 	isAuth: false,
 	error: null,
+	firstLoading: true,
 };
 
 export const UserSlice = createSlice({
@@ -33,6 +35,7 @@ export const UserSlice = createSlice({
 			state.error = null;
 		});
 		builder.addCase(loginUser.fulfilled, (state, action) => {
+			state.firstLoading = false;
 			localStorage.setItem("token", action.payload.accessToken);
 			state.isLoaging = false;
 			state.isAuth = true;
@@ -41,6 +44,7 @@ export const UserSlice = createSlice({
 			console.log(state, "state");
 		});
 		builder.addCase(loginUser.rejected, (state, action) => {
+			state.firstLoading = false;
 			state.isLoaging = false;
 			if (action) {
 				state.error = action.payload?.response?.data?.message;
@@ -92,12 +96,14 @@ export const UserSlice = createSlice({
 			state.error = null;
 		});
 		builder.addCase(checkAuth.fulfilled, (state, action) => {
+			state.firstLoading = false;
 			localStorage.setItem("token", action.payload.accessToken);
 			state.isLoaging = false;
 			state.isAuth = true;
 			state.currentUser = action.payload.user;
 		});
 		builder.addCase(checkAuth.rejected, (state, action) => {
+			state.firstLoading = false;
 			state.isLoaging = false;
 			if (action) {
 				state.error = action.payload.message;
