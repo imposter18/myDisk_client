@@ -1,6 +1,7 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 const paths = require("./paths");
 
@@ -32,7 +33,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: paths.src + "/index.html",
 			title: "webpack Boilerplate",
-			favicon: paths.src + "/images/favicon.ico",
+			favicon: paths.src + "/Shared/assets/favicon/favicon.ico",
 			filename: "index.html", // output file
 		}),
 	],
@@ -64,9 +65,10 @@ module.exports = {
 	resolve: {
 		modules: [paths.src, "node_modules"],
 		extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
-		alias: {
-			"@": paths.src,
-			assets: paths.public,
-		},
+		plugins: [new TsconfigPathsPlugin()],
+		// alias: {
+		// 	"@": paths.src,
+		// 	assets: paths.public,
+		// },
 	},
 };

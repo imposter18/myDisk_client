@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./",
 		"outDir": "./dist/",
 		"noImplicitAny": true,
 		"module": "es6",
@@ -15,6 +16,9 @@
 					"customTemplate": "./customTemplate.js"
 				}
 			}
-		]
+		],
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	}
 }

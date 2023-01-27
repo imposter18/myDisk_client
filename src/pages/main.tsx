@@ -1,6 +1,5 @@
 import React from "react";
-import { useAppDispatch } from "../hooks/redux";
-import { logoutUser } from "../store/reducers/authUser/AT-logoutUser";
+import { useAppDispatch } from "../Shared/lib/hooks/redux";
 
 const MainPage = () => {
 	const dispatch = useAppDispatch();
