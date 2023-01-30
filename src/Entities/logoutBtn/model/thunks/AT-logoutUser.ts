@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import AuthService from "@/Shared/service/AuthService";
+import { logoutHTTP } from "../api";
 
 export const logoutUser = createAsyncThunk<
 	void,
@@ -8,7 +8,7 @@ export const logoutUser = createAsyncThunk<
 	{ rejectValue: AxiosError }
 >("user/logiut", async function (_, { rejectWithValue }) {
 	try {
-		const res = await AuthService.logout();
+		const res = await logoutHTTP();
 	} catch (e) {
 		return rejectWithValue(e);
 	}

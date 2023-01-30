@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Divider } from "antd";
 import * as styles from "./footer.module.scss";
 
-const Footer = memo(() => {
+export const Footer = memo(() => {
 	return (
 		<footer>
 			<Divider className={styles.footerDivider} />
@@ -14,5 +14,3 @@ const Footer = memo(() => {
 		</footer>
 	);
 });
-
-export default Footer;

@@ -1,4 +1,4 @@
-import api from "@/Shared/http";
+import api from "@/Shared/api";
 import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
 import { AxiosResponse } from "axios";
 export async function loginHTTP(

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Redirect = () => {
+export const Redirect = () => {
 	const navigate = useNavigate();
 	const [countdown, setCountdown] = useState<number>(3);
 	const goBack = () => {
@@ -22,11 +22,10 @@ const Redirect = () => {
 	}, [countdown]);
 	return (
 		<div style={{ margin: "100px auto" }}>
-			<h1 style={{ textAlign: "center" }}>404: Not found</h1>;
+			<h1 style={{ textAlign: "center" }}>Error 404: Not found</h1>;
 			<div style={{ textAlign: "center" }}>
 				You will be redirected back in {countdown} seconds ...
 			</div>
 		</div>
 	);
 };
-export default Redirect;

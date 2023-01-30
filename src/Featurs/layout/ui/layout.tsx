@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../Widgets/header/header";
-import Footer from "@/Widgets/footer/footer";
+import { Header } from "@/Widgets/header";
+import { Footer } from "@/Widgets/footer";
 import * as styles from "./layout.module.scss";
 import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }: any) => {
+export const Layout = ({ children }: any) => {
 	return (
 		<div>
 			<div className={styles.mainWrapper}>
@@ -18,4 +18,3 @@ const Layout = ({ children }: any) => {
 		</div>
 	);
 };
-export default Layout;

@@ -6,7 +6,9 @@ const MainPage = () => {
 
 	return (
 		<>
-			<div>Вход выполнен</div>
+			<h1 style={{ textAlign: "center", margin: "100px auto" }}>
+				Вход выполнен
+			</h1>
 		</>
 	);
 };

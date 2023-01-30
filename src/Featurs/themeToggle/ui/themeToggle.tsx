@@ -3,7 +3,7 @@ import React from "react";
 import { Switch, Space } from "antd";
 import * as styles from "./themeToggle.module.scss";
 
-const Toggle = ({ value, onChange }: any) => (
+export const Toggle = ({ value, onChange }: any) => (
 	<Switch
 		className={styles.toggler}
 		checked={value}
@@ -12,5 +12,3 @@ const Toggle = ({ value, onChange }: any) => (
 		onClick={onChange}
 	/>
 );
-
-export default Toggle;

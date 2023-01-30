@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import "./styles/index.scss";
-import { Registration } from "@/Pages/registrationPage/index";
+import { Registration } from "@/Pages/registrationPage";
 import { AuthPage } from "@/Pages/authPage";
-import Layout from "@/Featurs/layout/layout";
-// import Layout from "@/";
+import { Layout } from "@/Featurs/layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../Shared/lib/hooks/redux";
-import { checkAuth } from "@/Shared/store/reducers/authUser/AT-checkAuth";
-import ProtectedRoute from "../Shared/lib/hoc/protectedRoute";
-import PublicRoute from "../Shared/lib/hoc/publicRoute";
+import { checkAuth } from "@/Entities/checkAuth";
+import ProtectedRoute from "@/Shared/lib/hoc/protectedRoute";
+import PublicRoute from "@/Shared/lib/hoc/publicRoute";
 import MainPage from "../Pages/main";
 import { useAppSelector } from "../Shared/lib/hooks/redux";
-import Redirect from "../Pages/redirect/redirect";
+import { Redirect } from "@/Pages/redirect";
 
 const App = () => {
 	const navigate = useNavigate();

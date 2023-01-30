@@ -5,7 +5,7 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from "../../../Shared/lib/hooks/redux";
-import { loginUser } from "../model/AT-loginUser";
+import { loginUser } from "../model/thunks/AT-loginUser";
 
 export const LoginForm = () => {
 	const { isAuth, currentUser, isLoaging } = useAppSelector(

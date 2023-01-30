@@ -2,15 +2,12 @@ import { Button } from "antd";
 import React, { useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import * as styles from "./popup.module.scss";
-import { logoutUser } from "@/Shared/store/reducers/authUser/AT-logoutUser";
+import { LogoutBtn } from "@/Entities/logoutBtn";
 
-const Popup = ({ userName }: any) => {
+export const Popup = ({ userName }: any) => {
 	const dispatch = useAppDispatch();
 	const ref = useRef();
 	const [open, setOpen] = useState(false);
-	const logout = () => {
-		dispatch(logoutUser());
-	};
 
 	const hoverItem = () => {
 		return setOpen(true);
@@ -31,18 +28,10 @@ const Popup = ({ userName }: any) => {
 				{userName}
 				{open && (
 					<div className={styles.popup}>
-						<Button
-							onClick={logout}
-							className={` ${styles.button}`}
-							type="link"
-							size={"large"}
-						>
-							logout
-						</Button>
+						<LogoutBtn></LogoutBtn>
 					</div>
 				)}
 			</div>
 		</>
 	);
 };
-export default Popup;

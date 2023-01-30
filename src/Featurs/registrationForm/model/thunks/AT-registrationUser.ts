@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { registrationHTTP } from "../api/registration";
+import { registrationHTTP } from "../../api/registration";
 
 interface IRegistrationPrors {
 	email: string;

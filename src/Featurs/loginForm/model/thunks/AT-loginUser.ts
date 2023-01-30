@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { loginHTTP } from "../api/login";
+import { loginHTTP } from "../../api/login";
 
 interface IResponseError {
 	errprs: Array<string> | [];
