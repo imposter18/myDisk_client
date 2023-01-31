@@ -1,8 +1,8 @@
 import { loginUser } from "../thunks/AT-loginUser";
-import { IinitialState } from "@/Shared/store/reducers/authUser/AuthUserSlice";
+import { IinitialState } from "@/Shared/store/reducers/AuthUserSlice";
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 
-export function loginReducer(builder: ActionReducerMapBuilder<IinitialState>) {
+export function loginAction(builder: ActionReducerMapBuilder<IinitialState>) {
 	console.log(builder);
 	builder.addCase(loginUser.pending, (state) => {
 		console.log(builder);

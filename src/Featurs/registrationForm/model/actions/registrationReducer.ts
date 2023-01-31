@@ -1,23 +1,21 @@
-import { checkAuth } from "../thunks/AT-checkAuth";
-import { IinitialState } from "@/Shared/store/reducers/authUser/AuthUserSlice";
+import { registrationUser } from "../thunks/AT-registrationUser";
+import { IinitialState } from "@/Shared/store/reducers/AuthUserSlice";
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 
-export function checkAuthReduser(
+export function registrationAction(
 	builder: ActionReducerMapBuilder<IinitialState>
 ) {
-	builder.addCase(checkAuth.pending, (state) => {
+	builder.addCase(registrationUser.pending, (state) => {
 		state.isLoaging = true;
 		state.error = null;
 	});
-	builder.addCase(checkAuth.fulfilled, (state, action) => {
-		state.firstLoading = false;
+	builder.addCase(registrationUser.fulfilled, (state, action) => {
 		localStorage.setItem("token", action.payload.accessToken);
 		state.isLoaging = false;
 		state.isAuth = true;
 		state.currentUser = action.payload.user;
 	});
-	builder.addCase(checkAuth.rejected, (state, action) => {
-		state.firstLoading = false;
+	builder.addCase(registrationUser.rejected, (state, action) => {
 		state.isLoaging = false;
 		if (action) {
 			state.error = action.payload.message;

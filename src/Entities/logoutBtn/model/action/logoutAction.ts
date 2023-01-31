@@ -1,8 +1,8 @@
 import { logoutUser } from "../thunks/AT-logoutUser";
-import { IinitialState } from "@/Shared/store/reducers/authUser/AuthUserSlice";
+import { IinitialState } from "@/Shared/store/reducers/AuthUserSlice";
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 
-export function logoutReducer(builder: ActionReducerMapBuilder<IinitialState>) {
+export function logoutAction(builder: ActionReducerMapBuilder<IinitialState>) {
 	builder.addCase(logoutUser.pending, (state) => {
 		state.isLoaging = true;
 		state.error = null;

@@ -1,4 +1,4 @@
-import { CreateDir } from "@/Pages/disk/models/thunk/CreateDir";
+import { CreateDir } from "@/Entities/popup/model/thunk/CreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { Button, Form, Input } from "antd";
 import React, { useEffect } from "react";
@@ -45,7 +45,7 @@ export const Popup = () => {
 							</Form.Item>
 
 							<Button type="primary" htmlType="submit">
-								Submit
+								Create
 							</Button>
 						</Form>
 					</div>

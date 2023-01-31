@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./reducers/authUser/AuthUserSlice";
-import { FileReducer } from "@/Pages/disk/models/store/fileSlice";
+import { userReducer } from "./reducers/AuthUserSlice";
+import { FileReducer } from "@/Shared/store/reducers/fileSlice";
 import { VisiblePopupReducer } from "@/Entities/popup/model/store/popupSlice";
 
 export const setupStore = configureStore({

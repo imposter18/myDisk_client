@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { IUser } from "@/Shared/Types/IUser";
-import { loginReducer } from "@/Featurs/loginForm";
-import { registrationReduser } from "@/Featurs/registrationForm";
-import { checkAuthReduser } from "@/Entities/checkAuth";
-import { logoutReducer } from "@/Entities/logoutBtn";
+import { loginAction } from "@/Featurs/loginForm";
+import { registrationAction } from "@/Featurs/registrationForm";
+import { checkAuthAction } from "@/Entities/checkAuth";
+import { logoutAction } from "@/Entities/logoutBtn";
 
 export interface IinitialState {
 	currentUser: IUser;
@@ -26,13 +26,13 @@ export const UserSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		loginReducer(builder);
-		//registration
-		registrationReduser(builder);
-		//logout
-		logoutReducer(builder);
-		//checkAuth
-		checkAuthReduser(builder);
+		loginAction(builder);
+
+		registrationAction(builder);
+
+		logoutAction(builder);
+
+		checkAuthAction(builder);
 	},
 });
 
