@@ -8,7 +8,7 @@ import { useAppDispatch } from "../Shared/lib/hooks/redux";
 import { checkAuth } from "@/Entities/checkAuth";
 import ProtectedRoute from "@/Shared/lib/hoc/protectedRoute";
 import PublicRoute from "@/Shared/lib/hoc/publicRoute";
-import MainPage from "../Pages/main";
+import { DiskPage } from "@/Pages/disk";
 import { useAppSelector } from "../Shared/lib/hooks/redux";
 import { Redirect } from "@/Pages/redirect";
 
@@ -34,7 +34,7 @@ const App = () => {
 					<Route index path="auth" element={<AuthPage />}></Route>
 				</Route>
 				<Route element={<ProtectedRoute></ProtectedRoute>}>
-					<Route path="/:userName" element={<MainPage />}></Route>
+					<Route path="/:userName" element={<DiskPage />}></Route>
 				</Route>
 				<Route path="*" element={<Redirect />} />
 			</Route>

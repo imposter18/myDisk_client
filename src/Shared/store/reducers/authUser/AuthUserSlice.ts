@@ -5,7 +5,7 @@ import { registrationReduser } from "@/Featurs/registrationForm";
 import { checkAuthReduser } from "@/Entities/checkAuth";
 import { logoutReducer } from "@/Entities/logoutBtn";
 
-interface IinitialState {
+export interface IinitialState {
 	currentUser: IUser;
 	isLoaging: boolean;
 	isAuth: boolean;

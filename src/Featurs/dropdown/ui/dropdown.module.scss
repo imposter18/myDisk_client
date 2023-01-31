@@ -1,0 +1,63 @@
+.userName {
+	position: relative;
+	z-index: 999;
+	font-family: var(--main-font);
+	font-size: 20px;
+	font-weight: 700;
+	padding: 10px;
+	transition: 0.09s;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.popup {
+	z-index: -2;
+	top: -40px;
+	left: 2px;
+	padding-top: 90px;
+	position: absolute;
+	max-width: 200px;
+	max-height: 400px;
+	min-width: 150px;
+	min-height: 200px;
+	border-radius: 0 0 10px 10px;
+	background-color: var(--header-bg-color);
+	box-shadow: 0 10px 20px -2px rgb(0 0 0 / 40%);
+
+	i {
+		font-size: 20px;
+		margin: 6px 8px 0 6px;
+	}
+
+	.popupItem {
+		font-family: var(--main-font);
+		font-size: 16px;
+		color: var(--font-color);
+		padding: 0 14px 2px 0;
+		text-align: left;
+		:global(.ant-btn) {
+			transition: none;
+			padding: 3px 8px 3px 0;
+			&:hover {
+				color: #fff;
+				span {
+					color: #fff;
+				}
+			}
+		}
+		&:hover {
+			background-color: var(--dropdown-hover);
+			:global(.ant-btn) {
+				color: #fff;
+			}
+		}
+		button {
+			text-align: left;
+		}
+	}
+}
+.button {
+	font-family: var(--main-font);
+	font-size: 16px;
+	color: var(--font-color);
+}

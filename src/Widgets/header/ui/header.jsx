@@ -7,7 +7,7 @@ import { Toggle } from "@/Featurs/themeToggle";
 import { ThemeContext, themes } from "@/Shared/theme/ThemeContext.js";
 import { useAppSelector, useAppDispatch } from "@/Shared/lib/hooks/redux";
 import { logoutUser } from "@/Entities/logoutBtn/model/thunks/AT-logoutUser";
-import { Popup } from "@/Featurs/popup";
+import { Dropdown } from "@/Featurs/dropdown";
 export const Header = memo(() => {
 	const ref = useRef();
 	const { isAuth } = useAppSelector((state) => state.userReducer);
@@ -61,7 +61,7 @@ export const Header = memo(() => {
 								/>
 							)}
 						</ThemeContext.Consumer>
-						{isAuth ? <Popup userName={userName} /> : btnBlock()}
+						{isAuth ? <Dropdown userName={userName} /> : btnBlock()}
 					</Col>
 				</Row>
 			</div>

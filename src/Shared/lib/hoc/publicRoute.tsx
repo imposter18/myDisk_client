@@ -6,7 +6,8 @@ const PublicRoute = ({ children }: any) => {
 	const { isAuth } = useAppSelector((state) => state.userReducer);
 	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
 	const navigate = useNavigate();
-	if (isAuth) {
+
+	if (isAuth && userName) {
 		return <Navigate to={`/${userName}`} />;
 	}
 
