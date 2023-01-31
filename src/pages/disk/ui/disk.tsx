@@ -6,22 +6,34 @@ import {
 } from "../../../Shared/lib/hooks/redux";
 import { getFiles } from "../models/thunk/getFile";
 import { FileList } from "./fileList/fileList";
+import { CreateDir } from "../models/thunk/CreateDir";
+import { Popup } from "@/Entities/popup";
+import { setVisible } from "@/Entities/popup/model/store/popupSlice";
 
 export const DiskPage = () => {
 	const dispatch = useAppDispatch();
-	const { carrentDir } = useAppSelector((state) => state.FileReducer);
+	const { currentDir } = useAppSelector((state) => state.FileReducer);
 
 	useEffect(() => {
-		dispatch(getFiles(carrentDir));
-	}, [carrentDir]);
+		dispatch(getFiles(currentDir));
+	}, [currentDir]);
+
+	const createStaticHandler = () => {
+		dispatch(setVisible(true));
+		// const name = "sdfsd";
+		// const type = "dir";
+		// // const a = null;
+		// dispatch(CreateDir({ currentDir: a, name, type }));
+	};
 
 	return (
 		<>
 			<div className={styles.btnBlock}>
 				<button>назад</button>
-				<button>создать папку</button>
+				<button onClick={() => createStaticHandler()}>создать папку</button>
 			</div>
 			<FileList></FileList>
+			<Popup></Popup>
 		</>
 	);
 };

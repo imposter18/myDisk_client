@@ -9,13 +9,14 @@ export async function getFileHTTP(
 	);
 }
 
-// export async function CreateDirHTTP(
-// 	currentDir: string
-// ): Promise<AxiosResponse<any>> {
-// 	return await api.get<any>(
-// 		`/files`,{
-// 			name,
-// 			type
-// 		}
-// 	);
-// }
+export async function CreateDirHTTP(
+	currentDir: string,
+	name: string,
+	type: string
+): Promise<AxiosResponse<any>> {
+	return await api.post<any>(`/files`, {
+		parent: currentDir,
+		name,
+		type,
+	});
+}
