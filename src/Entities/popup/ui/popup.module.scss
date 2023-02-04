@@ -18,6 +18,30 @@
 	// 	}
 	// }
 }
+.error {
+	// animation: 0.5s show ease-in;
+	position: absolute;
+	transform: translateY(-50%);
+	animation: show 1s forwards;
+	color: red;
+}
+
+@keyframes show {
+	// from {
+	// 	opacity: 0;
+	// }
+	// to {
+	// 	opacity: 1;
+	0% {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	// }
+}
 .btn {
 	padding: 0;
 	border: none;
@@ -29,6 +53,7 @@
 	&:hover {
 		i {
 			opacity: 0.7;
+			cursor: pointer;
 		}
 	}
 }
@@ -36,7 +61,7 @@
 .content {
 	width: 400px;
 	background-color: #fff;
-	padding: 10px;
+	padding: 10px 10px 20px 10px;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;

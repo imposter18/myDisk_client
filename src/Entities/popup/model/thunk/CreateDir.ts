@@ -15,7 +15,7 @@ interface ICreateDirProps {
 export const CreateDir = createAsyncThunk<
 	IFileResponse,
 	ICreateDirProps,
-	{ rejectValue: AxiosError<IResponseError> }
+	{ rejectValue: AxiosError<string> }
 >(
 	"file/createDir",
 	async function ({ currentDir, name, type }, { rejectWithValue }) {
