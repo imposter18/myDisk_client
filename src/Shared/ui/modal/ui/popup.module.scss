@@ -1,0 +1,31 @@
+.content {
+	width: 400px;
+	background-color: #fff;
+	padding: 10px 10px 20px 10px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+}
+
+.popup {
+	z-index: 99999;
+	// display: none;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	right: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	overflow: hidden;
+	// :global(.ant-btn) {
+	// 	position: relative;
+	// 	i {
+	// 		font-size: 24px;
+	// 		position: absolute;
+	// 		top: 2;
+	// 	}
+	// }
+}

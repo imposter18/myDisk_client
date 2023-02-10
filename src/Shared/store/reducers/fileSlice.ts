@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getFiles } from "@/Widgets/fileList/model/thunk/getFile";
-import { CreateDir } from "@/Entities/popup/model/thunk/CreateDir";
+import { CreateDir } from "@/Featurs/modalCreateDir";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { getFileAction } from "@/Widgets/fileList/model/actions/getFiles";
-import { createDirAction } from "@/Entities/popup/model/actions/createDir";
+import { createDirAction } from "@/Featurs/modalCreateDir";
 
 export interface IinitialState {
 	files: IFileResponse[];

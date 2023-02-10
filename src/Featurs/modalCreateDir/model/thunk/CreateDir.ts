@@ -18,7 +18,7 @@ export const CreateDir = createAsyncThunk<
 	{ rejectValue: AxiosError<string> }
 >(
 	"file/createDir",
-	async function ({ currentDir, name, type }, { rejectWithValue }) {
+	async function ({ currentDir, name, type = "dir" }, { rejectWithValue }) {
 		try {
 			const res = await CreateDirHTTP(currentDir, name, type);
 			return res.data as IFileResponse;

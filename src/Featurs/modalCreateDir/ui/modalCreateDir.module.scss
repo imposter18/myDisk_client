@@ -1,29 +1,16 @@
-.popup {
-	// display: none;
-	width: 100%;
-	height: 100vh;
-	background: rgba(0, 0, 0, 0.5);
-	right: 0;
-	top: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	// :global(.ant-btn) {
-	// 	position: relative;
-	// 	i {
-	// 		font-size: 24px;
-	// 		position: absolute;
-	// 		top: 2;
-	// 	}
-	// }
-}
 .error {
 	// animation: 0.5s show ease-in;
 	position: absolute;
-	transform: translateY(-50%);
+	// transform: translateY(-50%);
 	animation: show 1s forwards;
 	color: red;
+	// animation-name: show;
+	// animation-duration: 2s;
+	// animation-iteration-count: 1;
+	// animation-direction: normal;
+	// animation-timing-function: ease-out;
+	// animation-fill-mode: forwards;
+	// animation-delay: 0s;
 }
 
 @keyframes show {
@@ -58,14 +45,6 @@
 	}
 }
 
-.content {
-	width: 400px;
-	background-color: #fff;
-	padding: 10px 10px 20px 10px;
-	border-radius: 8px;
-	display: flex;
-	flex-direction: column;
-}
 .create {
 	align-self: flex-end;
 }
