@@ -7,7 +7,6 @@ interface props {
 
 export const PopupForStatus = ({ name }: props) => {
 	const [messageApi, contextHolder] = message.useMessage();
-	console.log("render");
 
 	const success = () => {
 		messageApi.open({
@@ -16,7 +15,6 @@ export const PopupForStatus = ({ name }: props) => {
 		});
 	};
 	useLayoutEffect(() => {
-		console.log("renderEFFECT");
 		success();
 	}, [name]);
 

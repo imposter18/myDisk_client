@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./styles/index.scss";
 import { Registration } from "@/Pages/registrationPage";
 import { AuthPage } from "@/Pages/authPage";
-import { Layout } from "@/Featurs/layout";
+import { Layout } from "@/Shared/ui/layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../Shared/lib/hooks/redux";
 import { checkAuth } from "@/Entities/checkAuth";

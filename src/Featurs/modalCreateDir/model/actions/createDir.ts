@@ -15,7 +15,6 @@ export function createDirAction(
 		state.files = [...state.files, action.payload];
 	});
 	builder.addCase(CreateDir.rejected, (state, action) => {
-		console.log(action, "action");
 		state.isLoaging = false;
 		if (action) {
 			state.error = action.payload?.response?.data;

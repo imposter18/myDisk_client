@@ -14,7 +14,7 @@ api.interceptors.request.use((config) => {
 });
 api.interceptors.response.use(
 	(config) => {
-		console.log(config, "config");
+		// console.log(config, "config");
 		return config;
 	},
 	async (error) => {
@@ -26,7 +26,7 @@ api.interceptors.response.use(
 		) {
 			originalRequrst._isRetry = true;
 			try {
-				console.log("refresh");
+				// console.log("refresh");
 				const res = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
 					withCredentials: true,
 				});

@@ -1,19 +1,25 @@
 import { CreateDir } from "@/Featurs/modalCreateDir/model/thunk/CreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
-import { unwrapResult } from "@reduxjs/toolkit";
 import { Button, Form, Input } from "antd";
-import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
-import { setVisible } from "../model/store/popupSlice";
 import * as styles from "./modalCreateDir.module.scss";
 import { Modal } from "@/Shared/ui/modal";
-import { PopupForStatus } from "@/Shared/ui/popupForStatus";
 
-export const ModalCreateDir = () => {
+interface props {
+	setFolderName: (folderName: string) => void;
+	setVisiblePopup: (setVisiblePopup: boolean) => void;
+	setVisibleModal: (setVisibleModal: boolean) => void;
+	visibleModal: boolean;
+}
+
+export const ModalCreateDir = ({
+	setVisiblePopup,
+	setFolderName,
+	visibleModal,
+	setVisibleModal,
+}: props) => {
 	const [createError, setCreateError] = useState(false);
-	const [folderName, setFolderName] = useState<string>("");
-	const [visiblePopup, setVisiblePopup] = useState(false);
-	const { visible } = useAppSelector((state) => state.VisiblePopupReducer);
+
 	const { currentDir, error, isLoaging } = useAppSelector(
 		(state) => state.FileReducer
 	);
@@ -33,7 +39,7 @@ export const ModalCreateDir = () => {
 			if (res.meta.requestStatus === "fulfilled") {
 				setFolderName(folderName);
 				setVisiblePopup(true);
-				dispatch(setVisible(false));
+				setVisibleModal(false);
 				setCreateError(false);
 			}
 			if (res.meta.requestStatus === "rejected") {
@@ -42,12 +48,12 @@ export const ModalCreateDir = () => {
 		});
 	}
 	const onClose = () => {
-		dispatch(setVisible(false));
+		setVisibleModal(false);
 	};
 
 	return (
 		<>
-			{visible && (
+			{visibleModal && (
 				<Modal onClose={onClose}>
 					<div className={styles.header}>
 						<div className={styles.title}>Create a new folder</div>
@@ -81,7 +87,6 @@ export const ModalCreateDir = () => {
 					</Form>
 				</Modal>
 			)}
-			{visiblePopup && <PopupForStatus name={folderName}></PopupForStatus>}
 		</>
 	);
 };

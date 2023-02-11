@@ -4,7 +4,6 @@ import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 import { memo } from "react";
 import { Toggle } from "@/Featurs/themeToggle";
-import { ThemeContext, themes } from "@/Shared/theme/ThemeContext.js";
 import { useAppSelector, useAppDispatch } from "@/Shared/lib/hooks/redux";
 import { logoutUser } from "@/Entities/logoutBtn/model/thunks/AT-logoutUser";
 import { Dropdown } from "@/Featurs/dropdown";
@@ -50,17 +49,17 @@ export const Header = memo(() => {
 					</Col>
 
 					<Col className={styles.buttonBlock} span={8}>
-						<ThemeContext.Consumer>
-							{({ theme, setTheme }) => (
-								<Toggle
-									onChange={() => {
-										if (theme === themes.light) setTheme(themes.dark);
-										if (theme === themes.dark) setTheme(themes.light);
-									}}
-									value={theme === themes.dark}
-								/>
-							)}
-						</ThemeContext.Consumer>
+						{/* <ThemeContext.Consumer>
+							{({ theme, setTheme }) => ( */}
+						<Toggle
+						// onChange={() => {
+						// 	if (theme === themes.light) setTheme(themes.dark);
+						// 	if (theme === themes.dark) setTheme(themes.light);
+						// }}
+						// value={theme === themes.dark}
+						/>
+						{/* )} */}
+						{/* </ThemeContext.Consumer> */}
 						{isAuth ? <Dropdown userName={userName} /> : btnBlock()}
 					</Col>
 				</Row>

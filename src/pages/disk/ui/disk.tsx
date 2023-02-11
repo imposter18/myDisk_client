@@ -1,35 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as styles from "./disk.module.scss";
-import {
-	useAppDispatch,
-	useAppSelector,
-} from "../../../Shared/lib/hooks/redux";
-import { getFiles } from "../../../Widgets/fileList/model/thunk/getFile";
 import { FileList } from "@/Widgets/fileList";
-import { ModalCreateDir } from "@/Featurs/modalCreateDir";
-import { setVisible } from "@/Featurs/modalCreateDir";
+import { CreateDir } from "@/Widgets/createDir";
+import { useAppSelector } from "@/Shared/lib/hooks/redux";
+import { AlertEmail } from "@/Widgets/alertEmail";
 
 export const DiskPage = () => {
-	const dispatch = useAppDispatch();
-
-	// const { currentDir } = useAppSelector((state) => state.FileReducer);
-
-	// useEffect(() => {
-	// 	dispatch(getFiles(currentDir));
-	// }, [currentDir]);
-
-	const createStaticHandler = () => {
-		dispatch(setVisible(true));
-	};
+	const [visibleModal, setVisibleModal] = useState(false);
+	const user = useAppSelector((state) => state.userReducer.currentUser);
 
 	return (
 		<>
-			<div className={styles.btnBlock}>
-				<button>назад</button>
-				<button onClick={() => createStaticHandler()}>создать папку</button>
+			<div className={styles.wrapper}>
+				<AlertEmail user={user}></AlertEmail>
+				<div className={styles.btnBlock}>
+					<button>назад</button>
+					<button onClick={() => setVisibleModal(true)}>создать папку</button>
+				</div>
+				<FileList></FileList>
+				<CreateDir
+					visibleModal={visibleModal}
+					setVisibleModal={setVisibleModal}
+				></CreateDir>
 			</div>
-			<FileList></FileList>
-			<ModalCreateDir></ModalCreateDir>
 		</>
 	);
 };

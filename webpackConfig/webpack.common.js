@@ -33,7 +33,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: paths.src + "/index.html",
 			title: "webpack Boilerplate",
-			favicon: paths.src + "/Shared/assets/favicon/favicon.ico",
+			favicon: paths.src + "/Shared/assets/img/favicon/favicon.ico",
 			filename: "index.html", // output file
 		}),
 	],
