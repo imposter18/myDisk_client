@@ -1,17 +1,19 @@
-import React from "react";
-import { Button, Checkbox, Form, Input, Row, Col } from "antd";
+import React, { useState } from "react";
+import { Button, Form, Input, Row, Col } from "antd";
 import * as styles from "./registrationForm.module.scss";
+import { useAppDispatch } from "@/Shared/lib/hooks/redux";
 import {
-	useAppDispatch,
-	useAppSelector,
-} from "../../../Shared/lib/hooks/redux";
-import { registrationUser } from "../model/thunks/AT-registrationUser";
+	registrationUser,
+	useViewerError,
+	useViewerIsLoadind,
+} from "@/Entities/viewer";
+import { PopupForStatus } from "@/Shared/ui/popupForStatus";
 
 export const RegistrationForm = () => {
-	const { isAuth, currentUser, isLoaging } = useAppSelector(
-		(state) => state.userReducer
-	);
+	const [error, setError] = useState(false);
+	const isLoaging = useViewerIsLoadind();
 	const dispatch = useAppDispatch();
+	const errorMessage = useViewerError();
 	const onFinish = (values: {
 		username: string;
 		Email: string;
@@ -20,7 +22,12 @@ export const RegistrationForm = () => {
 	}) => {
 		console.log(values);
 		const { username, Email, password, remember } = values;
-		dispatch(registrationUser({ email: Email, password, userName: username }));
+		dispatch(
+			registrationUser({ email: Email, password, userName: username })
+		).then((res) => {
+			if (res.meta.requestStatus === "fulfilled") setError(false);
+			if (res.meta.requestStatus === "rejected") setError(true);
+		});
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -29,6 +36,12 @@ export const RegistrationForm = () => {
 
 	return (
 		<>
+			{error && (
+				<PopupForStatus
+					messageProps={errorMessage}
+					typeProps="error"
+				></PopupForStatus>
+			)}
 			<Form
 				className={styles.form}
 				name="basic"

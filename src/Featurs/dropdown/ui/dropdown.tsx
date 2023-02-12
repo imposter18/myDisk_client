@@ -2,9 +2,8 @@ import { Button } from "antd";
 import React, { useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import * as styles from "./dropdown.module.scss";
-import { LogoutBtn } from "@/Entities/logoutBtn";
 
-export const Dropdown = ({ userName }: any) => {
+export const Dropdown = ({ userName, children }: any) => {
 	const dispatch = useAppDispatch();
 	const ref = useRef();
 	const [open, setOpen] = useState(false);
@@ -15,6 +14,12 @@ export const Dropdown = ({ userName }: any) => {
 	const leaveItem = () => {
 		return setOpen(false);
 	};
+	const StyledChildren = () =>
+		React.Children.map(children, (child) =>
+			React.cloneElement(child, {
+				className: `${child.props.className} ${styles.popupItem}`,
+			})
+		);
 
 	return (
 		<>
@@ -25,11 +30,7 @@ export const Dropdown = ({ userName }: any) => {
 				ref={ref}
 			>
 				{userName}
-				{open && (
-					<div className={styles.popup}>
-						<LogoutBtn className={styles.popupItem}></LogoutBtn>
-					</div>
-				)}
+				{open && <div className={styles.popup}>{StyledChildren()}</div>}
 			</div>
 		</>
 	);

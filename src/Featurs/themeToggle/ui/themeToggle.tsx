@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { Switch, Space } from "antd";
 import * as styles from "./themeToggle.module.scss";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
-import { updateTheme } from "@/Process/theme/modal/store";
+import { updateTheme } from "@/Shared/lib/theme";
+import { useTheme } from "@/Shared/lib/theme";
 
 export const Toggle = ({}: any) => {
-	const { theme } = useAppSelector((state) => state.themeReducer);
+	const theme = useTheme();
 	const dispatch = useAppDispatch();
 
 	const onChange = () => {

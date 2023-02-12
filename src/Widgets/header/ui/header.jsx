@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import { memo } from "react";
 import { Toggle } from "@/Featurs/themeToggle";
 import { useAppSelector, useAppDispatch } from "@/Shared/lib/hooks/redux";
-import { logoutUser } from "@/Entities/logoutBtn/model/thunks/AT-logoutUser";
+import { logoutUser } from "@/Entities/viewer/model/thunks/logoutUser";
 import { Dropdown } from "@/Featurs/dropdown";
+import { useViewer, useViewerIsAuth } from "@/Entities/viewer";
+import { LogoutBtn } from "@/Featurs/logoutBtn";
 export const Header = memo(() => {
 	const ref = useRef();
-	const { isAuth } = useAppSelector((state) => state.userReducer);
-	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
+	// const { isAuth } = useAppSelector((state) => state.userReducer);
+	// const { userName } = useAppSelector((state) => state.userReducer.currentUser);
+	const isAuth = useViewerIsAuth();
+	const { userName } = useViewer();
 	const dispatch = useAppDispatch();
 	const logout = () => {
 		dispatch(logoutUser());
@@ -49,18 +53,15 @@ export const Header = memo(() => {
 					</Col>
 
 					<Col className={styles.buttonBlock} span={8}>
-						{/* <ThemeContext.Consumer>
-							{({ theme, setTheme }) => ( */}
-						<Toggle
-						// onChange={() => {
-						// 	if (theme === themes.light) setTheme(themes.dark);
-						// 	if (theme === themes.dark) setTheme(themes.light);
-						// }}
-						// value={theme === themes.dark}
-						/>
-						{/* )} */}
-						{/* </ThemeContext.Consumer> */}
-						{isAuth ? <Dropdown userName={userName} /> : btnBlock()}
+						<Toggle></Toggle>
+
+						{isAuth ? (
+							<Dropdown userName={userName}>
+								<LogoutBtn></LogoutBtn>
+							</Dropdown>
+						) : (
+							btnBlock()
+						)}
 					</Col>
 				</Row>
 			</div>

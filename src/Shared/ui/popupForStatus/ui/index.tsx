@@ -2,16 +2,20 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { Button, message, Space } from "antd";
 
 interface props {
-	name: string;
+	messageProps: string;
+	typeProps?: "info" | "success" | "error" | "warning" | "loading";
 }
 
-export const PopupForStatus = ({ name }: props) => {
+export const PopupForStatus = ({
+	messageProps,
+	typeProps = "success",
+}: props) => {
 	const [messageApi, contextHolder] = message.useMessage();
 
 	const success = () => {
 		messageApi.open({
-			type: "success",
-			content: `File "${name}" has created`,
+			type: typeProps,
+			content: messageProps,
 		});
 	};
 	useLayoutEffect(() => {

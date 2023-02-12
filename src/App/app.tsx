@@ -5,7 +5,7 @@ import { AuthPage } from "@/Pages/authPage";
 import { Layout } from "@/Shared/ui/layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../Shared/lib/hooks/redux";
-import { checkAuth } from "@/Entities/checkAuth";
+import { checkAuth } from "@/Entities/viewer";
 import ProtectedRoute from "@/Shared/lib/hoc/protectedRoute";
 import PublicRoute from "@/Shared/lib/hoc/publicRoute";
 import { DiskPage } from "@/Pages/disk";
