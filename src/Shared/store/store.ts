@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "../../Entities/viewer/model/store/AuthUserSlice";
-import { FileReducer } from "@/Shared/store/reducers/fileSlice";
+import { FileReducer } from "@/Entities/file/model/store/fileSlice";
 // import { VisiblePopupReducer } from "@/Featurs/modalCreateDir";
 import { themeReducer } from "@/Shared/lib/theme";
 

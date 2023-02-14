@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
+import { IViewerResponse } from "@/Shared/Types/response/IViewerResponse";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { registrationHTTP } from "../../api/registration";
 import { IResponseError } from "../../lib/types";
@@ -11,7 +11,7 @@ interface IRegistrationPrors {
 }
 
 export const registrationUser = createAsyncThunk<
-	AuthResponse,
+	IViewerResponse,
 	IRegistrationPrors,
 	{ rejectValue: AxiosError<IResponseError> }
 >(
@@ -19,7 +19,7 @@ export const registrationUser = createAsyncThunk<
 	async function ({ email, password, userName }, { rejectWithValue }) {
 		try {
 			const res = await registrationHTTP(email, password, userName);
-			return res.data as AuthResponse;
+			return res.data as IViewerResponse;
 		} catch (e) {
 			return rejectWithValue(e);
 		}

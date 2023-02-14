@@ -1,4 +1,4 @@
-import { CreateDir } from "@/Featurs/modalCreateDir/model/thunk/CreateDir";
+import { CreateDir } from "@/Entities/file/model/thunk/CreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";

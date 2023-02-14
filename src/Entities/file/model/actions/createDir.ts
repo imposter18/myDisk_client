@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { IinitialState } from "@/Shared/store/reducers/fileSlice";
+import { IinitialState } from "@/Entities/file/model/store/fileSlice";
 import { CreateDir } from "../thunk/CreateDir";
 
 export function createDirAction(

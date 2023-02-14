@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import React, { useEffect } from "react";
 import * as styles from "./fileList.module.scss";
 import { File } from "@/Entities/file";
-import { getFiles } from "../model/thunk/getFile";
+import { getFiles } from "../../../Entities/file/model/thunk/getFile";
 
 export const FileList = () => {
 	const { currentDir } = useAppSelector((state) => state.FileReducer);

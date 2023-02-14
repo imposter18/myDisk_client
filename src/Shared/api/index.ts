@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
+import { IViewerResponse } from "@/Shared/Types/response/IViewerResponse";
 
 export const API_URL = "http://localhost:5000/api";
 
@@ -27,7 +27,7 @@ api.interceptors.response.use(
 			originalRequrst._isRetry = true;
 			try {
 				// console.log("refresh");
-				const res = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+				const res = await axios.get<IViewerResponse>(`${API_URL}/refresh`, {
 					withCredentials: true,
 				});
 				localStorage.setItem("token", res.data.accessToken);

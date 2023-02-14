@@ -1,12 +1,12 @@
 import api from "@/Shared/api";
-import { AuthResponse } from "@/Shared/Types/response/AuthResponse";
+import { IViewerResponse } from "@/Shared/Types/response/IViewerResponse";
 import { AxiosResponse } from "axios";
 export async function registrationHTTP(
 	email: string,
 	password: string,
 	userName: string
-): Promise<AxiosResponse<AuthResponse>> {
-	return await api.post<AuthResponse>("/registration", {
+): Promise<AxiosResponse<IViewerResponse>> {
+	return await api.post<IViewerResponse>("/registration", {
 		email,
 		password,
 		userName,
