@@ -4,6 +4,7 @@ import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { getFileAction } from "@/Entities/file/model/actions/getFiles";
 import { createDirAction } from "../actions/createDir";
 import { uploadFileAction } from "../actions/uploadFileAction";
+import { deleteFileAction } from "../actions/deleteFileAction";
 
 export interface IinitialState {
 	files: IFileResponse[];
@@ -45,6 +46,7 @@ export const FileSlice = createSlice({
 		getFileAction(builder);
 		createDirAction(builder);
 		uploadFileAction(builder);
+		deleteFileAction(builder);
 	},
 });
 

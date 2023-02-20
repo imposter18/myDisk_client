@@ -8,6 +8,9 @@ import {
 	pushToStack,
 	setCurrentDir,
 } from "@/Entities/file/model/store/fileSlice";
+import { downloadFileHTTP } from "../api/downloadFile";
+import { deleteFileAction } from "../model/actions/deleteFileAction";
+import { deleteFile } from "../model/thunk/deleteFileThunk";
 
 interface IProps {
 	file: IFileResponse;
@@ -24,6 +27,14 @@ export const File = ({ file }: IProps) => {
 			dispatch(pushToStack(currentDir));
 		}
 	};
+	const downloadClickHandler = (event: any) => {
+		event.stopPropagation();
+		downloadFileHTTP(file);
+	};
+	const deleteFileHandler = (event: any) => {
+		event.stopPropagation();
+		dispatch(deleteFile(file));
+	};
 	return (
 		<div onClick={() => openDirHandler()} className={styles.file}>
 			<img
@@ -35,6 +46,10 @@ export const File = ({ file }: IProps) => {
 
 			<div className={styles.date}> {file.date.toString().slice(0, 10)}</div>
 			<div className={styles.size}>{file.size}</div>
+			{file.type !== "dir" && (
+				<button onClick={downloadClickHandler}>download</button>
+			)}
+			<button onClick={deleteFileHandler}>delete</button>
 		</div>
 	);
 };

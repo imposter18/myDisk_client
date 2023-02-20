@@ -1,0 +1,30 @@
+.uploadFile {
+	border-radius: 8px;
+	margin: 5px 0;
+	padding: 5px 10px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+.fileName {
+	display: block;
+}
+.btnRemove {
+	display: block;
+}
+.progressBar {
+	height: 1rem;
+	border-radius: 8px;
+	display: flex;
+	margin: 3px 0;
+}
+.uploadBar {
+	background-color: green;
+	// width: 50%;
+	border-radius: 8px;
+}
+.progress {
+	left: 50%;
+	position: absolute;
+}
