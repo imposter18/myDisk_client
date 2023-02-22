@@ -33,11 +33,13 @@ export const uploadFileThunk = createAsyncThunk<
 				formData.append("parent", dirId);
 			}
 
+			console.log(formData.get("file"), "form");
 			const uploadFile = { name: file.name, progress: 0, id: Date.now() };
 			dispatch(showUploader());
 			dispatch(addUploadFile(uploadFile));
 
 			const progressConfig = {
+				// headers: { "Content-Type": "multipart/form-data" },
 				onUploadProgress: (progressEvent: any) => {
 					let progress = Math.round(
 						(progressEvent.loaded / progressEvent.total) * 100
@@ -55,9 +57,3 @@ export const uploadFileThunk = createAsyncThunk<
 		}
 	}
 );
-
-// export const uploaderHalper = (file: any) => {
-// 	const uploadFile = { name: file.name, progress: 0 };
-// 	dispatch(showUploader());
-// 	dispatch(addUploadFile(uploadFile));
-// };

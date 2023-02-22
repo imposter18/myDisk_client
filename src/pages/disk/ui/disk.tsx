@@ -11,6 +11,7 @@ import {
 } from "@/Entities/file/model/store/fileSlice";
 import { uploadFileThunk } from "@/Entities/file/model/thunk/uploadFileThunk";
 import { Uploader } from "@/Widgets/uploader";
+import { Button } from "antd";
 
 export const DiskPage = () => {
 	const [visibleModal, setVisibleModal] = useState(false);
@@ -61,21 +62,39 @@ export const DiskPage = () => {
 					onDragOver={dragEnterHandler}
 				>
 					<AlertEmail user={user}></AlertEmail>
-					<div className={styles.btnBlock}>
-						<button onClick={() => backClickHandler()}>назад</button>
-						<button onClick={() => setVisibleModal(true)}>создать папку</button>
-						<label className={styles.lable} htmlFor="upload">
-							Upload files
-						</label>
-						<input
-							multiple={true}
-							onChange={(event) => fileuploadHandler(event)}
-							className={styles.input}
-							type="file"
-							id="upload"
-						></input>
+
+					<div className={styles.disk}>
+						<div className={styles.leftBlock}>
+							<div className={styles.btnBlock}>
+								<Button type="primary" block>
+									<label className={styles.lable} htmlFor="upload">
+										Upload files
+									</label>
+								</Button>
+								<input
+									multiple={true}
+									onChange={(event) => fileuploadHandler(event)}
+									className={styles.input}
+									type="file"
+									id="upload"
+								></input>
+
+								<Button
+									onClick={() => setVisibleModal(true)}
+									type="primary"
+									block
+								>
+									Create folder
+								</Button>
+
+								<button onClick={backClickHandler}>назад</button>
+							</div>
+						</div>
+						<div className={styles.rightBlock}>
+							<FileList></FileList>
+						</div>
 					</div>
-					<FileList></FileList>
+
 					<CreateDir
 						visibleModal={visibleModal}
 						setVisibleModal={setVisibleModal}

@@ -13,6 +13,7 @@ export const FileList = () => {
 	const files = useAppSelector((state) => state.FileReducer.files);
 	return (
 		<div className={styles.fileList}>
+			<div>folder</div>
 			<div className={styles.header}>
 				<div className={styles.name}>Name</div>
 				<div className={styles.date}>Date</div>

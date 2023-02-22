@@ -13,8 +13,8 @@ const themeSlice = createSlice({
 			document.documentElement.dataset.theme = action.payload;
 			localStorage.setItem("theme", action.payload);
 			state.theme = action.payload;
-			console.log(state);
-			console.log(action);
+			// console.log(state);
+			// console.log(action);
 		},
 	},
 });
