@@ -4,6 +4,7 @@ import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import * as styles from "./modalCreateDir.module.scss";
 import { Modal } from "@/Shared/ui/modal";
+import { useParams } from "react-router-dom";
 
 interface props {
 	setFolderName: (folderName: string) => void;
@@ -18,6 +19,7 @@ export const ModalCreateDir = ({
 	visibleModal,
 	setVisibleModal,
 }: props) => {
+	const params = useParams();
 	const [createError, setCreateError] = useState(false);
 
 	const { currentDir, error, isLoaging } = useAppSelector(
@@ -35,7 +37,9 @@ export const ModalCreateDir = ({
 	}, [createError]);
 	function onFinish({ folderName }: { folderName: string }): void {
 		const type = "dir";
-		dispatch(CreateDir({ currentDir, name: folderName, type })).then((res) => {
+		dispatch(
+			CreateDir({ currentDir: params.folderId, name: folderName, type })
+		).then((res) => {
 			if (res.meta.requestStatus === "fulfilled") {
 				setFolderName(folderName);
 				setVisiblePopup(true);

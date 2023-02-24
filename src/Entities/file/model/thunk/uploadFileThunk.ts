@@ -40,6 +40,8 @@ export const uploadFileThunk = createAsyncThunk<
 
 			const progressConfig = {
 				// headers: { "Content-Type": "multipart/form-data" },
+				headers: { "Content-Type": "multipart/form-data;charset=utf-8" },
+
 				onUploadProgress: (progressEvent: any) => {
 					let progress = Math.round(
 						(progressEvent.loaded / progressEvent.total) * 100

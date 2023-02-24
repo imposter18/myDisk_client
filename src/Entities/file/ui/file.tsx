@@ -10,31 +10,23 @@ import {
 } from "@/Entities/file/model/store/fileSlice";
 import { FileContextMenu } from "@/Widgets/fileContectMenu";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 interface IProps {
 	file: IFileResponse;
+	onClick: any;
 }
 
-export const File = ({ file }: IProps) => {
+export const File = ({ file, onClick }: IProps) => {
 	const { ref, isComponentVisible, setIsComponentVisible, points, setPoints } =
 		useComponentVisible();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const loc = useLocation();
-	// console.log(loc, "useLocation");
+	const location = useLocation();
+	const params = useParams();
+	console.log(params, "params");
 	const { currentDir } = useAppSelector((state) => state.FileReducer);
 
-	const openDirHandler = () => {
-		if (file.type === "dir") {
-			// console.log(currentDir, "currentDir");
-			dispatch(setCurrentDir(file._id));
-
-			dispatch(pushToStack(currentDir));
-			// navigate(`${currentDir}`, { replace: true });
-			// navigate(`${loc.pathname}/${currentDir}`);
-		}
-	};
 	const contextnMenuHandler = (event: React.MouseEvent<HTMLDivElement>) => {
 		event.stopPropagation();
 		event.preventDefault();
@@ -48,7 +40,7 @@ export const File = ({ file }: IProps) => {
 	return (
 		<>
 			<div
-				onClick={() => openDirHandler()}
+				onClick={() => onClick(file)}
 				onContextMenu={contextnMenuHandler}
 				className={styles.file}
 			>

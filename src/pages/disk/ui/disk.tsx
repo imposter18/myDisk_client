@@ -12,6 +12,7 @@ import {
 import { uploadFileThunk } from "@/Entities/file/model/thunk/uploadFileThunk";
 import { Uploader } from "@/Widgets/uploader";
 import { Button } from "antd";
+import { Stack } from "@/Widgets/DirStack";
 
 export const DiskPage = () => {
 	const [visibleModal, setVisibleModal] = useState(false);
@@ -91,6 +92,7 @@ export const DiskPage = () => {
 							</div>
 						</div>
 						<div className={styles.rightBlock}>
+							<Stack></Stack>
 							<FileList></FileList>
 						</div>
 					</div>

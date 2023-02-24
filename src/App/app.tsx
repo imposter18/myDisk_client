@@ -35,7 +35,7 @@ const App = () => {
 				</Route>
 				<Route element={<ProtectedRoute></ProtectedRoute>}>
 					<Route path="/:userName" element={<DiskPage />}></Route>
-					<Route path="/:userName/:folderId" element={<DiskPage />}></Route>
+					<Route path="/folder/:folderId" element={<DiskPage />}></Route>
 				</Route>
 				<Route path="*" element={<Redirect />} />
 			</Route>
