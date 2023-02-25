@@ -8,7 +8,7 @@ const PublicRoute = ({ children }: any) => {
 	const navigate = useNavigate();
 
 	if (isAuth && userName) {
-		return <Navigate to={`/${userName}`} />;
+		return <Navigate to={`/drive/my-disk`} />;
 	}
 
 	return <Outlet />;

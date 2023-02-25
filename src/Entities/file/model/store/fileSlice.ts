@@ -8,7 +8,7 @@ import { deleteFileAction } from "../actions/deleteFileAction";
 
 export interface IinitialState {
 	files: IFileResponse[];
-	currentDir: string | null;
+	currentDir: IFileResponse;
 	diskStack: string[];
 	isLoaging: boolean;
 	error: string | null | undefined;

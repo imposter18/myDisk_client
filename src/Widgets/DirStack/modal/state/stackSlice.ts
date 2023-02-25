@@ -17,12 +17,16 @@ const initialState: IinitialState = {
 export const stackSlice = createSlice({
 	name: "file",
 	initialState,
-	reducers: {},
+	reducers: {
+		removeStack(state) {
+			state.stack = [];
+		},
+	},
 	extraReducers: (builder) => {
 		getStackAction(builder);
 	},
 });
 
-// export const { setCurrentDir, pushToStack, popFromStack } = FileSlice.actions;
+export const { removeStack } = stackSlice.actions;
 
 export const stackReducer = stackSlice.reducer;

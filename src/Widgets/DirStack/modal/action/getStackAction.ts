@@ -12,7 +12,7 @@ export function getStackAction(
 	builder.addCase(getDirStackThunk.fulfilled, (state, action) => {
 		state.isLoading = false;
 		state.error = null;
-		state.stack = action.payload;
+		state.stack = action.payload.reverse();
 	});
 	builder.addCase(getDirStackThunk.rejected, (state, action) => {
 		state.isLoading = false;

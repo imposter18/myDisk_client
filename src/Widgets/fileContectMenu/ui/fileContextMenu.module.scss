@@ -1,10 +1,46 @@
 .contextMenu {
+	box-sizing: border-box;
+	overflow: hidden;
+	z-index: 2;
 	position: absolute;
-	width: 150px;
-	height: 100px;
-	background-color: aquamarine;
-	border: 1px solid black;
+	width: 130px;
+	// height: 100px;
+	background-color: #fff;
+	border: 0.5px solid rgba(125, 125, 125, 0.3);
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
+	box-shadow: 0 11px 14px -7px rgb(0 0 0 / 30%);
+	&::before {
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		content: "";
+		border-radius: inherit;
+		box-shadow: 0 0 0 1px rgb(0 0 0 / 5%);
+	}
 }
+.contextItem {
+	// z-index: 3;
+	font-family: var(--main-font);
+	font-weight: 500;
+	font-size: 14px;
+	color: black;
+	width: 150px;
+	height: 30px;
+	border: none;
+	background-color: #fff;
+	text-align: left;
+	padding: 0 12px;
+	&:hover {
+		background-color: rgba(125, 125, 125, 0.3);
+		color: black;
+	}
+}
+// .contextItem:hover {
+// 	background-color: aliceblue;
+// 	color: antiquewhite;
+// }

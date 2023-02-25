@@ -1,4 +1,6 @@
 import { deleteFile, downloadFileHTTP } from "@/Entities/file";
+import { DeleteFileBtn } from "@/Featurs/deleteFileBtn";
+import { DownloadFileBtn } from "@/Featurs/downloadFileBtn";
 import { useAppDispatch } from "@/Shared/lib/hooks/redux";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import React from "react";
@@ -11,14 +13,6 @@ interface IProps {
 }
 export const FileContextMenu = ({ file, top, left, menuRef }: IProps) => {
 	const dispatch = useAppDispatch();
-	const downloadClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.stopPropagation();
-		downloadFileHTTP(file);
-	};
-	const deleteFileHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.stopPropagation();
-		dispatch(deleteFile(file));
-	};
 
 	return (
 		<>
@@ -28,9 +22,15 @@ export const FileContextMenu = ({ file, top, left, menuRef }: IProps) => {
 				style={{ top: top, left: left }}
 			>
 				{file.type !== "dir" && (
-					<button onClick={downloadClickHandler}>download</button>
+					<DownloadFileBtn
+						className={styles.contextItem}
+						file={file}
+					></DownloadFileBtn>
 				)}
-				<button onClick={deleteFileHandler}>delete</button>
+				<DeleteFileBtn
+					className={styles.contextItem}
+					file={file}
+				></DeleteFileBtn>
 			</div>
 		</>
 	);

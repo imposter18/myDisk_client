@@ -22,14 +22,11 @@ export const DiskPage = () => {
 	);
 	const dispatch = useAppDispatch();
 	const user = useViewer();
-	const backClickHandler = () => {
-		dispatch(popFromStack());
-		dispatch(setCurrentDir(diskStack[diskStack.length - 1]));
-	};
+
 	const fileuploadHandler = (event: any) => {
 		const files = [...event.target.files];
 		files.forEach((file) =>
-			dispatch(uploadFileThunk({ file, dirId: currentDir }))
+			dispatch(uploadFileThunk({ file, dirId: currentDir?._id }))
 		);
 	};
 	const dragEnterHandler = (event: any) => {
@@ -48,7 +45,7 @@ export const DiskPage = () => {
 		event.stopPropagation();
 		let files = [...event.dataTransfer.files];
 		files.forEach((file) =>
-			dispatch(uploadFileThunk({ file, dirId: currentDir }))
+			dispatch(uploadFileThunk({ file, dirId: currentDir?._id }))
 		);
 		setDragEnter(false);
 	};
@@ -87,8 +84,6 @@ export const DiskPage = () => {
 								>
 									Create folder
 								</Button>
-
-								<button onClick={backClickHandler}>назад</button>
 							</div>
 						</div>
 						<div className={styles.rightBlock}>

@@ -15,22 +15,25 @@ export const FileList = () => {
 	useEffect(() => {
 		if (params.folderId) {
 			dispatch(getFiles(params.folderId));
+			// dispatch(setCurrentDir(null))
 		}
 		if (!params.folderId) {
 			dispatch(getFiles(null));
+			dispatch(setCurrentDir(null));
 		}
 	}, [params]);
 
 	const files = useAppSelector((state) => state.FileReducer.files);
 	const clickHandller = (file: any) => {
 		if (file.type === "dir") {
-			navigate(`/folder/${file._id}`, { replace: false });
+			dispatch(setCurrentDir(file));
+			navigate(`/drive/folder/${file._id}`, { replace: false });
 		}
 	};
 
 	return (
 		<div className={styles.fileList}>
-			<div>folder</div>
+			{/* <div>folder</div> */}
 			<div className={styles.header}>
 				<div className={styles.name}>Name</div>
 				<div className={styles.date}>Date</div>

@@ -33,9 +33,9 @@ const App = () => {
 					<Route path="registration" element={<Registration />}></Route>
 					<Route index path="auth" element={<AuthPage />}></Route>
 				</Route>
-				<Route element={<ProtectedRoute></ProtectedRoute>}>
-					<Route path="/:userName" element={<DiskPage />}></Route>
-					<Route path="/folder/:folderId" element={<DiskPage />}></Route>
+				<Route path="/drive" element={<ProtectedRoute></ProtectedRoute>}>
+					<Route path="/drive/my-disk" element={<DiskPage />}></Route>
+					<Route path="/drive/folder/:folderId" element={<DiskPage />}></Route>
 				</Route>
 				<Route path="*" element={<Redirect />} />
 			</Route>
