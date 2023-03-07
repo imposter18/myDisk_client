@@ -1,9 +1,13 @@
 import React, { useEffect, useLayoutEffect, useMemo } from "react";
 import { Button, Divider, notification, Space, message } from "antd";
 import { useAppSelector } from "@/Shared/lib/hooks/redux";
+import { IFileUpload } from "../uploader";
+import { IUploadError, IUploadResponseError } from "@/Entities/file";
 
 export const LeftBottomNotificationGrup = () => {
 	const [api, contextHolder] = notification.useNotification();
+	const { uploadError } = useAppSelector((state) => state.FileReducer);
+	const { files: uploadFiles } = useAppSelector((state) => state.uploadReducer);
 	const { isActivated } = useAppSelector(
 		(state) => state.userReducer.currentUser
 	);
@@ -11,7 +15,7 @@ export const LeftBottomNotificationGrup = () => {
 		(state) => state.createDirReducer
 	);
 	const { isLoagingDelete } = useAppSelector((state) => state.FileReducer);
-	const { status, deletedFile } = useAppSelector(
+	const { status: deleteStatus, deletedFile } = useAppSelector(
 		(state) => state.deleteFileReducer
 	);
 	const openEmailWarningNotification = () => {
@@ -20,7 +24,7 @@ export const LeftBottomNotificationGrup = () => {
 			description:
 				"A confirmation email has been sent to your email, pleace check",
 			placement: "bottomLeft",
-			duration: 10,
+			duration: 7,
 		});
 	};
 	const openCreateDirSuccess = (folderName: string) => {
@@ -32,28 +36,53 @@ export const LeftBottomNotificationGrup = () => {
 	};
 	const succesDel = (status: string) => {
 		api.success({
-			// key: "deleteSuccess",
 			message: `Success`,
 			description: `«${deletedFile}» deleted success`,
 			placement: "bottomLeft",
 		});
 	};
 	const RejectDel = (status: string) => {
-		api.error({
-			// key: "deleteError",
-			message: `Error`,
-			description: `«${deletedFile}» deleted error`,
-			placement: "bottomLeft",
-		});
+		if (deletedFile) {
+			api.error({
+				message: `Error`,
+				description: `«${deletedFile}» deleted error`,
+				placement: "bottomLeft",
+			});
+		} else {
+			api.error({
+				message: `Error`,
+				description: `Deleted error message: unexpected error`,
+				placement: "bottomLeft",
+			});
+		}
+	};
+	const RejectUpload = (uploadError: IUploadError) => {
+		if (uploadError.message === "File already exist") {
+			api.error({
+				message: `Error`,
+				description: `File «${uploadError.data.fileName}» already exist!`,
+				placement: "bottomLeft",
+				duration: 5,
+			});
+		} else {
+			if (uploadError.message) {
+				api.error({
+					message: `Error`,
+					description: `Upload error message:${uploadError.message}`,
+					placement: "bottomLeft",
+					duration: 5,
+				});
+			}
+		}
 	};
 	useEffect(() => {
-		if (status === "success") {
+		if (deleteStatus === "success") {
 			succesDel(deletedFile);
 		}
-		if (status === "rejected") {
+		if (deleteStatus === "rejected") {
 			RejectDel(deletedFile);
 		}
-	}, [status]);
+	}, [deleteStatus]);
 	useEffect(() => {
 		if (folderName) {
 			openCreateDirSuccess(folderName);
@@ -65,6 +94,11 @@ export const LeftBottomNotificationGrup = () => {
 			openEmailWarningNotification();
 		}
 	}, []);
+	useEffect(() => {
+		if (uploadError) {
+			RejectUpload(uploadError);
+		}
+	}, [uploadError]);
 
 	return <>{contextHolder}</>;
 };

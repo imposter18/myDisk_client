@@ -18,9 +18,7 @@ export function uploadFileAction(
 	builder.addCase(uploadFileThunk.rejected, (state, action) => {
 		// state.isLoaging = false;
 		if (action) {
-			state.error = action.payload?.response?.data?.message;
-		} else {
-			state.error = action.payload.message;
+			state.uploadError = action.payload?.response?.data.message;
 		}
 	});
 }

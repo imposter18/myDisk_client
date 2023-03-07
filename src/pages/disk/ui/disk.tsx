@@ -52,7 +52,6 @@ export const DiskPage = () => {
 		files.forEach((file: any) =>
 			dispatch(uploadFileThunk({ file, dirId: currentDir?._id })).then(
 				(res: any) => {
-					console.log(res, "ressssss1");
 					if (res.meta.requestStatus === "fulfilled") {
 						dispatch(
 							changeUploadStatus({

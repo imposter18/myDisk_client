@@ -11,13 +11,14 @@ import {
 	showUploader,
 } from "@/Widgets/uploader/model/store/uploadReducer";
 
-interface IResponseError {
-	errors: Array<string> | [];
-	message: string;
-	// message: {
-	// 	message: string;
-	// 	data: string;
-	// };
+export interface IUploadResponseError {
+	message: {
+		message: string;
+		data?: {
+			fileName: string;
+			uploadId: string;
+		};
+	};
 }
 interface IUploadProps {
 	file: File;
@@ -30,7 +31,7 @@ interface IErrr {
 export const uploadFileThunk = createAsyncThunk<
 	IFileResponse,
 	IUploadProps,
-	{ rejectValue: AxiosError<IResponseError> }
+	{ rejectValue: AxiosError<IUploadResponseError> }
 >(
 	"file/uploadFile",
 	async function ({ file, dirId }, { rejectWithValue, dispatch }) {

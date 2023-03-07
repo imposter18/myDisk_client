@@ -6,6 +6,14 @@ import { createDirAction } from "../actions/createDir";
 import { uploadFileAction } from "../actions/uploadFileAction";
 import { deleteFileAction } from "../actions/deleteFileAction";
 
+export interface IUploadError {
+	message: string;
+	data?: {
+		fileName: string;
+		uploadId: string;
+	};
+}
+
 export interface IinitialState {
 	files: IFileResponse[];
 	currentDir: IFileResponse;
@@ -13,6 +21,7 @@ export interface IinitialState {
 	isLoaging: boolean;
 	isLoagingDelete: boolean;
 	error: string | null | undefined;
+	uploadError: IUploadError;
 }
 
 const initialState: IinitialState = {
@@ -22,6 +31,7 @@ const initialState: IinitialState = {
 	isLoaging: false,
 	isLoagingDelete: false,
 	error: null,
+	uploadError: null,
 };
 
 export const FileSlice = createSlice({
