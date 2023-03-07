@@ -13,7 +13,6 @@ export const useComponentVisible = () => {
 			setIsComponentVisible(false);
 		}
 	};
-
 	useEffect(() => {
 		window.addEventListener("click", handleClickOutside);
 		window.addEventListener("mousedown", handleClickOutside);

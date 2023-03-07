@@ -1,7 +1,9 @@
 import { uploadFileThunk } from "@/Entities/file";
+import { ModalCreateDir } from "@/Featurs/modalCreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
+import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { CastomBtn } from "@/Shared/ui/btn";
-import { CreateDir } from "@/Widgets/createDir";
+// import { CreateDir } from "@/Widgets/createDir";
 import { changeUploadStatus } from "@/Widgets/uploader";
 import React, { useState } from "react";
 import * as styles from "./liftBlock.module.scss";
@@ -13,6 +15,7 @@ interface Iprops {
 export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
 	const [visibleModal, setVisibleModal] = useState(false);
 	const { files, currentDir } = useAppSelector((state) => state.FileReducer);
+	const { isComponentVisible, setIsComponentVisible } = useComponentVisible();
 	const dispatch = useAppDispatch();
 
 	const inputUploadHandler = (event: any) => {
@@ -21,6 +24,7 @@ export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
 		inputClear.value = "";
 		fileuploadHandler(files);
 	};
+
 	return (
 		<div className={styles.leftBlock}>
 			<div className={styles.topBtnBlock}>
@@ -36,15 +40,19 @@ export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
 					id="upload"
 				></input>
 				<CastomBtn
-					onClick={() => setVisibleModal(true)}
+					onClick={() => setIsComponentVisible(true)}
 					content={"Create folder"}
 					className={styles.btnCreateFolder}
 				></CastomBtn>
 			</div>
-			<CreateDir
+			<ModalCreateDir
+				isComponentVisible={isComponentVisible}
+				setIsComponentVisible={setIsComponentVisible}
+			></ModalCreateDir>
+			{/* <CreateDir
 				visibleModal={visibleModal}
 				setVisibleModal={setVisibleModal}
-			></CreateDir>
+			></CreateDir> */}
 		</div>
 	);
 };

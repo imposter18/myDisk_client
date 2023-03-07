@@ -6,16 +6,16 @@ export function createDirAction(
 	builder: ActionReducerMapBuilder<IinitialState>
 ) {
 	builder.addCase(CreateDir.pending, (state) => {
-		state.isLoaging = true;
+		state.isLoadingCreateDir = true;
 		state.error = null;
 	});
 	builder.addCase(CreateDir.fulfilled, (state, action) => {
-		state.isLoaging = false;
+		state.isLoadingCreateDir = false;
 		state.error = null;
 		state.files = [...state.files, action.payload];
 	});
 	builder.addCase(CreateDir.rejected, (state, action) => {
-		state.isLoaging = false;
+		state.isLoadingCreateDir = false;
 		if (action) {
 			state.error = action.payload?.response?.data;
 		} else {

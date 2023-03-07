@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as styles from "./disk.module.scss";
 import { FileList } from "@/Widgets/fileList";
-import { CreateDir } from "@/Widgets/createDir";
+// import { CreateDir } from "@/Widgets/createDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useViewer } from "@/Entities/viewer";
 import {

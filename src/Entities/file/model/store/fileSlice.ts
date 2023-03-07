@@ -20,6 +20,7 @@ export interface IinitialState {
 	diskStack: string[];
 	isLoaging: boolean;
 	isLoagingDelete: boolean;
+	isLoadingCreateDir: boolean;
 	error: string | null | undefined;
 	uploadError: IUploadError;
 }
@@ -30,6 +31,7 @@ const initialState: IinitialState = {
 	diskStack: [],
 	isLoaging: false,
 	isLoagingDelete: false,
+	isLoadingCreateDir: false,
 	error: null,
 	uploadError: null,
 };
