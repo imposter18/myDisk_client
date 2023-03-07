@@ -37,12 +37,12 @@ export const LoginForm = () => {
 
 	return (
 		<>
-			{error && (
+			{/* {error && (
 				<PopupForStatus
 					messageProps={errorMessage}
 					typeProps="error"
 				></PopupForStatus>
-			)}
+			)} */}
 			<Form
 				className={styles.form}
 				name="basic"

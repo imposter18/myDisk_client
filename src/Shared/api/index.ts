@@ -2,6 +2,7 @@ import axios from "axios";
 import { IViewerResponse } from "@/Shared/Types/response/IViewerResponse";
 
 export const API_URL = "http://localhost:5000/api";
+export const API_URL_STATIC = "http://localhost:5000/";
 
 const api = axios.create({
 	withCredentials: true,

@@ -1,7 +1,8 @@
-import { deleteFile } from "@/Entities/file";
+import { deleteFileThunk } from "@/Entities/file";
 import { useAppDispatch } from "@/Shared/lib/hooks/redux";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import React from "react";
+import { setdeletedFileRejected, setdeletedFileSuccess } from "../modal";
 import * as styles from "./deleteFileBtn.module.scss";
 interface IProps {
 	file: IFileResponse;
@@ -13,7 +14,12 @@ export const DeleteFileBtn = ({ file, className }: IProps) => {
 
 	const deleteFileHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.stopPropagation();
-		dispatch(deleteFile(file));
+		dispatch(deleteFileThunk(file)).then((res) => {
+			if (res.meta.requestStatus === "fulfilled")
+				dispatch(setdeletedFileSuccess(file.name));
+			if (res.meta.requestStatus === "rejected")
+				dispatch(setdeletedFileRejected(file.name));
+		});
 	};
 
 	return (

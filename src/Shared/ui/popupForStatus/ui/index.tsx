@@ -1,26 +1,25 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { Button, message, Space } from "antd";
+import React, { useEffect, useLayoutEffect, useMemo } from "react";
+
+import { Divider, notification } from "antd";
 
 interface props {
-	messageProps: string;
-	typeProps?: "info" | "success" | "error" | "warning" | "loading";
+	folName: string;
 }
 
-export const PopupForStatus = ({
-	messageProps,
-	typeProps = "success",
-}: props) => {
-	const [messageApi, contextHolder] = message.useMessage();
+export const PopupForStatus = ({ folName }: props) => {
+	const [api, contextHolder] = notification.useNotification();
 
-	const success = () => {
-		messageApi.open({
-			type: typeProps,
-			content: messageProps,
+	const openNotification = (placement: any) => {
+		api.info({
+			message: `Success`,
+			description: `Folder ${folName} was created`,
+			placement,
+			duration: 0,
 		});
 	};
 	useLayoutEffect(() => {
-		success();
-	}, [name]);
-
+		openNotification("bottomLeft");
+	}, [folName]);
+	const contextValue = useMemo(() => ({ name: "Ant Design" }), []);
 	return <>{contextHolder}</>;
 };

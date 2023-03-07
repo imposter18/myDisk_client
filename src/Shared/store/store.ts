@@ -5,6 +5,8 @@ import { FileReducer } from "@/Entities/file/model/store/fileSlice";
 import { themeReducer } from "@/Shared/lib/theme";
 import { uploadReducer } from "@/Widgets/uploader/model/store/uploadReducer";
 import { stackReducer } from "@/Widgets/DirStack";
+import { createDirReducer } from "@/Featurs/modalCreateDir";
+import { deleteFileReducer } from "@/Featurs/deleteFileBtn";
 
 export const setupStore = configureStore({
 	reducer: {
@@ -13,6 +15,8 @@ export const setupStore = configureStore({
 		themeReducer,
 		uploadReducer,
 		stackReducer,
+		createDirReducer,
+		deleteFileReducer,
 	},
 });
 

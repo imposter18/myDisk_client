@@ -36,12 +36,12 @@ export const RegistrationForm = () => {
 
 	return (
 		<>
-			{error && (
+			{/* {error && (
 				<PopupForStatus
-					messageProps={errorMessage}
+					// messageProps={errorMessage}
 					typeProps="error"
 				></PopupForStatus>
-			)}
+			)} */}
 			<Form
 				className={styles.form}
 				name="basic"

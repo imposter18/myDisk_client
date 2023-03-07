@@ -1,23 +1,77 @@
 .uploadFile {
-	border-radius: 8px;
-	margin: 5px 0;
-	padding: 5px 10px;
+	position: relative;
+	// border-radius: 8px;
+	margin: 5px 0 10px 0;
+	padding: 10px 10px 18px 15px;
+	// animation: animate-visible 0.2s linear;
+	&:hover {
+		background-color: rgb(206, 204, 204);
+		// opacity: 0.7;
+		.btnRemove {
+			background-color: rgb(206, 204, 204);
+		}
+	}
+}
+@keyframes animate-visible {
+	0% {
+		opacity: 0;
+		transform: translateX(-80px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+.hidind {
+	animation: animate-hiding 0.2s forwards;
+}
+@keyframes animate-hiding {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-80px);
+	}
 }
 .header {
+	// position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 .fileName {
-	display: block;
+	max-width: 240px;
+	position: absolute;
+	top: 14px;
+	margin-left: 38px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 14px;
 }
 .btnRemove {
-	display: block;
+	position: absolute;
+	text-align: end;
+	// width: 100%;
+	background-color: #fff;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		i {
+			opacity: 0.7;
+		}
+		// background-color: rgba(125, 125, 125, 0.3);
+	}
 }
-.progressBar {
+.progressBarBlock {
 	height: 1rem;
 	border-radius: 8px;
 	display: flex;
 	margin: 3px 0;
+	height: 24px;
 }
 .uploadBar {
 	background-color: green;
@@ -25,6 +79,12 @@
 	border-radius: 8px;
 }
 .progress {
-	left: 50%;
-	position: absolute;
+	margin-top: 15px;
+}
+.img {
+	width: 32px;
+	height: 32px;
+	align-items: start;
+	text-align: start;
+	margin-right: 6px;
 }

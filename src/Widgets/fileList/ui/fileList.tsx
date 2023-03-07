@@ -4,9 +4,13 @@ import * as styles from "./fileList.module.scss";
 import { File, pushToStack, setCurrentDir } from "@/Entities/file";
 import { getFiles } from "../../../Entities/file/model/thunk/getFile";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Empty, Spin } from "antd";
+import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 
 export const FileList = () => {
-	const { currentDir } = useAppSelector((state) => state.FileReducer);
+	const { currentDir, files, isLoaging } = useAppSelector(
+		(state) => state.FileReducer
+	);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -23,8 +27,7 @@ export const FileList = () => {
 		}
 	}, [params]);
 
-	const files = useAppSelector((state) => state.FileReducer.files);
-	const clickHandller = (file: any) => {
+	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {
 			dispatch(setCurrentDir(file));
 			navigate(`/drive/folder/${file._id}`, { replace: false });
@@ -32,16 +35,25 @@ export const FileList = () => {
 	};
 
 	return (
-		<div className={styles.fileList}>
-			{/* <div>folder</div> */}
-			<div className={styles.header}>
-				<div className={styles.name}>Name</div>
-				<div className={styles.date}>Date</div>
-				<div className={styles.size}>Size</div>
-			</div>
-			{files.map((file) => (
-				<File onClick={clickHandller} file={file} key={file._id}></File>
-			))}
-		</div>
+		<>
+			{!files.length && !currentDir && !isLoaging ? (
+				<Empty
+					className={styles.empty}
+					description={
+						"Click the upload button or drag file to this area to upload"
+					}
+				/>
+			) : (
+				<div className={styles.fileList}>
+					{isLoaging ? (
+						<Spin className={styles.spinner} size="large" />
+					) : (
+						files.map((file) => (
+							<File onClick={clickHandller} file={file} key={file._id}></File>
+						))
+					)}
+				</div>
+			)}
+		</>
 	);
 };

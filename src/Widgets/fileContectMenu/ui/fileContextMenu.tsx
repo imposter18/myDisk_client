@@ -1,4 +1,4 @@
-import { deleteFile, downloadFileHTTP } from "@/Entities/file";
+import { deleteFileThunk, downloadFileHTTP } from "@/Entities/file";
 import { DeleteFileBtn } from "@/Featurs/deleteFileBtn";
 import { DownloadFileBtn } from "@/Featurs/downloadFileBtn";
 import { useAppDispatch } from "@/Shared/lib/hooks/redux";

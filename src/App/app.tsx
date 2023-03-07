@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./styles/index.scss";
 import { Registration } from "@/Pages/registrationPage";
 import { AuthPage } from "@/Pages/authPage";
@@ -11,6 +11,7 @@ import PublicRoute from "@/Shared/lib/hoc/publicRoute";
 import { DiskPage } from "@/Pages/disk";
 import { useAppSelector } from "../Shared/lib/hooks/redux";
 import { Redirect } from "@/Pages/redirect";
+import { Alert, Col, Row, Space, notification } from "antd";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -31,10 +32,10 @@ const App = () => {
 				<Route element={<PublicRoute />}>
 					<Route path="/" element={<Registration />}></Route>
 					<Route path="registration" element={<Registration />}></Route>
-					<Route index path="auth" element={<AuthPage />}></Route>
+					<Route path="auth" element={<AuthPage />}></Route>
 				</Route>
 				<Route path="/drive" element={<ProtectedRoute></ProtectedRoute>}>
-					<Route path="/drive/my-disk" element={<DiskPage />}></Route>
+					<Route index path="/drive/my-disk" element={<DiskPage />}></Route>
 					<Route path="/drive/folder/:folderId" element={<DiskPage />}></Route>
 				</Route>
 				<Route path="*" element={<Redirect />} />

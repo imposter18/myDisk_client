@@ -6,16 +6,17 @@ export function uploadFileAction(
 	builder: ActionReducerMapBuilder<IinitialState>
 ) {
 	builder.addCase(uploadFileThunk.pending, (state) => {
-		state.isLoaging = true;
+		// state.isLoaging = true;
 		state.error = null;
 	});
 	builder.addCase(uploadFileThunk.fulfilled, (state, action) => {
-		state.isLoaging = false;
+		console.log(action.payload, "payloadFile");
+		// state.isLoaging = false;
 		state.error = null;
 		state.files = [...state.files, action.payload];
 	});
 	builder.addCase(uploadFileThunk.rejected, (state, action) => {
-		state.isLoaging = false;
+		// state.isLoaging = false;
 		if (action) {
 			state.error = action.payload?.response?.data?.message;
 		} else {

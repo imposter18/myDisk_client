@@ -4,6 +4,7 @@ import { getFileHTTP } from "../../api/getFileHTTP";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { IFile } from "@/Shared/Types/IFile";
 import { deletetFileHTTP } from "../../api/deleteFile";
+import { deleteinProcess } from "@/Featurs/deleteFileBtn";
 
 interface IResponseError {
 	errprs: Array<string> | [];
@@ -13,16 +14,17 @@ interface IReaponse {
 	message: string;
 }
 
-export const deleteFile = createAsyncThunk<
+export const deleteFileThunk = createAsyncThunk<
 	IFileResponse,
 	IFileResponse,
 	{ rejectValue: AxiosError<IResponseError> }
->("file/deleteFile", async function (file, { rejectWithValue }) {
+>("file/deleteFile", async function (file, { rejectWithValue, dispatch }) {
 	try {
 		const res = await deletetFileHTTP(file);
-		console.log(res.data, "res.data");
+		dispatch(deleteinProcess());
 		return res.data as IFileResponse;
 	} catch (e) {
+		dispatch(deleteinProcess());
 		return rejectWithValue(e);
 	}
 });

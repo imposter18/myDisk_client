@@ -1,5 +1,5 @@
 import api from "@/Shared/api";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 
 export async function uploadFileHTTP(

@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { setupStore } from "@/Shared/store/store";
 import { Provider } from "react-redux";
+// import {Context} from './Shared/ui/newModal/newModal'
 
 const root = createRoot(document.getElementById("root"));
 

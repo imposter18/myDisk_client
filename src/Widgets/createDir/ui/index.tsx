@@ -14,11 +14,11 @@ export const CreateDir = ({ visibleModal, setVisibleModal }: any) => {
 				setFolderName={setFolderName}
 				setVisiblePopup={setVisiblePopup}
 			></ModalCreateDir>
-			{visiblePopup && (
-				<PopupForStatus
-					messageProps={` File "${folderName}" has created`}
-				></PopupForStatus>
-			)}
+			{/* {visiblePopup && <NewModal></NewModal>} */}
+			{/* {visiblePopup && <PopupForStatus folName={folderName}></PopupForStatus>} */}
+			{/* {visiblePopup && (
+				<AlertDialog title={"daaa"} message={"filder created"}></AlertDialog>
+			)} */}
 		</>
 	);
 };

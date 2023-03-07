@@ -1,0 +1,88 @@
+.leftBlock {
+	background-color: hsla(0, 0%, 100%, 0.6);
+	width: 240px;
+	padding: 20px;
+	border-bottom-left-radius: 22px;
+	border-top-left-radius: 22px;
+}
+
+.topBtnBlock {
+	margin: 30px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 110px;
+}
+
+.input {
+	display: none;
+}
+.lableBtn {
+	position: relative;
+	color: #000;
+	letter-spacing: 0.3px;
+	font-family: var(--main-font);
+	font-weight: 500;
+	font-size: 15px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	align-items: center;
+	background-color: #ffdc60;
+	box-shadow: 0 8px 14px rgb(255 204 0 / 25%);
+	border-radius: 6px;
+	transition: 0.15s linear;
+	&:hover {
+		background-color: #fdd33e;
+		box-shadow: 0 8px 14px rgb(255 204 0 / 35%);
+	}
+	&:before {
+		content: "";
+		mask: url("../../../../Shared/assets/img/any/upload.svg") no-repeat 0 0 /20px
+			27px;
+		width: 44px;
+		height: 44px;
+		background-color: black;
+		position: absolute;
+		left: 12px;
+		top: 6px;
+	}
+}
+.btnCreateFolder {
+	width: 100%;
+	height: 40px;
+	background-color: #fff;
+	position: relative;
+	color: #000;
+	letter-spacing: 0.3px;
+	font-family: var(--main-font);
+	font-weight: 500;
+	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 8px 14px rgb(34 34 34 / 5%);
+	transition: 0.15s linear;
+	&:hover {
+		background-color: #f0f0f0;
+		opacity: 0.8;
+		box-shadow: 0 8px 14px rgb(34 34 34 / 15%);
+	}
+	&:before {
+		content: "";
+		mask: url("../../../../Shared/assets/img/any/plus.svg") no-repeat 0 0 /20px 27px;
+		width: 44px;
+		height: 44px;
+		background-color: black;
+		position: absolute;
+		left: 12px;
+		top: 6px;
+	}
+}
+.lable {
+	width: 100%;
+	height: 40px;
+	display: block;
+	cursor: pointer;
+	line-height: 250%;
+}

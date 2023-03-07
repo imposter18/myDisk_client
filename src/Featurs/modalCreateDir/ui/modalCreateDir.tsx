@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import * as styles from "./modalCreateDir.module.scss";
 import { Modal } from "@/Shared/ui/modal";
 import { useParams } from "react-router-dom";
+import { setVisibleNotCreateDir } from "../modal/store/createDirReducer";
 
 interface props {
 	setFolderName: (folderName: string) => void;
@@ -42,7 +43,8 @@ export const ModalCreateDir = ({
 		).then((res) => {
 			if (res.meta.requestStatus === "fulfilled") {
 				setFolderName(folderName);
-				setVisiblePopup(true);
+				// setVisiblePopup(true);
+				dispatch(setVisibleNotCreateDir(folderName));
 				setVisibleModal(false);
 				setCreateError(false);
 			}

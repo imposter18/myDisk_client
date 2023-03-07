@@ -11,6 +11,8 @@ import {
 import { FileContextMenu } from "@/Widgets/fileContectMenu";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { sizeFormat } from "@/Shared/lib/helpers/sizeFormat";
+import moment from "moment";
 
 interface IProps {
 	file: IFileResponse;
@@ -24,17 +26,38 @@ export const File = ({ file, onClick }: IProps) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const params = useParams();
-	console.log(params, "params");
+	// console.log(params, "params");
 	const { currentDir } = useAppSelector((state) => state.FileReducer);
+	const { id } = useAppSelector((state) => state.userReducer.currentUser);
 
-	const contextnMenuHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+	const contextnMenuHandler = (
+		event: React.MouseEvent<HTMLDivElement> | any
+	) => {
 		event.stopPropagation();
 		event.preventDefault();
 		setIsComponentVisible(true);
+		console.log(event, "event");
+		// nativeEvent устарело!!!
 		setPoints({
-			x: event.pageX,
-			y: event.pageY,
+			x: event.nativeEvent.layerX,
+			y: event.nativeEvent.layerY,
 		});
+	};
+	const setImg = () => {
+		if (file.type === "dir") {
+			return <img src={folder} alt="logo" className={styles.logo}></img>;
+		}
+		if (file.type === "jpg" || file.type === "png") {
+			return (
+				<img
+					src={`http://localhost:5000/api/files/${id}/${file.path}`}
+					alt="logo"
+					className={styles.img}
+				></img>
+			);
+		} else {
+			return <img src={fileEarmark} alt="logo" className={styles.logo}></img>;
+		}
 	};
 
 	return (
@@ -44,24 +67,25 @@ export const File = ({ file, onClick }: IProps) => {
 				onContextMenu={contextnMenuHandler}
 				className={styles.file}
 			>
-				<img
-					src={file.type === "dir" ? folder : fileEarmark}
-					alt=""
-					className={styles.img}
-				></img>
-				<div>{file.name}</div>
+				{setImg()}
+				<div className={styles.name}>{file.name}</div>
 
-				<div className={styles.date}> {file.date.toString().slice(0, 10)}</div>
-				<div className={styles.size}>{file.size}</div>
+				<div className={styles.date}>
+					{moment(file.date).format("DD.MM.YYYY")}
+				</div>
+				<div className={styles.time}>{moment(file.date).format("hh:mm")}</div>
+				<div className={styles.size}>
+					{file.type !== "dir" ? sizeFormat(file.size) : ""}
+				</div>
+				{isComponentVisible && (
+					<FileContextMenu
+						menuRef={ref}
+						top={points.y}
+						left={points.x}
+						file={file}
+					></FileContextMenu>
+				)}
 			</div>
-			{isComponentVisible && (
-				<FileContextMenu
-					menuRef={ref}
-					top={points.y}
-					left={points.x}
-					file={file}
-				></FileContextMenu>
-			)}
 		</>
 	);
 };

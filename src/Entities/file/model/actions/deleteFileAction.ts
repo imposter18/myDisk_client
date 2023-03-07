@@ -1,24 +1,24 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { IinitialState } from "@/Entities/file/model/store/fileSlice";
-import { deleteFile } from "../thunk/deleteFileThunk";
+import { deleteFileThunk } from "../thunk/deleteFileThunk";
 import { file } from "../../ui/file.module.scss";
 
 export function deleteFileAction(
 	builder: ActionReducerMapBuilder<IinitialState>
 ) {
-	builder.addCase(deleteFile.pending, (state) => {
-		state.isLoaging = true;
+	builder.addCase(deleteFileThunk.pending, (state) => {
+		state.isLoagingDelete = true;
 		state.error = null;
 	});
-	builder.addCase(deleteFile.fulfilled, (state, action) => {
-		state.isLoaging = false;
+	builder.addCase(deleteFileThunk.fulfilled, (state, action) => {
+		state.isLoagingDelete = false;
 		state.error = null;
 		state.files = [
 			...state.files.filter((file) => file._id != action.payload._id),
 		];
 	});
-	builder.addCase(deleteFile.rejected, (state, action) => {
-		state.isLoaging = false;
+	builder.addCase(deleteFileThunk.rejected, (state, action) => {
+		state.isLoagingDelete = false;
 		if (action) {
 			state.error = action.payload?.response?.data?.message;
 		} else {

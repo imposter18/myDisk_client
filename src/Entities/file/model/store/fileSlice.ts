@@ -11,6 +11,7 @@ export interface IinitialState {
 	currentDir: IFileResponse;
 	diskStack: string[];
 	isLoaging: boolean;
+	isLoagingDelete: boolean;
 	error: string | null | undefined;
 }
 
@@ -19,6 +20,7 @@ const initialState: IinitialState = {
 	currentDir: null,
 	diskStack: [],
 	isLoaging: false,
+	isLoagingDelete: false,
 	error: null,
 };
 

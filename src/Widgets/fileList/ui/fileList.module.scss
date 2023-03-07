@@ -1,5 +1,5 @@
 .fileList {
-	margin: 20px auto;
+	margin: 20px 0 0 20px;
 	// max-width: 1200px;
 }
 .header {
@@ -16,4 +16,16 @@
 .size {
 	grid-column-start: 6;
 	justify-self: center;
+}
+.empty {
+	margin-top: 20vh;
+	font-family: var(--main-font);
+	font-size: 18px;
+	:global(.ant-empty-image) {
+		height: 150px;
+	}
+}
+.spinner {
+	display: flex;
+	justify-content: center;
 }
