@@ -10,7 +10,6 @@ export function uploadFileAction(
 		state.error = null;
 	});
 	builder.addCase(uploadFileThunk.fulfilled, (state, action) => {
-		console.log(action.payload, "payloadFile");
 		// state.isLoaging = false;
 		state.error = null;
 		state.files = [...state.files, action.payload];

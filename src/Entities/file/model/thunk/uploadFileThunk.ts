@@ -46,7 +46,7 @@ export const uploadFileThunk = createAsyncThunk<
 				formData.append("parent", dirId);
 			}
 			const type = file.name.split(".").pop();
-			console.log(formData.get("file"), "formdata");
+
 			const uploadFile = {
 				name: file.name,
 				progress: 0,
@@ -59,7 +59,6 @@ export const uploadFileThunk = createAsyncThunk<
 
 			const progressConfig = {
 				onUploadProgress: (progressEvent: any) => {
-					console.log(progressEvent);
 					let progress = Math.round(
 						(progressEvent.loaded / progressEvent.total) * 100
 					);

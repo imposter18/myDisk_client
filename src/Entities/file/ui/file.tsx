@@ -36,7 +36,7 @@ export const File = ({ file, onClick }: IProps) => {
 		event.stopPropagation();
 		event.preventDefault();
 		setIsComponentVisible(true);
-		console.log(event, "event");
+		// console.log(event, "event");
 		// nativeEvent устарело!!!
 		setPoints({
 			x: event.nativeEvent.layerX,

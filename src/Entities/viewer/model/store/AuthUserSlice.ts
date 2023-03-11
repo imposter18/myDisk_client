@@ -4,6 +4,7 @@ import { loginAction } from "../actions/loginAction";
 import { registrationAction } from "../actions/registrationAction";
 import { checkAuthAction } from "../actions/checkAuthAction";
 import { logoutAction } from "../actions/logoutAction";
+import { getUserSpaceAction } from "../actions/getUserSpaceAction";
 
 export interface IinitialState {
 	currentUser: IUser;
@@ -33,6 +34,8 @@ export const UserSlice = createSlice({
 		logoutAction(builder);
 
 		checkAuthAction(builder);
+
+		getUserSpaceAction(builder);
 	},
 });
 

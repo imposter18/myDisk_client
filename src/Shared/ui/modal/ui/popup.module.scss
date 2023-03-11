@@ -21,6 +21,16 @@
 	align-items: center;
 	position: fixed;
 	overflow: hidden;
+	animation: animate-background 0.1s linear;
+}
+@keyframes animate-background {
+	0% {
+		opacity: 0.1;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes animate-visible {
 	0% {

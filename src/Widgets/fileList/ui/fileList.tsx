@@ -25,7 +25,7 @@ export const FileList = () => {
 			dispatch(getFiles(null));
 			dispatch(setCurrentDir(null));
 		}
-	}, [params]);
+	}, [params.folderId]);
 
 	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {

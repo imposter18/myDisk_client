@@ -27,7 +27,7 @@ export const UploadFile = ({ file }: props) => {
 			dispatch(removeUploadFile(file.uploadId));
 		}, 230);
 	};
-	console.log(file.status, "file.status");
+	// console.log(file.status, "file.status");
 	return (
 		<div className={`${styles.uploadFile} ${hiding ? styles.hidind : null}`}>
 			<div className={styles.header}>

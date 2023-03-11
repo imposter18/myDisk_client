@@ -1,4 +1,7 @@
 .leftBlock {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	background-color: hsla(0, 0%, 100%, 0.6);
 	width: 240px;
 	padding: 20px;
@@ -7,13 +10,16 @@
 }
 
 .topBtnBlock {
-	margin: 30px auto;
+	margin: 30px 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	height: 110px;
 }
-
+.bottomBlock {
+	position: sticky;
+	bottom: 0;
+}
 .input {
 	display: none;
 }

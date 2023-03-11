@@ -3,6 +3,7 @@ import { ModalCreateDir } from "@/Featurs/modalCreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { CastomBtn } from "@/Shared/ui/btn";
+import { DiskSpace } from "@/Widgets/diskSpace";
 // import { CreateDir } from "@/Widgets/createDir";
 import { changeUploadStatus } from "@/Widgets/uploader";
 import React, { useState } from "react";
@@ -44,6 +45,9 @@ export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
 					content={"Create folder"}
 					className={styles.btnCreateFolder}
 				></CastomBtn>
+			</div>
+			<div className={styles.bottomBlock}>
+				<DiskSpace></DiskSpace>
 			</div>
 			<ModalCreateDir
 				isComponentVisible={isComponentVisible}

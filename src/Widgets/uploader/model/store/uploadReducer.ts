@@ -29,7 +29,7 @@ export const uploadSlice = createSlice({
 			state.isVisible = false;
 		},
 		addUploadFile(state, action) {
-			console.log(action.payload);
+			// console.log(action.payload);
 			state.files = [...state.files, { ...action.payload }];
 		},
 		removeUploadFile(state, action) {
@@ -47,7 +47,7 @@ export const uploadSlice = createSlice({
 			];
 		},
 		changeUploadStatus(state, action) {
-			console.log(action.payload, "action.payload.uploadId");
+			// console.log(action.payload, "action.payload.uploadId");
 			state.files = [
 				...state.files.map((file) =>
 					file.uploadId == action.payload.uploadId

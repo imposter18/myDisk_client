@@ -18,6 +18,7 @@ export const FileContextMenu = ({ file, top, left, menuRef }: IProps) => {
 		<>
 			<div
 				ref={menuRef}
+				id="contextMenu"
 				className={styles.contextMenu}
 				style={{ top: top, left: left }}
 			>

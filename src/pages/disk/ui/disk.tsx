@@ -28,7 +28,7 @@ export const DiskPage = () => {
 	const user = useViewer();
 
 	const dragEnterHandler = (event: any) => {
-		console.log("enter");
+		// console.log("enter");
 		event.preventDefault();
 		event.stopPropagation();
 		setDragEnter(true);
@@ -95,7 +95,11 @@ export const DiskPage = () => {
 						>
 							<Stack></Stack>
 							<FileList></FileList>
-							<a href="#" className={styles.footerLinks}>
+							<a
+								target="_blank"
+								href="https://github.com/imposter18/myDisk_client"
+								className={styles.footerLinks}
+							>
 								<i className="bi bi-github"></i>
 								GitHub
 							</a>

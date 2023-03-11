@@ -1,6 +1,7 @@
 import { logoutUser } from "../thunks/logoutUser";
 import { IinitialState } from "@/Entities/viewer/model/store/AuthUserSlice";
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { IUser } from "@/Shared/Types/IUser";
 
 export function logoutAction(builder: ActionReducerMapBuilder<IinitialState>) {
 	builder.addCase(logoutUser.pending, (state) => {
@@ -11,7 +12,7 @@ export function logoutAction(builder: ActionReducerMapBuilder<IinitialState>) {
 		localStorage.removeItem("token");
 		state.isLoaging = false;
 		state.isAuth = false;
-		state.currentUser = {};
+		state.currentUser = {} as IUser;
 	});
 	builder.addCase(logoutUser.rejected, (state, action) => {
 		state.isLoaging = false;

@@ -15,7 +15,7 @@ const initialState: IinitialState = {
 };
 
 export const stackSlice = createSlice({
-	name: "file",
+	name: "dirStack",
 	initialState,
 	reducers: {
 		removeStack(state) {

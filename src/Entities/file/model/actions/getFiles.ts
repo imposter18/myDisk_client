@@ -8,7 +8,6 @@ export function getFileAction(builder: ActionReducerMapBuilder<IinitialState>) {
 		state.error = null;
 	});
 	builder.addCase(getFiles.fulfilled, (state, action) => {
-		console.log(action.payload);
 		state.isLoaging = false;
 		state.error = null;
 		state.files = action.payload.files;
