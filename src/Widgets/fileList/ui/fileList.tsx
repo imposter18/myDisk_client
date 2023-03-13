@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import React, { useEffect } from "react";
 import * as styles from "./fileList.module.scss";
-import { File, pushToStack, setCurrentDir } from "@/Entities/file";
+import { File, setCurrentDir } from "@/Entities/file";
 import { getFiles } from "../../../Entities/file/model/thunk/getFile";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Empty, Spin } from "antd";
@@ -11,6 +11,7 @@ export const FileList = () => {
 	const { currentDir, files, isLoaging } = useAppSelector(
 		(state) => state.FileReducer
 	);
+	const { sort, derection } = useAppSelector((state) => state.sortFileReducer);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -18,14 +19,14 @@ export const FileList = () => {
 
 	useEffect(() => {
 		if (params.folderId) {
-			dispatch(getFiles(params.folderId));
+			dispatch(getFiles({ currentDir: params.folderId, sort, derection }));
 			// dispatch(setCurrentDir(null))
 		}
 		if (!params.folderId) {
-			dispatch(getFiles(null));
-			dispatch(setCurrentDir(null));
+			dispatch(getFiles({ currentDir: null, sort, derection }));
+			dispatch(setCurrentDir({ currentDir: null, sort, derection }));
 		}
-	}, [params.folderId]);
+	}, [params.folderId, sort, derection]);
 
 	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {

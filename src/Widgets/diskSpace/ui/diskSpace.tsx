@@ -25,6 +25,7 @@ export const DiskSpace = () => {
 				<div className={styles.progress}>
 					<Progress
 						percent={getUsedPercent(usedSpace, diskSpace)}
+						// percent={70}
 						showInfo={false}
 						strokeColor={"#fff"}
 					></Progress>

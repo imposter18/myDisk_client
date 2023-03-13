@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "../../Entities/viewer/model/store/AuthUserSlice";
 import { FileReducer } from "@/Entities/file/model/store/fileSlice";
-// import { VisiblePopupReducer } from "@/Featurs/modalCreateDir";
 import { themeReducer } from "@/Shared/lib/theme";
 import { uploadReducer } from "@/Widgets/uploader/model/store/uploadReducer";
 import { stackReducer } from "@/Widgets/DirStack";
 import { createDirReducer } from "@/Featurs/modalCreateDir";
 import { deleteFileReducer } from "@/Featurs/deleteFileBtn";
+import { sortFileReducer } from "@/Featurs/sortFileList";
+import { viewFileListReducer } from "@/Featurs/viewFileList";
 
 export const setupStore = configureStore({
 	reducer: {
@@ -17,6 +18,8 @@ export const setupStore = configureStore({
 		stackReducer,
 		createDirReducer,
 		deleteFileReducer,
+		sortFileReducer,
+		viewFileListReducer,
 	},
 });
 

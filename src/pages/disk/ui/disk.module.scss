@@ -44,7 +44,11 @@
 	border-bottom-right-radius: 22px;
 	border-top-right-radius: 22px;
 }
-
+.topMenu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .footerLinks {
 	color: var(--font-color);
 	text-decoration: none;

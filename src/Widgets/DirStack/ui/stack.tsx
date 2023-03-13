@@ -64,8 +64,8 @@ export const Stack = () => {
 						</li>
 					))}
 				</ul>
+				<div>{currentDir ? backDir() : ""}</div>
 			</nav>
-			<div>{currentDir ? backDir() : ""}</div>
 		</>
 	);
 };

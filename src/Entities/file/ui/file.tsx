@@ -4,10 +4,7 @@ import folder from "@/Shared/assets/img/extensions/folder.svg";
 import fileEarmark from "@/Shared/assets/img/extensions/fileEarmark.svg";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
-import {
-	pushToStack,
-	setCurrentDir,
-} from "@/Entities/file/model/store/fileSlice";
+
 import { FileContextMenu } from "@/Widgets/fileContectMenu";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -73,7 +70,7 @@ export const File = ({ file, onClick }: IProps) => {
 				<div className={styles.date}>
 					{moment(file.date).format("DD.MM.YYYY")}
 				</div>
-				<div className={styles.time}>{moment(file.date).format("hh:mm")}</div>
+				<div className={styles.time}>{moment(file.date).format("HH:mm ")}</div>
 				<div className={styles.size}>
 					{file.type !== "dir" ? sizeFormat(file.size) : ""}
 				</div>

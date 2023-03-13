@@ -4,10 +4,7 @@ import { FileList } from "@/Widgets/fileList";
 // import { CreateDir } from "@/Widgets/createDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useViewer } from "@/Entities/viewer";
-import {
-	popFromStack,
-	setCurrentDir,
-} from "@/Entities/file/model/store/fileSlice";
+
 import { uploadFileThunk } from "@/Entities/file/model/thunk/uploadFileThunk";
 import { Uploader } from "@/Widgets/uploader";
 import { Button, Empty } from "antd";
@@ -19,6 +16,7 @@ import { notification, Space } from "antd";
 import { TopCenterNotificationGrup } from "@/Widgets/topCenterNotificationGrup";
 import { CastomBtn } from "@/Shared/ui/btn";
 import { LeftBlock } from "./leftBlock/leftBlock";
+import { ListSettings } from "@/Widgets/listSettings";
 
 export const DiskPage = () => {
 	const [dragEnter, setDragEnter] = useState(false);
@@ -93,7 +91,11 @@ export const DiskPage = () => {
 							}}
 							className={styles.rightBlock}
 						>
-							<Stack></Stack>
+							<div className={styles.topMenu}>
+								<Stack></Stack>
+								<ListSettings></ListSettings>
+							</div>
+
 							<FileList></FileList>
 							<a
 								target="_blank"

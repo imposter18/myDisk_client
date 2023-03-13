@@ -8,14 +8,19 @@ interface IResponseError {
 	errprs: Array<string> | [];
 	message: string;
 }
+export interface IGetFileProps {
+	currentDir: string;
+	sort: string;
+	derection: string;
+}
 
 export const getFiles = createAsyncThunk<
 	IGetFiles,
-	string,
+	IGetFileProps,
 	{ rejectValue: AxiosError<IResponseError> }
->("file/getFile", async function (currentDir, { rejectWithValue }) {
+>("file/getFile", async function (props, { rejectWithValue }) {
 	try {
-		const res = await getFileHTTP(currentDir);
+		const res = await getFileHTTP(props);
 		return res.data as IGetFiles;
 	} catch (e) {
 		return rejectWithValue(e);

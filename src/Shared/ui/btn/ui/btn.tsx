@@ -5,9 +5,15 @@ interface Iprops {
 	className?: string;
 	content?: string;
 	onClick?: () => void;
+	children?: any;
 }
 
-export const CastomBtn = ({ className, content, onClick }: Iprops) => {
+export const CastomBtn = ({
+	className,
+	content,
+	onClick,
+	children,
+}: Iprops) => {
 	const [click, setClick] = useState(false);
 
 	const btnClick = () => {
@@ -23,6 +29,7 @@ export const CastomBtn = ({ className, content, onClick }: Iprops) => {
 				className={`${className} ${click ? styles.click : ""} ${styles.btn}`}
 			>
 				{content}
+				{children}
 			</div>
 		</div>
 	);
