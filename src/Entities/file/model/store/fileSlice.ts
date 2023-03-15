@@ -28,7 +28,6 @@ export interface IinitialState {
 const initialState: IinitialState = {
 	files: [],
 	currentDir: null,
-	// diskStack: [],
 	isLoaging: false,
 	isLoagingDelete: false,
 	isLoadingCreateDir: false,

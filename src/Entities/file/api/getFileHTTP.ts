@@ -7,9 +7,11 @@ import { IGetFileProps } from "../model/thunk/getFile";
 export async function getFileHTTP(
 	props: IGetFileProps
 ): Promise<AxiosResponse<IGetFiles>> {
-	const { sort, derection, currentDir } = props;
+	const { sort, derection, currentDir, search } = props;
 	let url;
-	if (currentDir) {
+	if (search) {
+		url = `/files/?search=${search}`;
+	} else if (currentDir) {
 		url = `/files?parent=${currentDir}&sort=${sort}&derection=${derection}`;
 	} else {
 		url = `/files?sort=${sort}&derection=${derection}`;

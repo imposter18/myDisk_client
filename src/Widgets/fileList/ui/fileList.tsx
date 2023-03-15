@@ -12,6 +12,7 @@ export const FileList = () => {
 		(state) => state.FileReducer
 	);
 	const { sort, derection } = useAppSelector((state) => state.sortFileReducer);
+	const { searchValue } = useAppSelector((state) => state.searchFilesReducer);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -19,14 +20,30 @@ export const FileList = () => {
 
 	useEffect(() => {
 		if (params.folderId) {
-			dispatch(getFiles({ currentDir: params.folderId, sort, derection }));
+			dispatch(
+				getFiles({
+					currentDir: params.folderId,
+					sort,
+					derection,
+					search: searchValue,
+				})
+			);
 			// dispatch(setCurrentDir(null))
 		}
 		if (!params.folderId) {
-			dispatch(getFiles({ currentDir: null, sort, derection }));
-			dispatch(setCurrentDir({ currentDir: null, sort, derection }));
+			dispatch(
+				getFiles({ currentDir: null, sort, derection, search: searchValue })
+			);
+			dispatch(
+				setCurrentDir({
+					currentDir: null,
+					sort,
+					derection,
+					search: searchValue,
+				})
+			);
 		}
-	}, [params.folderId, sort, derection]);
+	}, [params.folderId, sort, derection, searchValue]);
 
 	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {

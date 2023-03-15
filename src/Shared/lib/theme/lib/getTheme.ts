@@ -8,7 +8,10 @@ export const getTheme = () => {
 	if (Object.values(themes).includes(theme)) return theme;
 
 	const userMedia = window.matchMedia("(prefers-color-scheme: light)");
-	if (userMedia.matches) return themes.light;
-
+	if (userMedia.matches) {
+		// document.documentElement.dataset.theme = themes.light;
+		return themes.light;
+	}
+	// document.documentElement.dataset.theme = themes.dark;
 	return themes.dark;
 };

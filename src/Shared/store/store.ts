@@ -8,6 +8,7 @@ import { createDirReducer } from "@/Featurs/modalCreateDir";
 import { deleteFileReducer } from "@/Featurs/deleteFileBtn";
 import { sortFileReducer } from "@/Featurs/sortFileList";
 import { viewFileListReducer } from "@/Featurs/viewFileList";
+import { searchFilesReducer } from "@/Featurs/searchFiles";
 
 export const setupStore = configureStore({
 	reducer: {
@@ -20,6 +21,7 @@ export const setupStore = configureStore({
 		deleteFileReducer,
 		sortFileReducer,
 		viewFileListReducer,
+		searchFilesReducer,
 	},
 });
 

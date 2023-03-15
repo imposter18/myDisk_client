@@ -1,0 +1,49 @@
+.input {
+	font-family: var(--input-font);
+	font-size: 17px;
+	letter-spacing: 0.02rem;
+	background-color: hsla(0, 0%, 100%, 0.6);
+	// opacity: 0.6;
+	line-height: 12px;
+	border-radius: 19px;
+	border: none;
+	height: 28px;
+	width: 340px;
+	padding: 4px 4px 5px 17px;
+	color: black;
+	&:focus {
+		background-color: hsla(0, 0%, 100%, 1);
+		color: black;
+		outline: none;
+		border: none;
+	}
+}
+.searchInput {
+	position: relative;
+	margin-left: 25px;
+}
+.searchLogo {
+	position: absolute;
+	top: 8px;
+	right: 1px;
+
+	i {
+		font-size: 17px;
+		color: #979797;
+	}
+}
+.searchClear {
+	position: absolute;
+	cursor: pointer;
+	// z-index: 99999;
+	top: 5px;
+	right: 1px;
+	i {
+		color: black;
+	}
+	&:hover {
+		i {
+			color: #979797;
+		}
+	}
+}

@@ -22,6 +22,7 @@ export const DiskPage = () => {
 	const [dragEnter, setDragEnter] = useState(false);
 
 	const { files, currentDir } = useAppSelector((state) => state.FileReducer);
+	const { searchValue } = useAppSelector((state) => state.searchFilesReducer);
 	const dispatch = useAppDispatch();
 	const user = useViewer();
 
@@ -92,8 +93,12 @@ export const DiskPage = () => {
 							className={styles.rightBlock}
 						>
 							<div className={styles.topMenu}>
-								<Stack></Stack>
-								<ListSettings></ListSettings>
+								{searchValue ? (
+									<h2 className={styles.searchTitle}>Search</h2>
+								) : (
+									<Stack></Stack>
+								)}
+								{!searchValue && <ListSettings></ListSettings>}
 							</div>
 
 							<FileList></FileList>

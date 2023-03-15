@@ -9,6 +9,7 @@ interface IResponseError {
 	message: string;
 }
 export interface IGetFileProps {
+	search?: string;
 	currentDir: string;
 	sort: string;
 	derection: string;

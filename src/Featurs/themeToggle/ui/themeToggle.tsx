@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { updateTheme } from "@/Shared/lib/theme";
 import { useTheme } from "@/Shared/lib/theme";
 
-export const Toggle = ({}: any) => {
+export const Toggle = ({ className }: any) => {
 	const theme = useTheme();
 	const dispatch = useAppDispatch();
 
@@ -18,7 +18,7 @@ export const Toggle = ({}: any) => {
 	}, [theme]);
 	return (
 		<Switch
-			className={styles.toggler}
+			className={`${styles.toggler} ${className}`}
 			checked={theme === "dark"}
 			checkedChildren={<i className="bi bi-moon-fill"></i>}
 			unCheckedChildren={<i className="bi bi-brightness-high"></i>}

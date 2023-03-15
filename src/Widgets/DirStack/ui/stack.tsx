@@ -52,17 +52,18 @@ export const Stack = () => {
 							<h2>Files</h2>
 						)}
 					</li>
-					{stack.map((item) => (
-						<li>
-							<Link
-								key={item._id}
-								className={styles.header}
-								to={`/drive/folder/${item._id}`}
-							>
-								{item.name}
-							</Link>
-						</li>
-					))}
+					{stack.map((item) =>
+						item?._id ? (
+							<li key={item._id}>
+								<Link
+									className={styles.header}
+									to={`/drive/folder/${item._id}`}
+								>
+									{item.name}
+								</Link>
+							</li>
+						) : null
+					)}
 				</ul>
 				<div>{currentDir ? backDir() : ""}</div>
 			</nav>

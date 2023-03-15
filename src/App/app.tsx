@@ -12,14 +12,19 @@ import { DiskPage } from "@/Pages/disk";
 import { useAppSelector } from "../Shared/lib/hooks/redux";
 import { Redirect } from "@/Pages/redirect";
 import { Alert, Col, Row, Space, notification } from "antd";
+import { useTheme } from "@/Shared/lib/theme";
 
 const App = () => {
+	const theme = useTheme();
 	const navigate = useNavigate();
 	const dispath = useAppDispatch();
 	const { firstLoading } = useAppSelector((state) => state.userReducer);
 	useEffect(() => {
 		dispath(checkAuth());
 	}, []);
+	useEffect(() => {
+		document.documentElement.dataset.theme = theme;
+	}, [theme]);
 
 	if (firstLoading) {
 		return (
@@ -36,6 +41,7 @@ const App = () => {
 				</Route>
 				<Route path="/drive" element={<ProtectedRoute></ProtectedRoute>}>
 					<Route index path="/drive/my-disk" element={<DiskPage />}></Route>
+					<Route index path="/drive/search" element={<DiskPage />}></Route>
 					<Route path="/drive/folder/:folderId" element={<DiskPage />}></Route>
 				</Route>
 				<Route path="*" element={<Redirect />} />

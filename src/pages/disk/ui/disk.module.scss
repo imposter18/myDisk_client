@@ -3,7 +3,7 @@
 }
 .wrapper {
 	// max-width: 1200px;
-	margin: 30px auto 10px auto;
+	margin: 0 auto 10px auto;
 }
 
 .dropArea {
@@ -68,4 +68,8 @@
 	i {
 		margin-right: 8px;
 	}
+}
+.searchTitle {
+	font-family: var(--main-font);
+	margin: 20px auto 15px 20px;
 }

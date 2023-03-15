@@ -19,10 +19,13 @@
 	margin-right: 8px;
 }
 .arrow {
-	width: 15px;
-	height: 10px;
+	color: #000;
+	// width: 15px;
+	// height: 10px;
 }
-
+.arrowRotete {
+	rotate: 180deg;
+}
 .viewPopup {
 	overflow: hidden;
 	position: absolute;
