@@ -2,7 +2,7 @@
 	font-family: var(--input-font);
 	font-size: 17px;
 	letter-spacing: 0.02rem;
-	background-color: hsla(0, 0%, 100%, 0.6);
+	background-color: var(--search-bg-color);
 	// opacity: 0.6;
 	line-height: 12px;
 	border-radius: 19px;
@@ -10,17 +10,19 @@
 	height: 28px;
 	width: 340px;
 	padding: 4px 4px 5px 17px;
-	color: black;
+	color: var(--disk-font-content-color);
 	&:focus {
-		background-color: hsla(0, 0%, 100%, 1);
-		color: black;
+		background-color: var(--search-focus-color);
 		outline: none;
 		border: none;
+		.searchLogo {
+			background-color: black;
+		}
 	}
 }
 .searchInput {
 	position: relative;
-	margin-left: 25px;
+	margin-left: 55px;
 }
 .searchLogo {
 	position: absolute;
@@ -39,7 +41,7 @@
 	top: 5px;
 	right: 1px;
 	i {
-		color: black;
+		color: #979797;
 	}
 	&:hover {
 		i {

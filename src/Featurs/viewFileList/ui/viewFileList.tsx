@@ -48,13 +48,18 @@ export const ViewFileList = () => {
 							className={styles.logo}
 							alt="preview"
 						/>
-						<img
+						{/* <img
 							src={arrowTopIcon}
 							className={`${styles.arrow} ${
 								isComponentVisible ? styles.arrowRotete : null
 							}`}
 							alt="arrow"
-						/>
+						/> */}
+						<span
+							className={`${
+								isComponentVisible ? styles.imgArrowRotateDown : styles.imgArrow
+							}`}
+						></span>
 					</CastomBtn>
 				</div>
 				{isComponentVisible && (

@@ -21,7 +21,7 @@ export const Toggle = ({ className }: any) => {
 			className={`${styles.toggler} ${className}`}
 			checked={theme === "dark"}
 			checkedChildren={<i className="bi bi-moon-fill"></i>}
-			unCheckedChildren={<i className="bi bi-brightness-high"></i>}
+			unCheckedChildren={<i className={`bi bi-brightness-high `}></i>}
 			onClick={onChange}
 		/>
 	);

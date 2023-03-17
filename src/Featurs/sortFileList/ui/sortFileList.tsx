@@ -71,23 +71,26 @@ export const SortFileList = () => {
 			<div ref={ref} className={styles.sortFileList}>
 				<div>
 					<CastomBtn onClick={popupVisible} className={styles.btn}>
-						<img
+						{/* <img
 							src={sortDesc}
 							className={`${styles.sortLogo} ${
 								derection === "desc" ? styles.sortLogoAsc : null
 							}`}
 							alt="sortDesc"
-						/>
+						/> */}
+						<span
+							className={` ${
+								derection === "desc" ? styles.sortLogoDesc : styles.sortLogoAsc
+							}`}
+						></span>
 						<span className={styles.sortTitle}>
 							{sortParams.find((item) => item.content === sort).title}
 						</span>
-						<img
-							src={arrowTop}
-							className={`${isComponentVisible ? styles.arrowRotateDown : ""} 
-							${styles.img}	
-							`}
-							alt="sortDesc"
-						/>
+						<span
+							className={`${
+								isComponentVisible ? styles.imgArrowRotateDown : styles.imgArrow
+							}`}
+						></span>
 					</CastomBtn>
 				</div>
 				{isComponentVisible && (

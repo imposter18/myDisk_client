@@ -7,14 +7,23 @@
 	align-items: center;
 	border-radius: 8px;
 	height: 52px;
+
 	&:hover {
-		background-color: rgba(153, 147, 147, 0.2);
+		background-color: var(--file-hover-color);
+		// background-color: rgba(153, 147, 147, 0.2);
+		// background-color: var(--hover-popupItem-color);
+	}
+}
+.active {
+	background-color: var(--file-hover-color);
+	&:hover {
+		background-color: var(--file-hover-active-color);
 	}
 }
 .name {
 	font-size: 14px;
 	// letter-spacing: 0.3px;
-	color: rgba(0, 0, 0, 0.8);
+	color: var(--disk-font-content-color);
 }
 .logo {
 	justify-self: center;

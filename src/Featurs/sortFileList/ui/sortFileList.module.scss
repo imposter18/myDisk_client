@@ -3,6 +3,8 @@
 }
 
 .btn {
+	background-color: var(--select-bg-color);
+	color: var(--disk-font-content-color);
 	position: relative;
 	box-sizing: border-box;
 	padding: 5px;
@@ -15,25 +17,76 @@
 		0 4px 6px 0 rgb(0 0 0 / 5%);
 }
 
-.arrowRotateDown {
-	rotate: 180deg;
-}
-
-.sortLogo {
+.sortLogoAsc {
 	margin: 0 4px;
 	width: 22px;
 	height: 22px;
+	&:before {
+		content: "";
+		mask: url("../../../Shared/assets/img/any/sortDesc.svg") no-repeat 0 0 /25px
+			25px;
+		width: 24px;
+		height: 24px;
+		background-color: var(--disk-font-content-color);
+		position: absolute;
+		top: 6px;
+		left: 7px;
+	}
 }
-.sortLogoAsc {
+.sortLogoDesc {
 	rotate: 180deg;
 	transform: scaleX(-1);
+	margin: 0 4px;
+	width: 22px;
+	height: 22px;
+	&:before {
+		content: "";
+		mask: url("../../../Shared/assets/img/any/sortDesc.svg") no-repeat 0 0 /25px
+			25px;
+		width: 24px;
+		height: 24px;
+		background-color: var(--disk-font-content-color);
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
 }
 .sortTitle {
 	margin: 0 2px;
 	// font-weight: 500;
 }
-.img {
+.imgArrow {
 	margin: 0 4px;
+	width: 20px;
+	height: 20px;
+	&:before {
+		content: "";
+		mask: url("../../../Shared/assets/img/any/arrowTop.svg") no-repeat 0 0 /16px
+			11px;
+		width: 24px;
+		height: 24px;
+		background-color: var(--disk-font-content-color);
+		position: absolute;
+		top: 14px;
+		right: 4px;
+	}
+}
+.imgArrowRotateDown {
+	rotate: 180deg;
+	margin: 0 4px;
+	width: 20px;
+	height: 20px;
+	&:before {
+		content: "";
+		mask: url("../../../Shared/assets/img/any/arrowTop.svg") no-repeat 0 0 /16px
+			11px;
+		width: 24px;
+		height: 24px;
+		background-color: var(--disk-font-content-color);
+		position: absolute;
+		top: 6px;
+		right: -5px;
+	}
 }
 .sortPopup {
 	overflow: hidden;
@@ -41,10 +94,10 @@
 	top: 47px;
 	z-index: 999;
 	width: 130px;
-	// height: 200px;
-	box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 0 1px rgb(0 0 0 / 5%),
-		0 4px 6px 0 rgb(0 0 0 / 5%);
-	background-color: #fff;
+	background-color: var(--select-content-bg-color);
+	color: var(--disk-font-content-color);
+	box-shadow: var(--popup-box-shadow);
+
 	border-radius: 8px;
 	animation: visible-popup 0.05s linear forwards;
 }
@@ -62,24 +115,24 @@
 	border-top: 1px solid rgba($color: #6e6e6e, $alpha: 0.2);
 }
 .topBlock {
-	color: #000;
+	margin: 5px auto;
 }
 .bottomblock {
-	color: #000;
+	margin: 5px auto;
 }
 .popupContent {
-	color: #000;
+	box-sizing: border-box;
 }
 .popupItem {
 	cursor: pointer;
 	position: relative;
 	padding: 6px;
-	color: #000;
+
 	text-align: left;
 	align-items: center;
 	display: flex;
 	&:hover {
-		background-color: rgba(153, 147, 147, 0.2);
+		background-color: var(--hover-popupItem-color);
 	}
 	span {
 		display: inline-block;
@@ -94,7 +147,7 @@
 		mask: url("../../../Shared/assets/img/any/check.svg") no-repeat 0 0 /18px 27px;
 		width: 24px;
 		height: 24px;
-		background-color: black;
+		background-color: var(--disk-font-content-color);
 		position: absolute;
 		top: 4px;
 	}

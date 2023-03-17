@@ -62,7 +62,7 @@ export const File = ({ file, onClick }: IProps) => {
 			<div
 				onClick={() => onClick(file)}
 				onContextMenu={contextnMenuHandler}
-				className={styles.file}
+				className={`${styles.file} ${isComponentVisible && styles.active}`}
 			>
 				{setImg()}
 				<div className={styles.name}>{file.name}</div>

@@ -17,6 +17,7 @@
 	--color-grey: #dadce0;
 	--main-color: #0d1117;
 	--popup-bg-color: rgba(5, 5, 5, 0.06);
+	--hover-popupItem-color: rgba(153, 147, 147, 0.2);
 }
 :root[data-theme="light"] {
 	--header-bg-color: #fff;
@@ -30,6 +31,17 @@
 	--btn-hover-border: #1677ff;
 	--btn-bg-color: #fafafa;
 	--dropdown-hover: rgba(5, 5, 5, 0.3);
+	--disk-bg-color: #fff;
+	--disk-font-content-color: black;
+	--select-bg-color: #fff;
+	--select-content-bg-color: #fff;
+	--disk-menu-bg-color: hsla(0, 0%, 100%, 0.6);
+	--search-bg-color: hsla(0, 0%, 100%, 0.6);
+	--search-focus-color: hsla(0, 0%, 100%, 0.9);
+	--popup-box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 0 1px rgb(0 0 0 / 5%),
+		0 4px 6px 0 rgb(0 0 0 / 5%);
+	--file-hover-color: rgba(153, 147, 147, 0.2);
+	--file-hover-active-color: rgba(153, 147, 147, 0.3);
 }
 
 :root[data-theme="dark"] {
@@ -44,4 +56,16 @@
 	--btn-hover-border: #0d1117;
 	--btn-bg-color: #168eff;
 	--dropdown-hover: rgb(0%, 0%, 0%, 0.5);
+	--disk-bg-color: #1e1e21;
+	--disk-font-content-color: rgba(247, 247, 255, 0.9);
+	--select-bg-color: rgba(211, 211, 222, 0.15);
+	--select-content-bg-color: #2e2f34;
+	--disk-menu-bg-color: #232325;
+	--search-bg-color: rgba(211, 211, 222, 0.15);
+	--search-focus-color: rgba(0, 0, 0, 1);
+	--popup-box-shadow: 0 11px 14px -7px rgb(0 0 0 / 30%);
+	--file-hover-color: rgba(211, 211, 222, 0.12);
+	--file-hover-active-color: rgba(211, 211, 222, 0.16);
+
+	// --search-content-color:
 }

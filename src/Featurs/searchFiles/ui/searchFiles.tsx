@@ -31,9 +31,9 @@ export const SearchFiles = () => {
 		}
 	}, [params]);
 	const clearInputHandler = () => {
-		console.log("1231243124");
 		dispatch(setSearchValue(""));
 		setInputvalue("");
+		navigate(`/drive/my-disk`);
 	};
 	return (
 		<>

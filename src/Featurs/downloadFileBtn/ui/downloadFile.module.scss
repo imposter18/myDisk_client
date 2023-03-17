@@ -1,10 +1,10 @@
 .btn {
 	width: 100%;
-	// display: flex;
-	// justify-content: space-around;
+	color: var(--disk-font-content-color);
 	text-align: center;
 	align-items: center;
 	i {
+		color: var(--disk-font-content-color);
 		font-size: 18px;
 		margin-right: 12px;
 		font-weight: 20px;

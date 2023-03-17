@@ -26,6 +26,7 @@
 		}
 	}
 	h2 {
+		color: var(--disk-font-content-color);
 		margin: 2px;
 	}
 }
@@ -33,24 +34,24 @@
 	margin: 0;
 	margin-left: 40px;
 	position: relative;
+
 	a {
 		text-decoration: none;
-		color: black;
+		color: var(--disk-font-content-color);
 	}
 	:before {
 		content: "";
-		// mask: url("../../../Shared/assets/img/any/arrowBack.svg") no-repeat 100%;
 		mask: url("../../../Shared/assets/img/any/arrowBack.svg") no-repeat 0 0 /34px
 			40px;
 		width: 44px;
 		height: 44px;
-		background-color: black;
+		background-color: var(--disk-font-content-color);
 		position: absolute;
 		left: -38px;
 		top: -10px;
 	}
 	:hover::before {
-		background-color: rgba(0, 0, 0, 0.7);
+		opacity: 0.7;
 	}
 }
 

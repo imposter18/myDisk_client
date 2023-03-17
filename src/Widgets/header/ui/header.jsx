@@ -43,6 +43,9 @@ export const Header = memo(() => {
 								<img src={logoutIcon} alt="logoutIcon" />
 								<span>Logout</span>
 							</LogoutBtn>
+							<div className={styles.themeItem}>
+								<span>Theme:</span>
+							</div>
 						</DropdownUserInfo>
 					) : (
 						<BtnBlock></BtnBlock>

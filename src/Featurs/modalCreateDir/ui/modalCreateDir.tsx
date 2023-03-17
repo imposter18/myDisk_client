@@ -71,7 +71,7 @@ export const ModalCreateDir = ({
 					initialValues={{ folderName: "New folder" }}
 				>
 					<Form.Item name="folderName">
-						<Input />
+						<Input autoFocus />
 					</Form.Item>
 					{createError && <span className={styles.error}>{error}</span>}
 					{isLoadingCreateDir ? (

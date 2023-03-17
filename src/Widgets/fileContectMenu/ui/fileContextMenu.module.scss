@@ -5,12 +5,13 @@
 	position: absolute;
 	width: 130px;
 	// height: 100px;
-	background-color: #fff;
-	border: 0.5px solid rgba(125, 125, 125, 0.3);
+	background-color: var(--select-content-bg-color);
+	// border: 0.5px solid rgba(125, 125, 125, 0.3);
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
-	box-shadow: 0 11px 14px -7px rgb(0 0 0 / 30%);
+	box-shadow: var(--popup-box-shadow);
+	// box-shadow: 0 11px 14px -7px rgb(0 0 0 / 30%);
 	&::before {
 		z-index: -1;
 		position: absolute;
@@ -32,16 +33,16 @@
 	font-family: var(--main-font);
 	font-weight: 500;
 	font-size: 14px;
-	color: black;
+
 	width: 150px;
 	height: 30px;
 	border: none;
-	background-color: #fff;
 	text-align: left;
 	padding: 0 12px;
+	background-color: var(--select-content-bg-color);
 	&:hover {
-		background-color: rgba(125, 125, 125, 0.3);
-		color: black;
+		// background-color: rgba(125, 125, 125, 0.3);
+		background-color: var(--hover-popupItem-color);
 	}
 }
 // .contextItem:hover {
