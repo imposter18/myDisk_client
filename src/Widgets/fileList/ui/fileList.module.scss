@@ -20,7 +20,8 @@
 .empty {
 	margin-top: 20vh;
 	font-family: var(--main-font);
-	font-size: 18px;
+	font-size: 20px;
+	font-weight: 500;
 	:global(.ant-empty-image) {
 		height: 150px;
 	}

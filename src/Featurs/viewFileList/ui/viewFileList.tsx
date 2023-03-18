@@ -8,19 +8,22 @@ import gridLargeIcon from "@/Shared/assets/img/FileViewIcons/gridLarge.svg";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { setView } from "../model";
+import { ListIconSvg } from "@/Shared/assets/img/FileViewIcons/list";
+import { GridMiddleIconSvg } from "@/Shared/assets/img/FileViewIcons/gridMiddle";
+import { GridLargeIconSvg } from "@/Shared/assets/img/FileViewIcons/gridLarge";
 
 const viewVariant = [
 	{
 		title: "List",
-		icon: listIcon,
+		icon: <ListIconSvg></ListIconSvg>,
 	},
 	{
 		title: "Tiles",
-		icon: gridMiddleIcon,
+		icon: <GridMiddleIconSvg></GridMiddleIconSvg>,
 	},
 	{
 		title: "Large tiles",
-		icon: gridLargeIcon,
+		icon: <GridLargeIconSvg></GridLargeIconSvg>,
 	},
 ];
 
@@ -43,11 +46,15 @@ export const ViewFileList = () => {
 			<div ref={ref} className={styles.viewFileList}>
 				<div>
 					<CastomBtn onClick={componentVisibleHandler} className={styles.btn}>
-						<img
-							src={viewVariant.find((item) => item.title === viewType).icon}
+						<div className={styles.logo}>
+							{viewVariant.find((item) => item.title === viewType).icon}
+						</div>
+
+						{/* <img
+							src=
 							className={styles.logo}
 							alt="preview"
-						/>
+						/> */}
 						{/* <img
 							src={arrowTopIcon}
 							className={`${styles.arrow} ${
@@ -73,7 +80,8 @@ export const ViewFileList = () => {
 										viewType === item.title ? styles.popupItemActive : null
 									}`}
 								>
-									<img src={item.icon} className={styles.popupItemImg}></img>
+									<div className={styles.popupItemImg}>{item.icon}</div>
+
 									<span>{item.title}</span>
 								</div>
 							);

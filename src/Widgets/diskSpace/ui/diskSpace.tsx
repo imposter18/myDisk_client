@@ -1,20 +1,33 @@
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { Progress } from "antd";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import * as styles from "./diskSpace.module.scss";
 import { sizeFormat } from "@/Shared/lib/helpers/sizeFormat";
 import { getUserSpaceThunk } from "@/Entities/viewer";
 
-export const DiskSpace = () => {
-	const { diskSpace, usedSpace } = useAppSelector(
-		(state) => state.userReducer.currentUser
+export const DiskSpace = React.memo(() => {
+	const diskSpace = useAppSelector(
+		(state) => state.userReducer.currentUser.diskSpace
 	);
+	const usedSpace = useAppSelector(
+		(state) => state.userReducer.currentUser.usedSpace
+	);
+	const diskSpaceMemo = React.useMemo(() => {
+		diskSpace;
+	}, [diskSpace]);
+	const usedSpaceMemo = React.useMemo(() => {
+		usedSpace;
+	}, [usedSpace]);
 	const { files } = useAppSelector((state) => state.FileReducer);
 	const dispatch = useAppDispatch();
-	const getUsedPercent = (used: number, space: number) => {
-		return (used / space) * 100;
-	};
-
+	const getUsedPercent = React.useMemo(
+		() => (used: number, space: number) => {
+			return (used / space) * 100;
+		},
+		[diskSpace, usedSpace]
+	);
+	const sizeFormatMemoUsed = useMemo(() => sizeFormat(usedSpace), [usedSpace]);
+	const sizeFormatMemoSpace = useMemo(() => sizeFormat(diskSpace), [diskSpace]);
 	useEffect(() => {
 		dispatch(getUserSpaceThunk());
 	}, [files.length]);
@@ -25,15 +38,14 @@ export const DiskSpace = () => {
 				<div className={styles.progress}>
 					<Progress
 						percent={getUsedPercent(usedSpace, diskSpace)}
-						// percent={70}
 						showInfo={false}
 						strokeColor={"#fff"}
 					></Progress>
 				</div>
 				<div className={styles.space}>
-					{`${sizeFormat(usedSpace)} of ${sizeFormat(diskSpace)}`}
+					{`${sizeFormatMemoUsed} of ${sizeFormatMemoSpace}`}
 				</div>
 			</div>
 		</>
 	);
-};
+});

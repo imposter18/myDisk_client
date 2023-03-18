@@ -1,16 +1,9 @@
 .error {
-	// animation: 0.5s show ease-in;
 	position: absolute;
-	// transform: translateY(-50%);
 	animation: show 1s forwards;
-	color: red;
-	// animation-name: show;
-	// animation-duration: 2s;
-	// animation-iteration-count: 1;
-	// animation-direction: normal;
-	// animation-timing-function: ease-out;
-	// animation-fill-mode: forwards;
-	// animation-delay: 0s;
+	color: rgba(248, 24, 24, 0.952);
+	font-family: var(--main-font);
+	font-size: 13px;
 }
 
 @keyframes show {
@@ -29,19 +22,25 @@
 	}
 	// }
 }
-.btn {
+.closeBtn {
 	padding: 0;
 	border: none;
 	outline: none;
-	background-color: #fff;
+	background-color: var(--disk-bg-color);
 	i {
 		font-size: 22px;
 	}
 	&:hover {
 		i {
-			opacity: 0.7;
+			color: var(--closeBtn-hover-color);
 			cursor: pointer;
 		}
+	}
+}
+:global(.ant-form-item) {
+	input {
+		background-color: var(--search-bg-color);
+		color: var(--disk-font-content-color);
 	}
 }
 
@@ -54,7 +53,7 @@
 }
 .title {
 	margin: 10px;
-	color: black;
+	color: var(--disk-font-content-color);
 }
 .form {
 	margin: 12px auto 0 auto;

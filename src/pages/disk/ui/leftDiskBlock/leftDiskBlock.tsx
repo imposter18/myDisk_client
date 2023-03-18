@@ -10,13 +10,16 @@ import React, { useState } from "react";
 import * as styles from "./liftBlock.module.scss";
 
 interface Iprops {
-	fileuploadHandler: (files: any) => void;
+	fileuploadHandler?: (files: any) => void;
 }
 
-export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
-	const [visibleModal, setVisibleModal] = useState(false);
-	const { files, currentDir } = useAppSelector((state) => state.FileReducer);
+export const LeftDiskBlock = React.memo(({ fileuploadHandler }: Iprops) => {
 	const { isComponentVisible, setIsComponentVisible } = useComponentVisible();
+
+	// const { isComponentVisible, setIsComponentVisible } = React.useMemo(
+	// 	() => useComponentVisible(),
+	// 	[]
+	// );
 	const dispatch = useAppDispatch();
 
 	const inputUploadHandler = (event: any) => {
@@ -53,10 +56,6 @@ export const LeftBlock = ({ fileuploadHandler }: Iprops) => {
 				isComponentVisible={isComponentVisible}
 				setIsComponentVisible={setIsComponentVisible}
 			></ModalCreateDir>
-			{/* <CreateDir
-				visibleModal={visibleModal}
-				setVisibleModal={setVisibleModal}
-			></CreateDir> */}
 		</div>
 	);
-};
+});

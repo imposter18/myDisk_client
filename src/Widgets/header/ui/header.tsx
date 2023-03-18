@@ -12,20 +12,17 @@ import { LogoutBtn } from "@/Featurs/logoutBtn";
 import { SearchFiles } from "@/Featurs/searchFiles";
 import logo from "@/Shared/assets/img/logo/cloudLogo.svg";
 import logoutIcon from "@/Shared/assets/img/any/logout.svg";
-export const Header = memo(() => {
+export const Header = React.memo(() => {
 	const ref = useRef();
 	// const { isAuth } = useAppSelector((state) => state.userReducer);
 	// const { userName } = useAppSelector((state) => state.userReducer.currentUser);
 	const isAuth = useViewerIsAuth();
 	const user = useViewer();
 	const dispatch = useAppDispatch();
-	const logout = () => {
-		dispatch(logoutUser());
-	};
 
 	return (
 		<header className={styles.header}>
-			<div className={styles.headerContent} align="middle">
+			<div className={styles.headerContent}>
 				<div className={styles.leftBlock}>
 					<div className={styles.logo}>
 						{/* <i className="bi bi-disc-fill"></i> */}
@@ -43,9 +40,6 @@ export const Header = memo(() => {
 								<img src={logoutIcon} alt="logoutIcon" />
 								<span>Logout</span>
 							</LogoutBtn>
-							<div className={styles.themeItem}>
-								<span>Theme:</span>
-							</div>
 						</DropdownUserInfo>
 					) : (
 						<BtnBlock></BtnBlock>

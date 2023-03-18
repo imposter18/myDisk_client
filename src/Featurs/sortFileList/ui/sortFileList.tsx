@@ -43,12 +43,8 @@ const sortDerection = [
 	},
 ];
 
-export const SortFileList = () => {
+export const SortFileList = React.memo(() => {
 	const dispatch = useAppDispatch();
-	// const [sort, setSort] = useState({
-	// 	sort: "date",
-	// 	derection: "asc",
-	// });
 	const { sort, derection } = useAppSelector((state) => state.sortFileReducer);
 	const { ref, isComponentVisible, setIsComponentVisible } =
 		useComponentVisible();
@@ -59,7 +55,8 @@ export const SortFileList = () => {
 	useEffect(() => {
 		dispatch;
 	}, [sort]);
-
+	const sortDerectionMemo = React.useMemo(() => sortDerection, []);
+	const sortParamsMemo = React.useMemo(() => sortParams, []);
 	const sortUpdateHandler = (item: any) => {
 		dispatch(setSort(item.content));
 	};
@@ -84,7 +81,7 @@ export const SortFileList = () => {
 							}`}
 						></span>
 						<span className={styles.sortTitle}>
-							{sortParams.find((item) => item.content === sort).title}
+							{sortParamsMemo.find((item) => item.content === sort).title}
 						</span>
 						<span
 							className={`${
@@ -97,7 +94,7 @@ export const SortFileList = () => {
 					<div onClick={popupVisible} className={styles.sortPopup}>
 						<div className={styles.popupContent}>
 							<div className={styles.topBlock}>
-								{sortParams.map((item) => {
+								{sortParamsMemo.map((item) => {
 									return (
 										<div
 											key={item.id}
@@ -120,7 +117,7 @@ export const SortFileList = () => {
 							</div>
 							<div className={styles.outline}></div>
 							<div className={styles.bottomblock}>
-								{sortDerection.map((item) => {
+								{sortDerectionMemo.map((item) => {
 									return (
 										<div
 											key={item.id}
@@ -147,4 +144,4 @@ export const SortFileList = () => {
 			</div>
 		</>
 	);
-};
+});

@@ -5,19 +5,27 @@ import { useNavigate, useParams } from "react-router-dom";
 import { setSearchValue } from "../model";
 import * as styles from "./searchFiles.module.scss";
 
-export const SearchFiles = () => {
+export const SearchFiles = React.memo(() => {
+	const params = useParams();
+	let searchParams = params.search;
+	// const getSearchParams = (searchParams: any) => {
+	// 	if (!searchParams) {
+	// 		return "";
+	// 	}
+	// 	let initSearchValue = searchParams.split("=");
+	// 	return (initSearchValue = initSearchValue[initSearchValue.length - 1]);
+	// };
+
 	const [inputvalue, setInputvalue] = useState("");
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const params = useParams();
 
 	const onInputHandler = (e: any) => {
 		const value = e.target.value;
 		setInputvalue(value);
 		dispatch(setSearchValue(value));
-		// console.log(params, "params");
 		if (value) {
-			navigate(`/drive/search`);
+			navigate(`/drive/search`, { replace: false });
 		}
 		if (!value) {
 			navigate(`/drive/my-disk`);
@@ -25,11 +33,17 @@ export const SearchFiles = () => {
 	};
 
 	useEffect(() => {
+		if (!inputvalue) {
+			navigate(`/drive/my-disk`);
+			dispatch(setSearchValue(""));
+		}
+	}, []);
+	useEffect(() => {
 		if (params.folderId) {
 			setInputvalue("");
 			dispatch(setSearchValue(""));
 		}
-	}, [params]);
+	}, [params.folderId]);
 	const clearInputHandler = () => {
 		dispatch(setSearchValue(""));
 		setInputvalue("");
@@ -56,4 +70,4 @@ export const SearchFiles = () => {
 			</div>
 		</>
 	);
-};
+});

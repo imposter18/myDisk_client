@@ -8,11 +8,15 @@
 	border-radius: 19px;
 	border: none;
 	height: 28px;
-	width: 340px;
+	max-width: 340px;
+	width: 100vw;
 	padding: 4px 4px 5px 17px;
 	color: var(--disk-font-content-color);
+	transition: all 0.2s ease-out;
 	&:focus {
 		background-color: var(--search-focus-color);
+		max-width: 420px;
+		width: 100vw;
 		outline: none;
 		border: none;
 		.searchLogo {

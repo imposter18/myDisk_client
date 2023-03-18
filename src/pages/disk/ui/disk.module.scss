@@ -8,6 +8,7 @@
 
 .dropArea {
 	width: 97vw;
+	// height: calc(100vh - 130px);
 	height: calc(100vh - 130px);
 	margin: 20px auto;
 	border: dashed var(--btn-hover-border) 2px;
@@ -27,7 +28,8 @@
 	// box-shadow: 0 2px 4px rgb(58 66 75 / 20%);
 	display: flex;
 	flex-direction: row;
-	min-height: calc(100vh - 85px);
+	// min-height: calc(100vh - 85px);
+	min-height: 120vh;
 	// max-width: calc(100vw - 1);
 	max-width: 98vw;
 	width: 100%;
@@ -35,41 +37,4 @@
 	// box-shadow: 3px 2px 7px 3px rgba(34, 60, 80, 0.1);
 	// overflow: hidden;
 	// border-radius: 16px;
-}
-.rightBlock {
-	position: relative;
-	background-color: var(--disk-bg-color);
-	width: 100%;
-	padding: 8px 8px 40px 8px;
-	border-bottom-right-radius: 22px;
-	border-top-right-radius: 22px;
-}
-.topMenu {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.footerLinks {
-	color: var(--font-color);
-	text-decoration: none;
-	display: inline-block;
-
-	// text-align: end;
-	padding: 8px 14px;
-	position: absolute;
-	bottom: 1px;
-	right: 1px;
-	// display: flex;
-	// justify-content: flex-end;
-	// align-content: flex-end;
-
-	// float: right;
-
-	i {
-		margin-right: 8px;
-	}
-}
-.searchTitle {
-	font-family: var(--main-font);
-	margin: 20px auto 15px 20px;
 }

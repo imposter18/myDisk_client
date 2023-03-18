@@ -1,0 +1,10 @@
+.notGrup {
+	background-color: var(--select-bg-color);
+	background: var(--select-bg-color);
+	color: var(--font-color);
+}
+:global(.ant-message-notice .ant-message-notice-content) {
+	background-color: var(--select-bg-color);
+	background: var(--select-bg-color);
+	color: var(--font-color);
+}

@@ -1,11 +1,12 @@
 .content {
 	width: 400px;
-	background-color: #fff;
+	background-color: var(--disk-bg-color);
 	padding: 10px 10px 20px 10px;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
 	animation: animate-visible 0.1s linear;
+	box-shadow: 1px 1px 7px -7px rgba(255, 255, 255, 0.6);
 }
 
 .popup {

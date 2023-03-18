@@ -13,17 +13,24 @@
 	background-color: var(--select-bg-color);
 	box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 0 1px rgb(0 0 0 / 5%),
 		0 4px 6px 0 rgb(0 0 0 / 5%);
+	&:hover {
+		background-color: var(--selecr-hover-color);
+	}
 }
 .logo {
-	width: 20px;
-	height: 20px;
 	margin-right: 3px;
+	svg {
+		position: relative;
+		top: 1px;
+		width: 20px;
+		height: 20px;
+	}
 }
 
 .imgArrow {
 	margin: 0 4px;
-	width: 18px;
-	height: 18px;
+	width: 20px;
+	height: 20px;
 	&:before {
 		content: "";
 		mask: url("../../../Shared/assets/img/any/arrowTop.svg") no-repeat 0 0 /16px
@@ -60,10 +67,9 @@
 	right: 0px;
 	z-index: 999;
 	width: 150px;
-	// height: 200px;
 	box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 0 1px rgb(0 0 0 / 5%),
 		0 4px 6px 0 rgb(0 0 0 / 5%);
-	background-color: #fff;
+	background-color: var(--select-content-bg-color);
 	border-radius: 8px;
 	animation: visible-popup 0.05s linear forwards;
 }
@@ -85,14 +91,17 @@
 	text-align: left;
 	align-items: center;
 	display: flex;
+	color: var(--disk-font-content-color);
 	&:hover {
 		background-color: rgba(153, 147, 147, 0.2);
 	}
 }
 .popupItemImg {
-	width: 20px;
-	height: 20px;
 	margin-right: 6px;
+	svg {
+		width: 20px;
+		height: 20px;
+	}
 }
 .popupItemActive {
 	&::after {
@@ -100,7 +109,7 @@
 		mask: url("../../../Shared/assets/img/any/check.svg") no-repeat 0 0 /18px 27px;
 		width: 24px;
 		height: 24px;
-		background-color: black;
+		background-color: var(--disk-font-content-color);
 		position: absolute;
 		top: 4px;
 		right: 0;

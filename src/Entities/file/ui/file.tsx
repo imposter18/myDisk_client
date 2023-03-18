@@ -16,7 +16,7 @@ interface IProps {
 	onClick: any;
 }
 
-export const File = ({ file, onClick }: IProps) => {
+export const File = React.memo(({ file, onClick }: IProps) => {
 	const { ref, isComponentVisible, setIsComponentVisible, points, setPoints } =
 		useComponentVisible();
 	const dispatch = useAppDispatch();
@@ -85,4 +85,4 @@ export const File = ({ file, onClick }: IProps) => {
 			</div>
 		</>
 	);
-};
+});

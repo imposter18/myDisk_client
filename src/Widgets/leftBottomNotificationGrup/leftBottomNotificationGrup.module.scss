@@ -1,0 +1,22 @@
+.notGrup {
+	background-color: var(--select-bg-color);
+	background: var(--select-bg-color);
+	color: var(--font-color);
+	bottom: 0;
+}
+:global(.ant-notification-notice) {
+	background-color: var(--select-content-bg-color);
+	background: var(--select-content-bg-color);
+	color: var(--font-color);
+	:global(.ant-notification-notice-message) {
+		background-color: var(--select-content-bg-color);
+		background: var(--select-content-bg-color);
+		color: var(--font-color);
+	}
+	div {
+		color: var(--font-color);
+	}
+}
+:global(.ant-notification .ant-notification-bottomLeft) {
+	bottom: 0;
+}

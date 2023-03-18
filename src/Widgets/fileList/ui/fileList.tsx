@@ -58,7 +58,9 @@ export const FileList = () => {
 				<Empty
 					className={styles.empty}
 					description={
-						"Click the upload button or drag file to this area to upload"
+						searchValue
+							? "Nothing found"
+							: "Click the upload button or drag file to this area to upload"
 					}
 				/>
 			) : (

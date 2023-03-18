@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import * as styles from "./disk.module.scss";
-import { FileList } from "@/Widgets/fileList";
+
 // import { CreateDir } from "@/Widgets/createDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useViewer } from "@/Entities/viewer";
@@ -15,16 +15,16 @@ import { LeftBottomNotificationGrup } from "@/Widgets/leftBottomNotificationGrup
 import { notification, Space } from "antd";
 import { TopCenterNotificationGrup } from "@/Widgets/topCenterNotificationGrup";
 import { CastomBtn } from "@/Shared/ui/btn";
-import { LeftBlock } from "./leftBlock/leftBlock";
+import { LeftDiskBlock } from "./leftDiskBlock/LeftDiskBlock";
 import { ListSettings } from "@/Widgets/listSettings";
+import { RightDiskBlock } from "./rightBlock/rightBlock";
 
-export const DiskPage = () => {
+export const DiskPage = React.memo(() => {
 	const [dragEnter, setDragEnter] = useState(false);
 
-	const { files, currentDir } = useAppSelector((state) => state.FileReducer);
-	const { searchValue } = useAppSelector((state) => state.searchFilesReducer);
+	const { currentDir } = useAppSelector((state) => state.FileReducer);
+
 	const dispatch = useAppDispatch();
-	const user = useViewer();
 
 	const dragEnterHandler = (event: any) => {
 		// console.log("enter");
@@ -47,7 +47,7 @@ export const DiskPage = () => {
 		fileuploadHandler(files);
 		setDragEnter(false);
 	};
-	const fileuploadHandler = (files: any) => {
+	const fileuploadHandler = useCallback((files: any) => {
 		files.forEach((file: any) =>
 			dispatch(uploadFileThunk({ file, dirId: currentDir?._id })).then(
 				(res: any) => {
@@ -70,7 +70,7 @@ export const DiskPage = () => {
 				}
 			)
 		);
-	};
+	}, []);
 
 	return (
 		<>
@@ -81,36 +81,11 @@ export const DiskPage = () => {
 					onDragLeave={dragLeaveHandler}
 					onDragOver={dragEnterHandler}
 				>
-					{/* <AlertEmail user={user}></AlertEmail> */}
-
 					<div className={styles.disk}>
-						<LeftBlock fileuploadHandler={fileuploadHandler}></LeftBlock>
-						<div
-							onContextMenu={(event) => {
-								event.preventDefault();
-								event.stopPropagation();
-							}}
-							className={styles.rightBlock}
-						>
-							<div className={styles.topMenu}>
-								{searchValue ? (
-									<h2 className={styles.searchTitle}>Search</h2>
-								) : (
-									<Stack></Stack>
-								)}
-								{!searchValue && <ListSettings></ListSettings>}
-							</div>
-
-							<FileList></FileList>
-							<a
-								target="_blank"
-								href="https://github.com/imposter18/myDisk_client"
-								className={styles.footerLinks}
-							>
-								<i className="bi bi-github"></i>
-								GitHub
-							</a>
-						</div>
+						<LeftDiskBlock
+							fileuploadHandler={fileuploadHandler}
+						></LeftDiskBlock>
+						<RightDiskBlock></RightDiskBlock>
 					</div>
 					<div className={styles.marginBottom}></div>
 
@@ -124,11 +99,11 @@ export const DiskPage = () => {
 					onDragOver={dragEnterHandler}
 					onDrop={dropHandler}
 				>
-					Drop files here
+					Drag files here
 				</div>
 			)}
 			<LeftBottomNotificationGrup></LeftBottomNotificationGrup>
 			<TopCenterNotificationGrup></TopCenterNotificationGrup>
 		</>
 	);
-};
+});

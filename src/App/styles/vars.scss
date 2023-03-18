@@ -35,6 +35,7 @@
 	--disk-font-content-color: black;
 	--select-bg-color: #fff;
 	--select-content-bg-color: #fff;
+	--selecr-hover-color: rgba(245, 245, 245, 0.3);
 	--disk-menu-bg-color: hsla(0, 0%, 100%, 0.6);
 	--search-bg-color: hsla(0, 0%, 100%, 0.6);
 	--search-focus-color: hsla(0, 0%, 100%, 0.9);
@@ -42,6 +43,7 @@
 		0 4px 6px 0 rgb(0 0 0 / 5%);
 	--file-hover-color: rgba(153, 147, 147, 0.2);
 	--file-hover-active-color: rgba(153, 147, 147, 0.3);
+	--closeBtn-hover-color: rgb(97, 97, 97);
 }
 
 :root[data-theme="dark"] {
@@ -60,12 +62,14 @@
 	--disk-font-content-color: rgba(247, 247, 255, 0.9);
 	--select-bg-color: rgba(211, 211, 222, 0.15);
 	--select-content-bg-color: #2e2f34;
+	--selecr-hover-color: rgba(211, 211, 222, 0.18);
 	--disk-menu-bg-color: #232325;
 	--search-bg-color: rgba(211, 211, 222, 0.15);
 	--search-focus-color: rgba(0, 0, 0, 1);
 	--popup-box-shadow: 0 11px 14px -7px rgb(0 0 0 / 30%);
 	--file-hover-color: rgba(211, 211, 222, 0.12);
 	--file-hover-active-color: rgba(211, 211, 222, 0.16);
+	--closeBtn-hover-color: rgba(211, 211, 222, 0.3);
 
 	// --search-content-color:
 }
