@@ -3,9 +3,14 @@ import React, { useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import * as styles from "./dropdown.module.scss";
 import userAvatar from "@/Shared/assets/img/any/userAvatar.svg";
+import { IUser } from "@/Shared/Types/IUser";
 
-export const DropdownUserInfo = ({ user, children }: any) => {
-	const dispatch = useAppDispatch();
+interface IProps {
+	user: IUser;
+	children: JSX.Element;
+}
+
+export const DropdownUserInfo = ({ user, children }: IProps) => {
 	const ref = useRef();
 	const [open, setOpen] = useState(false);
 

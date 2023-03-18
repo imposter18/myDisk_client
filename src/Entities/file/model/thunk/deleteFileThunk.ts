@@ -10,9 +10,6 @@ interface IResponseError {
 	errprs: Array<string> | [];
 	message: string;
 }
-interface IReaponse {
-	message: string;
-}
 
 export const deleteFileThunk = createAsyncThunk<
 	IFileResponse,

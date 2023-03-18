@@ -5,7 +5,10 @@ import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { updateTheme } from "@/Shared/lib/theme";
 import { useTheme } from "@/Shared/lib/theme";
 
-export const Toggle = ({ className }: any) => {
+interface IProps {
+	className?: string;
+}
+export const Toggle = ({ className }: IProps) => {
 	const theme = useTheme();
 	const dispatch = useAppDispatch();
 

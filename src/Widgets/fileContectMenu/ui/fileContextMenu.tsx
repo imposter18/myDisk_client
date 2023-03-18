@@ -1,15 +1,15 @@
-import { deleteFileThunk, downloadFileHTTP } from "@/Entities/file";
+import React, { Ref } from "react";
+import * as styles from "./fileContextMenu.module.scss";
 import { DeleteFileBtn } from "@/Featurs/deleteFileBtn";
 import { DownloadFileBtn } from "@/Featurs/downloadFileBtn";
 import { useAppDispatch } from "@/Shared/lib/hooks/redux";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
-import React from "react";
-import * as styles from "./fileContextMenu.module.scss";
+
 interface IProps {
 	file: IFileResponse;
 	top: number;
 	left: number;
-	menuRef: any;
+	menuRef: Ref<HTMLDivElement>;
 }
 export const FileContextMenu = ({ file, top, left, menuRef }: IProps) => {
 	const dispatch = useAppDispatch();

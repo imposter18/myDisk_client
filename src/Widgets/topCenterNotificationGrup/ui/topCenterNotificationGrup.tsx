@@ -19,7 +19,7 @@ export const TopCenterNotificationGrup = () => {
 			content: `Folder «${folderName}» has been created`,
 			// className={`${styles.global}`},
 			className: "custom-class",
-			duration: 0,
+			// duration: 0,
 		});
 	};
 	const deleteNot = (deletedFile: string) => {
@@ -27,12 +27,12 @@ export const TopCenterNotificationGrup = () => {
 			key: "deleteNot",
 			type: "loading",
 			content: "Deleting...",
-			duration: 0,
+			// duration: 0,
 		});
 	};
 	const succesDel = (status: string) => {
 		messageApi.success({
-			content: `«${deletedFile}» deleted success`,
+			content: `«${deletedFile}» deleted`,
 			// description: ,
 			// placement: "bottomLeft",
 		});

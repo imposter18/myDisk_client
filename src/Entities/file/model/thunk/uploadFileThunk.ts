@@ -1,10 +1,7 @@
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosProgressEvent, AxiosResponse } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getFileHTTP } from "../../api/getFileHTTP";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { uploadFileHTTP } from "../../api/uploadFile";
-import { useAppDispatch } from "@/Shared/lib/hooks/redux";
-import { uuid } from "uuidv4";
 import {
 	addUploadFile,
 	changeUploadFile,
@@ -23,9 +20,6 @@ export interface IUploadResponseError {
 interface IUploadProps {
 	file: File;
 	dirId: string;
-}
-interface IErrr {
-	response: AxiosResponse;
 }
 
 export const uploadFileThunk = createAsyncThunk<
@@ -58,7 +52,7 @@ export const uploadFileThunk = createAsyncThunk<
 			dispatch(addUploadFile(uploadFile));
 
 			const progressConfig = {
-				onUploadProgress: (progressEvent: any) => {
+				onUploadProgress: (progressEvent: AxiosProgressEvent) => {
 					let progress = Math.round(
 						(progressEvent.loaded / progressEvent.total) * 100
 					);

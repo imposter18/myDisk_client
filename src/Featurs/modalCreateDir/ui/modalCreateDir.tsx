@@ -1,17 +1,19 @@
+import React, { useEffect, useState } from "react";
+import * as styles from "./modalCreateDir.module.scss";
 import { CreateDir } from "@/Entities/file/model/thunk/CreateDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { Button, Form, Input } from "antd";
-import React, { useEffect, useState } from "react";
-import * as styles from "./modalCreateDir.module.scss";
 import { Modal } from "@/Shared/ui/modal";
 import { useParams } from "react-router-dom";
 import { setVisibleNotCreateDir } from "../modal/store/createDirReducer";
-import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 
-interface props {}
+interface props {
+	isComponentVisible: boolean;
+	setIsComponentVisible: (arg: boolean) => void;
+}
 
 export const ModalCreateDir = React.memo(
-	({ isComponentVisible, setIsComponentVisible }: any) => {
+	({ isComponentVisible, setIsComponentVisible }: props) => {
 		const params = useParams();
 		const [createError, setCreateError] = useState(false);
 
@@ -62,7 +64,6 @@ export const ModalCreateDir = React.memo(
 						name="basic"
 						style={{ maxWidth: 600 }}
 						onFinish={onFinish}
-						// onFinishFailed={onFinishFailed}
 						autoComplete="off"
 						initialValues={{ folderName: "New folder" }}
 					>

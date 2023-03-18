@@ -15,7 +15,6 @@ export const FileList = () => {
 	const { searchValue } = useAppSelector((state) => state.searchFilesReducer);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const location = useLocation();
 	const params = useParams();
 
 	useEffect(() => {
@@ -60,7 +59,7 @@ export const FileList = () => {
 					description={
 						searchValue
 							? "Nothing found"
-							: "Click the upload button or drag file to this area to upload"
+							: "Click the upload or drag file to this area to upload"
 					}
 				/>
 			) : (

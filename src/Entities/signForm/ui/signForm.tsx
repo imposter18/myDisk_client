@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import * as styles from "./signForm.module.scss";
 import { useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 
-export const SignForm = ({ children }) => {
+type IProps = {
+	children: JSX.Element;
+};
+export const SignForm = ({ children }: IProps) => {
 	const navigate = useNavigate();
 	const { isAuth, isLoaging } = useAppSelector((state) => state.userReducer);
 	const { userName } = useAppSelector((state) => state.userReducer.currentUser);

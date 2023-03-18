@@ -12,12 +12,7 @@ export const DiskSpace = React.memo(() => {
 	const usedSpace = useAppSelector(
 		(state) => state.userReducer.currentUser.usedSpace
 	);
-	const diskSpaceMemo = React.useMemo(() => {
-		diskSpace;
-	}, [diskSpace]);
-	const usedSpaceMemo = React.useMemo(() => {
-		usedSpace;
-	}, [usedSpace]);
+
 	const { files } = useAppSelector((state) => state.FileReducer);
 	const dispatch = useAppDispatch();
 	const getUsedPercent = React.useMemo(

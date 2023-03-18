@@ -7,20 +7,11 @@ import * as styles from "./searchFiles.module.scss";
 
 export const SearchFiles = React.memo(() => {
 	const params = useParams();
-	let searchParams = params.search;
-	// const getSearchParams = (searchParams: any) => {
-	// 	if (!searchParams) {
-	// 		return "";
-	// 	}
-	// 	let initSearchValue = searchParams.split("=");
-	// 	return (initSearchValue = initSearchValue[initSearchValue.length - 1]);
-	// };
-
 	const [inputvalue, setInputvalue] = useState("");
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const onInputHandler = (e: any) => {
+	const onInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		setInputvalue(value);
 		dispatch(setSearchValue(value));

@@ -7,11 +7,6 @@
 }
 
 @keyframes show {
-	// from {
-	// 	opacity: 0;
-	// }
-	// to {
-	// 	opacity: 1;
 	0% {
 		opacity: 0;
 		transform: translateY(-50%);
@@ -20,7 +15,6 @@
 		transform: translateY(0);
 		opacity: 1;
 	}
-	// }
 }
 .closeBtn {
 	padding: 0;

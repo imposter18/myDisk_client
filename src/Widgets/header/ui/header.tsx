@@ -13,12 +13,8 @@ import { SearchFiles } from "@/Featurs/searchFiles";
 import logo from "@/Shared/assets/img/logo/cloudLogo.svg";
 import logoutIcon from "@/Shared/assets/img/any/logout.svg";
 export const Header = React.memo(() => {
-	const ref = useRef();
-	// const { isAuth } = useAppSelector((state) => state.userReducer);
-	// const { userName } = useAppSelector((state) => state.userReducer.currentUser);
 	const isAuth = useViewerIsAuth();
 	const user = useViewer();
-	const dispatch = useAppDispatch();
 
 	return (
 		<header className={styles.header}>

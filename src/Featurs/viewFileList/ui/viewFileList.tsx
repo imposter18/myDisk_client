@@ -1,16 +1,13 @@
 import { CastomBtn } from "@/Shared/ui/btn";
 import React from "react";
 import * as styles from "./viewFileList.module.scss";
-import arrowTopIcon from "@/Shared/assets/img/any/arrowTop.svg";
-import listIcon from "@/Shared/assets/img/FileViewIcons/list.svg";
-import gridMiddleIcon from "@/Shared/assets/img/FileViewIcons/gridMiddle.svg";
-import gridLargeIcon from "@/Shared/assets/img/FileViewIcons/gridLarge.svg";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { setView } from "../model";
 import { ListIconSvg } from "@/Shared/assets/img/FileViewIcons/list";
 import { GridMiddleIconSvg } from "@/Shared/assets/img/FileViewIcons/gridMiddle";
 import { GridLargeIconSvg } from "@/Shared/assets/img/FileViewIcons/gridLarge";
+import { IViewVariant } from "../model/types/types";
 
 const viewVariant = [
 	{
@@ -35,7 +32,7 @@ export const ViewFileList = () => {
 		(state) => state.viewFileListReducer
 	);
 
-	const changeViewHadler = (item: any) => {
+	const changeViewHadler = (item: IViewVariant) => {
 		dispatch(setView(item.title));
 	};
 	const componentVisibleHandler = () => {
@@ -49,19 +46,6 @@ export const ViewFileList = () => {
 						<div className={styles.logo}>
 							{viewVariant.find((item) => item.title === viewType).icon}
 						</div>
-
-						{/* <img
-							src=
-							className={styles.logo}
-							alt="preview"
-						/> */}
-						{/* <img
-							src={arrowTopIcon}
-							className={`${styles.arrow} ${
-								isComponentVisible ? styles.arrowRotete : null
-							}`}
-							alt="arrow"
-						/> */}
 						<span
 							className={`${
 								isComponentVisible ? styles.imgArrowRotateDown : styles.imgArrow

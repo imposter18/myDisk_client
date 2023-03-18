@@ -6,7 +6,7 @@ import * as styles from "./downloadFile.module.scss";
 
 interface Iprops {
 	file: IFileResponse;
-	className: any;
+	className: string;
 }
 
 export const DownloadFileBtn = ({ file, className }: Iprops) => {

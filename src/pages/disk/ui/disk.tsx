@@ -1,22 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import * as styles from "./disk.module.scss";
-
-// import { CreateDir } from "@/Widgets/createDir";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
-import { useViewer } from "@/Entities/viewer";
-
 import { uploadFileThunk } from "@/Entities/file/model/thunk/uploadFileThunk";
 import { Uploader } from "@/Widgets/uploader";
-import { Button, Empty } from "antd";
-import { Stack } from "@/Widgets/DirStack";
 import { changeUploadStatus } from "@/Widgets/uploader/model/store/uploadReducer";
-import { AxiosError, AxiosResponse } from "axios";
 import { LeftBottomNotificationGrup } from "@/Widgets/leftBottomNotificationGrup/leftBottomNotificationGrup";
-import { notification, Space } from "antd";
 import { TopCenterNotificationGrup } from "@/Widgets/topCenterNotificationGrup";
-import { CastomBtn } from "@/Shared/ui/btn";
 import { LeftDiskBlock } from "./leftDiskBlock/LeftDiskBlock";
-import { ListSettings } from "@/Widgets/listSettings";
 import { RightDiskBlock } from "./rightBlock/rightBlock";
 
 export const DiskPage = React.memo(() => {
@@ -26,51 +16,55 @@ export const DiskPage = React.memo(() => {
 
 	const dispatch = useAppDispatch();
 
-	const dragEnterHandler = (event: any) => {
-		// console.log("enter");
+	const dragEnterHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
 		setDragEnter(true);
 	};
-	const dragLeaveHandler = (event: any) => {
+	const dragLeaveHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
 		setDragEnter(false);
 	};
-	const dropHandler = (event: any) => {
+	const dropHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
-		let files = [...event.dataTransfer.files];
-		// files.forEach((file) =>
-		// 	dispatch(uploadFileThunk({ file, dirId: currentDir?._id }))
-		// );
+		let files = event.dataTransfer.files;
+		console.log(files);
 		fileuploadHandler(files);
 		setDragEnter(false);
 	};
-	const fileuploadHandler = useCallback((files: any) => {
-		files.forEach((file: any) =>
-			dispatch(uploadFileThunk({ file, dirId: currentDir?._id })).then(
-				(res: any) => {
-					if (res.meta.requestStatus === "fulfilled") {
-						dispatch(
-							changeUploadStatus({
-								uploadId: res.payload.uploadId,
-								status: "success",
-							})
-						);
+	const fileuploadHandler = useCallback(
+		(files: File[] | FileList) => {
+			Array.from(files).forEach((file: File) =>
+				dispatch(uploadFileThunk({ file, dirId: currentDir?._id })).then(
+					// тут без any никак
+					(res: any) => {
+						if (res.meta.requestStatus === "fulfilled") {
+							dispatch(
+								changeUploadStatus({
+									uploadId: res.payload.uploadId,
+									status: "success",
+								})
+							);
+						}
+						if (res.meta.requestStatus === "rejected") {
+							if (res.payload.response.data.message.data.uploadId) {
+								dispatch(
+									changeUploadStatus({
+										uploadId:
+											res.payload?.response?.data?.message?.data.uploadId,
+										status: "exception",
+									})
+								);
+							}
+						}
 					}
-					if (res.meta.requestStatus === "rejected") {
-						dispatch(
-							changeUploadStatus({
-								uploadId: res.payload?.response?.data?.message?.data.uploadId,
-								status: "exception",
-							})
-						);
-					}
-				}
-			)
-		);
-	}, []);
+				)
+			);
+		},
+		[currentDir]
+	);
 
 	return (
 		<>

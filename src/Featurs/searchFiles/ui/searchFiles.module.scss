@@ -22,6 +22,12 @@
 		.searchLogo {
 			background-color: black;
 		}
+		&:hover {
+			background-color: var(--search-focus-hover-color);
+		}
+	}
+	&:hover {
+		background-color: var(--search-hover-color);
 	}
 }
 .searchInput {

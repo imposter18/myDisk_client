@@ -11,7 +11,6 @@ export const Stack = () => {
 	const { stack } = useAppSelector((state) => state.stackReducer);
 	const currentDir = useAppSelector((state) => state.FileReducer.currentDir);
 	const dispatch = useAppDispatch();
-	// console.log(params, "params11111");
 	useEffect(() => {
 		if (params.folderId) {
 			dispatch(getDirStackThunk(params.folderId));

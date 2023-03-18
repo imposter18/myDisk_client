@@ -17,7 +17,6 @@ export interface IUploadError {
 export interface IinitialState {
 	files: IFileResponse[];
 	currentDir: IFileResponse;
-	// diskStack: string[];
 	isLoaging: boolean;
 	isLoagingDelete: boolean;
 	isLoadingCreateDir: boolean;
@@ -42,18 +41,6 @@ export const FileSlice = createSlice({
 		setCurrentDir(state, action) {
 			state.currentDir = action.payload;
 		},
-		// pushToStack(state, action) {
-		// 	console.log(action, "action");
-		// 	state.diskStack = [...state.diskStack, action.payload];
-		// 	// state.diskStack.push(action.payload);
-		// 	console.log(state.diskStack, "state.diskStack");
-		// },
-		// popFromStack(state) {
-		// 	// console.log(action, "action");
-		// 	state.diskStack = state.diskStack.slice(0, state.diskStack.length - 1);
-		// 	// state.diskStack.push(action.payload);
-		// 	console.log(state.diskStack, "state.diskStack");
-		// },
 	},
 	extraReducers: (builder) => {
 		getFileAction(builder);

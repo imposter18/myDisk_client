@@ -1,11 +1,10 @@
-import { CastomBtn } from "@/Shared/ui/btn";
 import React, { useEffect, useState } from "react";
 import * as styles from "./sortFileList.module.scss";
-import sortDesc from "@/Shared/assets/img/any/sortDesc.svg";
-import arrowTop from "@/Shared/assets/img/any/arrowTop.svg";
+import { CastomBtn } from "@/Shared/ui/btn";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { setDerection, setSort } from "../model";
+import { ISortItem } from "../model/types/types";
 
 const sortParams = [
 	{
@@ -57,10 +56,10 @@ export const SortFileList = React.memo(() => {
 	}, [sort]);
 	const sortDerectionMemo = React.useMemo(() => sortDerection, []);
 	const sortParamsMemo = React.useMemo(() => sortParams, []);
-	const sortUpdateHandler = (item: any) => {
+	const sortUpdateHandler = (item: ISortItem) => {
 		dispatch(setSort(item.content));
 	};
-	const derectionUpdateHandler = (item: any) => {
+	const derectionUpdateHandler = (item: ISortItem) => {
 		dispatch(setDerection(item.content));
 	};
 	return (
@@ -68,13 +67,6 @@ export const SortFileList = React.memo(() => {
 			<div ref={ref} className={styles.sortFileList}>
 				<div>
 					<CastomBtn onClick={popupVisible} className={styles.btn}>
-						{/* <img
-							src={sortDesc}
-							className={`${styles.sortLogo} ${
-								derection === "desc" ? styles.sortLogoAsc : null
-							}`}
-							alt="sortDesc"
-						/> */}
 						<span
 							className={` ${
 								derection === "desc" ? styles.sortLogoDesc : styles.sortLogoAsc
@@ -98,12 +90,6 @@ export const SortFileList = React.memo(() => {
 									return (
 										<div
 											key={item.id}
-											// onClick={() =>
-											// 	setSort((prevState) => ({
-											// 		sort: item.content,
-											// 		derection: prevState.derection,
-											// 	}))
-											// }
 											onClick={() => sortUpdateHandler(item)}
 											className={`${styles.popupItem} ${
 												sort == item.content ? styles.sortActive : ""
@@ -124,12 +110,6 @@ export const SortFileList = React.memo(() => {
 											className={`${styles.popupItem} ${
 												derection == item.content ? styles.sortActive : ""
 											}`}
-											// onClick={() =>
-											// 	setSort((prevState) => ({
-											// 		sort: prevState.sort,
-											// 		derection: item.content,
-											// 	}))
-											// }
 											onClick={() => derectionUpdateHandler(item)}
 										>
 											<span></span>

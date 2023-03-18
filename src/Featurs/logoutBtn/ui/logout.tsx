@@ -4,7 +4,12 @@ import * as styles from "./logout.module.scss";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { logoutUser } from "@/Entities/viewer";
 
-export const LogoutBtn = ({ children, className, ...props }: any) => {
+interface IProps {
+	className: string;
+	children: JSX.Element | JSX.Element[];
+}
+
+export const LogoutBtn = ({ children, className }: IProps) => {
 	const dispatch = useAppDispatch();
 	const logout = () => {
 		dispatch(logoutUser());

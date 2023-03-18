@@ -8,7 +8,6 @@ import {
 	useViewerIsFirsLoadind,
 } from "@/Entities/viewer";
 import { useViewerIsLoadind } from "@/Entities/viewer";
-import { PopupForStatus } from "@/Shared/ui/popupForStatus";
 
 export const LoginForm = () => {
 	const [error, setError] = useState(false);
@@ -28,29 +27,15 @@ export const LoginForm = () => {
 			if (res.meta.requestStatus === "rejected") setError(true);
 		});
 	};
-	const onFinishFailed = (errorInfo: any) => {
-		// console.log("Failed:", errorInfo);
-	};
-	const onValuesChange = (value: any) => {
-		// console.log(value);
-	};
 
 	return (
 		<>
-			{/* {error && (
-				<PopupForStatus
-					messageProps={errorMessage}
-					typeProps="error"
-				></PopupForStatus>
-			)} */}
 			<Form
 				className={styles.form}
 				name="basic"
 				labelCol={{ span: 4 }}
 				initialValues={{ remember: true }}
 				onFinish={onFinish}
-				onFinishFailed={onFinishFailed}
-				onValuesChange={onValuesChange}
 				autoComplete="on"
 			>
 				<Form.Item

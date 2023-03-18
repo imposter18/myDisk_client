@@ -10,20 +10,15 @@ import React, { useState } from "react";
 import * as styles from "./liftBlock.module.scss";
 
 interface Iprops {
-	fileuploadHandler?: (files: any) => void;
+	fileuploadHandler: (files: File[] | FileList) => void;
 }
 
 export const LeftDiskBlock = React.memo(({ fileuploadHandler }: Iprops) => {
 	const { isComponentVisible, setIsComponentVisible } = useComponentVisible();
 
-	// const { isComponentVisible, setIsComponentVisible } = React.useMemo(
-	// 	() => useComponentVisible(),
-	// 	[]
-	// );
-	const dispatch = useAppDispatch();
-
-	const inputUploadHandler = (event: any) => {
-		const files = [...event.target.files];
+	const inputUploadHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		// const files = [...event.target.files]; ts ругается
+		const files = event.target.files;
 		const inputClear = document.getElementById("upload") as HTMLInputElement;
 		inputClear.value = "";
 		fileuploadHandler(files);
@@ -35,13 +30,12 @@ export const LeftDiskBlock = React.memo(({ fileuploadHandler }: Iprops) => {
 				<label className={styles.lable} htmlFor="upload">
 					<CastomBtn className={styles.lableBtn} content={"Upload"}></CastomBtn>
 				</label>
-
 				<input
+					id="upload"
 					multiple={true}
 					onChange={(event) => inputUploadHandler(event)}
 					className={styles.input}
 					type="file"
-					id="upload"
 				></input>
 				<CastomBtn
 					onClick={() => setIsComponentVisible(true)}
