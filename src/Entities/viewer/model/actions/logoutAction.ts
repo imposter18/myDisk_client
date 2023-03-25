@@ -13,6 +13,7 @@ export function logoutAction(builder: ActionReducerMapBuilder<IinitialState>) {
 		state.isLoaging = false;
 		state.isAuth = false;
 		state.currentUser = {} as IUser;
+		state.error = null;
 	});
 	builder.addCase(logoutUser.rejected, (state, action) => {
 		state.isLoaging = false;

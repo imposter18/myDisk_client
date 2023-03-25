@@ -10,39 +10,44 @@ import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { sizeFormat } from "@/Shared/lib/helpers/sizeFormat";
 import moment from "moment";
+import { returnFileExtensionsIcon } from "@/Shared/lib/helpers/returnFileExtensionsIcon";
 
 interface IProps {
 	file: IFileResponse;
-	onClick: any;
+	onClick: (arg: IFileResponse) => void;
 }
 
 export const File = React.memo(({ file, onClick }: IProps) => {
 	const { ref, isComponentVisible, setIsComponentVisible, points, setPoints } =
 		useComponentVisible();
-	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-	const location = useLocation();
-	const params = useParams();
-	// console.log(params, "params");
-	const { currentDir } = useAppSelector((state) => state.FileReducer);
 	const { id } = useAppSelector((state) => state.userReducer.currentUser);
 
 	const contextnMenuHandler = (
 		event: React.MouseEvent<HTMLDivElement> | any
 	) => {
+		// nativeEvent устарело!!!
 		event.stopPropagation();
 		event.preventDefault();
 		setIsComponentVisible(true);
-		// console.log(event, "event");
-		// nativeEvent устарело!!!
+
 		setPoints({
 			x: event.nativeEvent.layerX,
 			y: event.nativeEvent.layerY,
 		});
 	};
+	const preventDragHandler = (e: React.DragEvent<HTMLImageElement>) => {
+		e.preventDefault();
+	};
 	const setImg = () => {
 		if (file.type === "dir") {
-			return <img src={folder} alt="logo" className={styles.logo}></img>;
+			return (
+				<img
+					onDragStart={preventDragHandler}
+					src={folder}
+					alt="logo"
+					className={styles.logo}
+				></img>
+			);
 		}
 		if (file.type === "jpg" || file.type === "png") {
 			return (
@@ -50,10 +55,18 @@ export const File = React.memo(({ file, onClick }: IProps) => {
 					src={`http://localhost:5000/api/files/${id}/${file.path}`}
 					alt="logo"
 					className={styles.img}
+					onDragStart={preventDragHandler}
 				></img>
 			);
 		} else {
-			return <img src={fileEarmark} alt="logo" className={styles.logo}></img>;
+			return (
+				<img
+					src={returnFileExtensionsIcon(file.type)}
+					alt="logo"
+					className={styles.logo}
+					onDragStart={preventDragHandler}
+				></img>
+			);
 		}
 	};
 
@@ -74,14 +87,15 @@ export const File = React.memo(({ file, onClick }: IProps) => {
 				<div className={styles.size}>
 					{file.type !== "dir" ? sizeFormat(file.size) : ""}
 				</div>
-				{isComponentVisible && (
-					<FileContextMenu
-						menuRef={ref}
-						top={points.y}
-						left={points.x}
-						file={file}
-					></FileContextMenu>
-				)}
+
+				<FileContextMenu
+					setContextMenuVisible={setIsComponentVisible}
+					isContextMenuVisible={isComponentVisible}
+					menuRef={ref}
+					top={points.y}
+					left={points.x}
+					file={file}
+				></FileContextMenu>
 			</div>
 		</>
 	);

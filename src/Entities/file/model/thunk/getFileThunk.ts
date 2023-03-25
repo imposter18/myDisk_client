@@ -1,13 +1,9 @@
 import { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getFileHTTP } from "../../api/getFileHTTP";
-import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { IGetFiles } from "../types/getFiles";
+import { IResponseErrorFile } from "../types/responsError";
 
-interface IResponseError {
-	errprs: Array<string> | [];
-	message: string;
-}
 export interface IGetFileProps {
 	search?: string;
 	currentDir: string;
@@ -15,10 +11,10 @@ export interface IGetFileProps {
 	derection: string;
 }
 
-export const getFiles = createAsyncThunk<
+export const getFileThunk = createAsyncThunk<
 	IGetFiles,
 	IGetFileProps,
-	{ rejectValue: AxiosError<IResponseError> }
+	{ rejectValue: AxiosError<IResponseErrorFile> }
 >("file/getFile", async function (props, { rejectWithValue }) {
 	try {
 		const res = await getFileHTTP(props);

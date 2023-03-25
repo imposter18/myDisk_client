@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import React, { useEffect } from "react";
 import * as styles from "./fileList.module.scss";
 import { File, setCurrentDir } from "@/Entities/file";
-import { getFiles } from "../../../Entities/file/model/thunk/getFile";
+import { getFileThunk } from "../../../Entities/file/model/thunk/getFileThunk";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Empty, Spin } from "antd";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
@@ -20,29 +20,34 @@ export const FileList = () => {
 	useEffect(() => {
 		if (params.folderId) {
 			dispatch(
-				getFiles({
+				getFileThunk({
 					currentDir: params.folderId,
 					sort,
 					derection,
 					search: searchValue,
 				})
 			);
-			// dispatch(setCurrentDir(null))
 		}
 		if (!params.folderId) {
 			dispatch(
-				getFiles({ currentDir: null, sort, derection, search: searchValue })
+				getFileThunk({ currentDir: null, sort, derection, search: searchValue })
 			);
-			dispatch(
-				setCurrentDir({
-					currentDir: null,
-					sort,
-					derection,
-					search: searchValue,
-				})
-			);
+			// странный код не увенер что это надо
+			// dispatch(
+			// 	setCurrentDir({
+			// 		currentDir: null,
+			// 		sort,
+			// 		derection,
+			// 		search: searchValue,
+			// 	})
+			// );
 		}
 	}, [params.folderId, sort, derection, searchValue]);
+	// useEffect(() => {
+	// 	if (!currentDir) {
+	// 		navigate(`/drive/my-disk`);
+	// 	}
+	// }, [currentDir]);
 
 	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {

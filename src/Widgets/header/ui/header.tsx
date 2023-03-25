@@ -33,7 +33,8 @@ export const Header = React.memo(() => {
 					{isAuth ? (
 						<DropdownUserInfo user={user}>
 							<LogoutBtn className={styles.logoutBtn}>
-								<img src={logoutIcon} alt="logoutIcon" />
+								{/* <img src={logoutIcon} alt="logoutIcon" /> */}
+								<i className="bi bi-box-arrow-left"></i>
 								<span>Logout</span>
 							</LogoutBtn>
 						</DropdownUserInfo>

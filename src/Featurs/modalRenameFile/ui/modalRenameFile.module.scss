@@ -1,0 +1,58 @@
+.error {
+	position: absolute;
+	animation: show 1s forwards;
+	color: rgba(248, 24, 24, 0.952);
+	font-family: var(--main-font);
+	font-size: 13px;
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+.closeBtn {
+	padding: 0;
+	border: none;
+	outline: none;
+	background-color: var(--disk-bg-color);
+	i {
+		font-size: 22px;
+	}
+	&:hover {
+		i {
+			color: var(--closeBtn-hover-color);
+			cursor: pointer;
+		}
+	}
+}
+:global(.ant-form-item) {
+	input {
+		background-color: var(--search-bg-color);
+		color: var(--disk-font-content-color);
+	}
+}
+
+.create {
+	align-self: flex-end;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+.title {
+	margin: 10px;
+	color: var(--disk-font-content-color);
+}
+.form {
+	margin: 12px auto 0 auto;
+	width: 90%;
+	button {
+		float: right;
+	}
+}

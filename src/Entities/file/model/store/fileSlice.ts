@@ -1,18 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFiles } from "@/Entities/file/model/thunk/getFile";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
-import { getFileAction } from "@/Entities/file/model/actions/getFiles";
-import { createDirAction } from "../actions/createDir";
+import { getFileAction } from "@/Entities/file/model/actions/getFilesAction";
+import { createDirAction } from "../actions/createDirAction";
 import { uploadFileAction } from "../actions/uploadFileAction";
 import { deleteFileAction } from "../actions/deleteFileAction";
-
-export interface IUploadError {
-	message: string;
-	data?: {
-		fileName: string;
-		uploadId: string;
-	};
-}
+import { renameFileAction } from "../actions/renameFileAction";
+import { IResponseErrorFile } from "../types/responsError";
+import { IResponseErrorFileUpload } from "../types/IResponseErrorFileUpload";
 
 export interface IinitialState {
 	files: IFileResponse[];
@@ -20,9 +14,25 @@ export interface IinitialState {
 	isLoaging: boolean;
 	isLoagingDelete: boolean;
 	isLoadingCreateDir: boolean;
+	isLoadingRename: boolean;
 	error: string | null | undefined;
-	uploadError: IUploadError;
+	uploadError: IResponseErrorFileUpload;
+	renameError: IResponseErrorFile;
+	createDirError: IResponseErrorFile;
+	deleteError: IResponseErrorFile;
 }
+export const InitialError: IResponseErrorFile = {
+	message: "",
+	error: [],
+};
+export const InitialErrorUpload: IResponseErrorFileUpload = {
+	message: "",
+	error: [],
+	data: {
+		fileName: "",
+		uploadId: "",
+	},
+};
 
 const initialState: IinitialState = {
 	files: [],
@@ -30,8 +40,12 @@ const initialState: IinitialState = {
 	isLoaging: false,
 	isLoagingDelete: false,
 	isLoadingCreateDir: false,
+	isLoadingRename: false,
 	error: null,
-	uploadError: null,
+	uploadError: InitialErrorUpload,
+	renameError: InitialError,
+	createDirError: InitialError,
+	deleteError: InitialError,
 };
 
 export const FileSlice = createSlice({
@@ -41,15 +55,19 @@ export const FileSlice = createSlice({
 		setCurrentDir(state, action) {
 			state.currentDir = action.payload;
 		},
+		clearFileStore(state) {
+			state = initialState;
+		},
 	},
 	extraReducers: (builder) => {
 		getFileAction(builder);
 		createDirAction(builder);
 		uploadFileAction(builder);
 		deleteFileAction(builder);
+		renameFileAction(builder);
 	},
 });
 
-export const { setCurrentDir } = FileSlice.actions;
+export const { setCurrentDir, clearFileStore } = FileSlice.actions;
 
 export const FileReducer = FileSlice.reducer;

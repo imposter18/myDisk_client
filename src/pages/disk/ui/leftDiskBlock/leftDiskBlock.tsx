@@ -1,12 +1,8 @@
-import { uploadFileThunk } from "@/Entities/file";
 import { ModalCreateDir } from "@/Featurs/modalCreateDir";
-import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { useComponentVisible } from "@/Shared/lib/hooks/useComponentVisible";
 import { CastomBtn } from "@/Shared/ui/btn";
 import { DiskSpace } from "@/Widgets/diskSpace";
-// import { CreateDir } from "@/Widgets/createDir";
-import { changeUploadStatus } from "@/Widgets/uploader";
-import React, { useState } from "react";
+import React from "react";
 import * as styles from "./liftBlock.module.scss";
 
 interface Iprops {
@@ -17,11 +13,14 @@ export const LeftDiskBlock = React.memo(({ fileuploadHandler }: Iprops) => {
 	const { isComponentVisible, setIsComponentVisible } = useComponentVisible();
 
 	const inputUploadHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		// const files = [...event.target.files]; ts ругается
+		"ts ругается";
 		const files = event.target.files;
+		// const files = [...event.target.files];
+
+		console.log(files, "After an extension change the file may refuse to open");
+		fileuploadHandler(files);
 		const inputClear = document.getElementById("upload") as HTMLInputElement;
 		inputClear.value = "";
-		fileuploadHandler(files);
 	};
 
 	return (

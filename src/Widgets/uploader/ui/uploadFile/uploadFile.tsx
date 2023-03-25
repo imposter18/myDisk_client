@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import * as styles from "./uploadFile.module.scss";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
-import { useAppDispatch } from "@/Shared/lib/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { DiskPage } from "@/Pages/disk";
 import { removeUploadFile } from "../../model/store/uploadReducer";
 import folder from "@/Shared/assets/img/extensions/folder.svg";
 import fileEarmark from "@/Shared/assets/img/extensions/fileEarmark.svg";
 import { Progress } from "antd";
+import { returnFileExtensionsIcon } from "@/Shared/lib/helpers/returnFileExtensionsIcon";
+import { IFileToUpload } from "../../model/types/types";
 
 interface props {
-	file: {
-		uploadId: string;
-		name: string;
-		progress: number;
-		type: string;
-		status: "normal" | "exception" | "active" | "success";
-	};
+	file: IFileToUpload;
 }
 
 export const UploadFile = ({ file }: props) => {
+	const { files } = useAppSelector((state) => state.uploadReducer);
 	const dispatch = useAppDispatch();
 	const [hiding, setHiding] = useState(false);
 	const removeUploadFileHandler = () => {
@@ -27,18 +24,22 @@ export const UploadFile = ({ file }: props) => {
 			dispatch(removeUploadFile(file.uploadId));
 		}, 230);
 	};
-	// console.log(file.status, "file.status");
+	const isDownload = files.find((item) => item.uploadId === file.uploadId);
 	return (
 		<div className={`${styles.uploadFile} ${hiding ? styles.hidind : null}`}>
 			<div className={styles.header}>
-				<button onClick={removeUploadFileHandler} className={styles.btnRemove}>
-					<i className="bi bi-x-lg"></i>
-				</button>
+				{isDownload.status !== "active" ? (
+					<div onClick={removeUploadFileHandler} className={styles.btnRemove}>
+						<i className="bi bi-x-lg"></i>
+					</div>
+				) : (
+					""
+				)}
 			</div>
 			<div className={styles.fileName}>{file.name}</div>
 			<div className={styles.progressBarBlock}>
 				<img
-					src={file.type === "dir" ? folder : fileEarmark}
+					src={returnFileExtensionsIcon(file.type)}
 					alt=""
 					className={styles.img}
 				></img>

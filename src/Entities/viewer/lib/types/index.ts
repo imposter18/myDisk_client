@@ -1,4 +1,4 @@
 export interface IResponseError {
-	errprs: Array<string> | [];
+	error: Array<string> | [];
 	message: string;
 }

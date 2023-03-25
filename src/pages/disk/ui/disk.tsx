@@ -29,8 +29,7 @@ export const DiskPage = React.memo(() => {
 	const dropHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
-		let files = event.dataTransfer.files;
-		console.log(files);
+		const files = event.dataTransfer.files;
 		fileuploadHandler(files);
 		setDragEnter(false);
 	};
@@ -38,7 +37,7 @@ export const DiskPage = React.memo(() => {
 		(files: File[] | FileList) => {
 			Array.from(files).forEach((file: File) =>
 				dispatch(uploadFileThunk({ file, dirId: currentDir?._id })).then(
-					// тут без any никак
+					// тут без any никак и вообще это немного костыли
 					(res: any) => {
 						if (res.meta.requestStatus === "fulfilled") {
 							dispatch(
@@ -49,11 +48,10 @@ export const DiskPage = React.memo(() => {
 							);
 						}
 						if (res.meta.requestStatus === "rejected") {
-							if (res.payload.response.data.message.data.uploadId) {
+							if (res.payload.response.data.data.uploadId) {
 								dispatch(
 									changeUploadStatus({
-										uploadId:
-											res.payload?.response?.data?.message?.data.uploadId,
+										uploadId: res.payload.response.data.data.uploadId,
 										status: "exception",
 									})
 								);

@@ -1,24 +1,24 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { IinitialState } from "@/Entities/file/model/store/fileSlice";
-import { getFiles } from "../thunk/getFile";
+import { getFileThunk } from "../thunk/getFileThunk";
 
 export function getFileAction(builder: ActionReducerMapBuilder<IinitialState>) {
-	builder.addCase(getFiles.pending, (state) => {
+	builder.addCase(getFileThunk.pending, (state) => {
 		state.isLoaging = true;
 		state.error = null;
 	});
-	builder.addCase(getFiles.fulfilled, (state, action) => {
+	builder.addCase(getFileThunk.fulfilled, (state, action) => {
 		state.isLoaging = false;
 		state.error = null;
 		state.files = action.payload.files;
 		state.currentDir = action.payload.currentDir;
 	});
-	builder.addCase(getFiles.rejected, (state, action) => {
+	builder.addCase(getFileThunk.rejected, (state, action) => {
 		state.isLoaging = false;
 		if (action) {
 			state.error = action.payload?.response?.data?.message;
 		} else {
-			state.error = action.payload.message;
+			state.error = "Unexpected error";
 		}
 	});
 }

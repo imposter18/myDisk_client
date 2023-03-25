@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import * as styles from "./dropdown.module.scss";
 import userAvatar from "@/Shared/assets/img/any/userAvatar.svg";
+import userAvatarWhite from "@/Shared/assets/img/any/userAvatarWhite.svg";
 import { IUser } from "@/Shared/Types/IUser";
 
 interface IProps {
@@ -13,6 +14,7 @@ interface IProps {
 export const DropdownUserInfo = ({ user, children }: IProps) => {
 	const ref = useRef();
 	const [open, setOpen] = useState(false);
+	const { theme } = useAppSelector((state) => state.themeReducer);
 
 	const hoverItem = () => {
 		return setOpen(true);
@@ -35,14 +37,18 @@ export const DropdownUserInfo = ({ user, children }: IProps) => {
 				onMouseLeave={leaveItem}
 				ref={ref}
 			>
-				<img className={styles.userAvatar} src={userAvatar} alt="userAvatar" />
+				<img
+					className={styles.userAvatar}
+					src={theme === "light" ? userAvatar : userAvatarWhite}
+					alt="userAvatar"
+				/>
 				{open && (
 					<div className={styles.popup}>
 						<div className={styles.header}>
 							<span>{user.email}</span>
 							<img
 								className={styles.userAvatar}
-								src={userAvatar}
+								src={theme === "light" ? userAvatar : userAvatarWhite}
 								alt="userAvatar"
 							/>
 							{/* <span className={styles.placeholder}> </span> */}

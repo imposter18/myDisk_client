@@ -2,7 +2,7 @@ import api from "@/Shared/api";
 import { AxiosResponse } from "axios";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { IGetFiles } from "../model/types/getFiles";
-import { IGetFileProps } from "../model/thunk/getFile";
+import { IGetFileProps } from "../model/thunk/getFileThunk";
 
 export async function getFileHTTP(
 	props: IGetFileProps

@@ -22,13 +22,13 @@ export const SearchFiles = React.memo(() => {
 			navigate(`/drive/my-disk`);
 		}
 	};
-
-	useEffect(() => {
-		if (!inputvalue) {
-			navigate(`/drive/my-disk`);
-			dispatch(setSearchValue(""));
-		}
-	}, []);
+	// ломает приложение
+	// useEffect(() => {
+	// 	if (!inputvalue) {
+	// 		navigate(`/drive/my-disk`);
+	// 		dispatch(setSearchValue(""));
+	// 	}
+	// }, []);
 	useEffect(() => {
 		if (params.folderId) {
 			setInputvalue("");

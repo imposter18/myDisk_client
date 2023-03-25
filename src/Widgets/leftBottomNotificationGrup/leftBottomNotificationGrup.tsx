@@ -1,8 +1,7 @@
-import React, { useEffect, useLayoutEffect, useMemo } from "react";
-import { Button, Divider, notification, Space, message } from "antd";
+import React, { useEffect, useLayoutEffect } from "react";
+import { notification } from "antd";
 import { useAppSelector } from "@/Shared/lib/hooks/redux";
-import { IFileUpload } from "../uploader";
-import { IUploadError, IUploadResponseError } from "@/Entities/file";
+import { IResponseErrorFileUpload } from "@/Entities/file/model/types/IResponseErrorFileUpload";
 import * as styles from "./leftBottomNotificationGrup.module.scss";
 
 export const LeftBottomNotificationGrup = () => {
@@ -34,7 +33,7 @@ export const LeftBottomNotificationGrup = () => {
 		});
 	};
 
-	const RejectUpload = (uploadError: IUploadError) => {
+	const RejectUpload = (uploadError: IResponseErrorFileUpload) => {
 		if (uploadError.message === "File already exist") {
 			api.error({
 				message: `Error`,

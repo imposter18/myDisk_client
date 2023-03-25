@@ -1,8 +1,8 @@
 .button {
 	font-family: var(--main-font);
 	font-size: 16px;
-	background-color: #fff;
-	// color: var(--font-color);
+	background-color: var(--header-bg-color);
+	color: var(--disk-font-content-color);
 	width: 100%;
 	border: none;
 	&:hover {

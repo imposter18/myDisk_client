@@ -5,16 +5,13 @@
 	width: 350px;
 	position: fixed;
 	// color!!!!!!!!!!!
-	background-color: #fff;
+	background-color: var(--uploader-bg-color);
 	bottom: 0;
 	right: 0;
-	// padding: 20px;
-	// border-radius: 10px;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 
 	box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
-	// transform: translateY(-100px);
 }
 .visibleUploader {
 	display: block;
@@ -48,38 +45,26 @@
 	display: flex;
 	justify-content: space-between;
 
-	background-color: #2881fd;
+	background-color: var(--uploader-header-color);
 	overflow: hidden;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	padding: 15px 20px;
 	.upClose {
-		background-color: #2881fd;
+		// background-color: #2881fd;
+		background-color: var(--uploader-header-color);
+		height: 24px;
 	}
 }
 .title {
 	color: #fff;
 	position: relative;
-	// color: #2c82e5;
-	// font-size: 1.1rem;
 	margin: 0;
 	display: flex;
 	align-items: center;
-	&::after {
-		content: "";
-		mask: url("../../../../Shared/assets/img/any/download.svg") no-repeat 0 0 /17px
-			22px;
-		width: 24px;
-		height: 24px;
-		background-color: #fff;
-		position: absolute;
-		left: 90px;
-		// top: 6px;
-	}
 }
 .upClose {
 	font-size: large;
-	// font-weight: bold;
 	padding: 3px;
 	color: #fff;
 	background-color: #fff;

@@ -29,6 +29,7 @@
 	justify-self: center;
 	width: 40px;
 	height: 40px;
+	filter: var(--fileItem-drop-shadow);
 }
 .img {
 	border: 1px solid rgba(153, 147, 147, 0.2);

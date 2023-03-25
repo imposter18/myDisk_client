@@ -1,16 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface IFileUpload {
-	uploadId: string;
-	name: string;
-	progress: number;
-	type: string;
-	status: any;
-}
+import { IFileToUpload } from "../types/types";
 
 export interface IinitialStateUploader {
 	isVisible: boolean;
-	files: IFileUpload[];
+	files: IFileToUpload[];
 }
 
 const initialState: IinitialStateUploader = {
@@ -22,6 +15,9 @@ export const uploadSlice = createSlice({
 	name: "upload",
 	initialState,
 	reducers: {
+		clearUploader(state) {
+			state.files = [];
+		},
 		showUploader(state) {
 			state.isVisible = true;
 		},
@@ -62,6 +58,7 @@ export const uploadSlice = createSlice({
 });
 
 export const {
+	clearUploader,
 	showUploader,
 	hideUploader,
 	addUploadFile,

@@ -21,8 +21,15 @@ export const DiskSpace = React.memo(() => {
 		},
 		[diskSpace, usedSpace]
 	);
+	const getAvailableSpace = (used: number, space: number) => {
+		return space - used;
+	};
 	const sizeFormatMemoUsed = useMemo(() => sizeFormat(usedSpace), [usedSpace]);
 	const sizeFormatMemoSpace = useMemo(() => sizeFormat(diskSpace), [diskSpace]);
+	const sizeFormatAvailableMemo = useMemo(
+		() => sizeFormat(getAvailableSpace(usedSpace, diskSpace)),
+		[usedSpace, diskSpace]
+	);
 	useEffect(() => {
 		dispatch(getUserSpaceThunk());
 	}, [files.length]);
@@ -38,7 +45,7 @@ export const DiskSpace = React.memo(() => {
 					></Progress>
 				</div>
 				<div className={styles.space}>
-					{`${sizeFormatMemoUsed} of ${sizeFormatMemoSpace}`}
+					{`${sizeFormatAvailableMemo} of ${sizeFormatMemoSpace}`}
 				</div>
 			</div>
 		</>

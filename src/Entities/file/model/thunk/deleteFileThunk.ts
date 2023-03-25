@@ -5,16 +5,12 @@ import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { IFile } from "@/Shared/Types/IFile";
 import { deletetFileHTTP } from "../../api/deleteFile";
 import { deleteinProcess } from "@/Featurs/deleteFileBtn";
-
-interface IResponseError {
-	errprs: Array<string> | [];
-	message: string;
-}
+import { IResponseErrorFile } from "../types/responsError";
 
 export const deleteFileThunk = createAsyncThunk<
 	IFileResponse,
 	IFileResponse,
-	{ rejectValue: AxiosError<IResponseError> }
+	{ rejectValue: AxiosError<IResponseErrorFile> }
 >("file/deleteFile", async function (file, { rejectWithValue, dispatch }) {
 	try {
 		const res = await deletetFileHTTP(file);

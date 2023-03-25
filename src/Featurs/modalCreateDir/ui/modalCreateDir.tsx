@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as styles from "./modalCreateDir.module.scss";
-import { CreateDir } from "@/Entities/file/model/thunk/CreateDir";
+import { CreateDirThunk } from "@/Entities/file/model/thunk/CreateDirThunk";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { Button, Form, Input } from "antd";
 import { Modal } from "@/Shared/ui/modal";
@@ -17,9 +17,10 @@ export const ModalCreateDir = React.memo(
 		const params = useParams();
 		const [createError, setCreateError] = useState(false);
 
-		const { error, isLoadingCreateDir } = useAppSelector(
+		const { createDirError, isLoadingCreateDir } = useAppSelector(
 			(state) => state.FileReducer
 		);
+
 		const dispatch = useAppDispatch();
 		useEffect(() => {
 			let timer: any;
@@ -33,7 +34,7 @@ export const ModalCreateDir = React.memo(
 		function onFinish({ folderName }: { folderName: string }): void {
 			const type = "dir";
 			dispatch(
-				CreateDir({ currentDir: params.folderId, name: folderName, type })
+				CreateDirThunk({ currentDir: params.folderId, name: folderName, type })
 			).then((res) => {
 				if (res.meta.requestStatus === "fulfilled") {
 					dispatch(setVisibleNotCreateDir(folderName));
@@ -70,7 +71,11 @@ export const ModalCreateDir = React.memo(
 						<Form.Item name="folderName">
 							<Input autoFocus />
 						</Form.Item>
-						{createError && <span className={styles.error}>{error}</span>}
+						{createError && (
+							<span className={styles.error}>
+								{createDirError.message ? createDirError.message : ""}
+							</span>
+						)}
 						{isLoadingCreateDir ? (
 							<Button type="primary" loading>
 								Loading

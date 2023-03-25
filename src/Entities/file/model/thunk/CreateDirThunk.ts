@@ -2,20 +2,17 @@ import { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { CreateDirHTTP } from "../../api/CreateDirHTTP";
+import { IResponseErrorFile } from "../types/responsError";
 
-interface IResponseError {
-	errors: Array<string> | [];
-	message: string;
-}
 interface ICreateDirProps {
 	currentDir: string;
 	name: string;
 	type: string;
 }
-export const CreateDir = createAsyncThunk<
+export const CreateDirThunk = createAsyncThunk<
 	IFileResponse,
 	ICreateDirProps,
-	{ rejectValue: AxiosError<string> }
+	{ rejectValue: AxiosError<IResponseErrorFile> }
 >(
 	"file/createDir",
 	async function ({ currentDir, name, type = "dir" }, { rejectWithValue }) {

@@ -11,7 +11,6 @@
 			flex-direction: row;
 			justify-content: center;
 			text-align: center;
-			// font-size: large;
 			font-weight: 500;
 			a:after {
 				content: "";
@@ -28,6 +27,11 @@
 	h2 {
 		color: var(--disk-font-content-color);
 		margin: 2px;
+	}
+}
+.title {
+	&:hover {
+		color: var(--disk-font-content-color);
 	}
 }
 .currenDir {
@@ -59,25 +63,12 @@
 	color: #999;
 	text-decoration: none;
 	padding: 12px;
-	ul li {
-		color: black;
-	}
-	a:hover {
-		color: black;
-		scale: 1.2;
-	}
 }
-.header :hover {
-	color: black;
-	scale: 1.2;
-}
+
 header:visited {
 	color: brown;
 }
-.header :hover {
-	color: black;
-	scale: 1.2;
-}
+
 li :hover {
-	color: black;
+	color: var(--disk-font-content-color);
 }

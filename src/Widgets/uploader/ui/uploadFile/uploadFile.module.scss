@@ -1,15 +1,11 @@
 .uploadFile {
 	position: relative;
 	// border-radius: 8px;
-	margin: 5px 0 10px 0;
+	margin: 5px 1px 10px 1px;
 	padding: 10px 10px 18px 15px;
 	// animation: animate-visible 0.2s linear;
 	&:hover {
-		background-color: rgb(206, 204, 204);
-		// opacity: 0.7;
-		.btnRemove {
-			background-color: rgb(206, 204, 204);
-		}
+		background-color: var(--file-hover-color);
 	}
 }
 @keyframes animate-visible {
@@ -38,7 +34,6 @@
 	}
 }
 .header {
-	// position: relative;
 	display: flex;
 	justify-content: flex-end;
 }
@@ -54,16 +49,15 @@
 .btnRemove {
 	position: absolute;
 	text-align: end;
-	// width: 100%;
-	background-color: #fff;
+	color: var(--disk-font-content-color);
 	border: none;
 	cursor: pointer;
+	i {
+		font-size: 13px;
+	}
 
 	&:hover {
-		i {
-			opacity: 0.7;
-		}
-		// background-color: rgba(125, 125, 125, 0.3);
+		color: var(--close-btn-horer-color);
 	}
 }
 .progressBarBlock {
@@ -75,7 +69,6 @@
 }
 .uploadBar {
 	background-color: green;
-	// width: 50%;
 	border-radius: 8px;
 }
 .progress {

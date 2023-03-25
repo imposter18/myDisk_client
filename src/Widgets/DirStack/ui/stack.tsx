@@ -21,7 +21,7 @@ export const Stack = () => {
 		// if (!params.folderId) {
 		// 	dispatch(getFiles(null));
 		// }
-	}, [params.folderId]);
+	}, [params]);
 	const backDir = () => {
 		return (
 			<h3 className={styles.currenDir}>
@@ -48,7 +48,7 @@ export const Stack = () => {
 								</Link>
 							</>
 						) : (
-							<h2>Files</h2>
+							<h2 className={styles.title}>Files</h2>
 						)}
 					</li>
 					{stack.map((item) =>

@@ -1,5 +1,8 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { IinitialState } from "@/Entities/file/model/store/fileSlice";
+import {
+	IinitialState,
+	InitialErrorUpload,
+} from "@/Entities/file/model/store/fileSlice";
 import { uploadFileThunk } from "../thunk/uploadFileThunk";
 
 export function uploadFileAction(
@@ -7,17 +10,19 @@ export function uploadFileAction(
 ) {
 	builder.addCase(uploadFileThunk.pending, (state) => {
 		// state.isLoaging = true;
-		state.error = null;
+		state.uploadError = InitialErrorUpload;
 	});
 	builder.addCase(uploadFileThunk.fulfilled, (state, action) => {
 		// state.isLoaging = false;
-		state.error = null;
+		state.uploadError = InitialErrorUpload;
 		state.files = [...state.files, action.payload];
 	});
 	builder.addCase(uploadFileThunk.rejected, (state, action) => {
 		// state.isLoaging = false;
 		if (action) {
-			state.uploadError = action.payload?.response?.data.message;
+			state.uploadError = action.payload?.response?.data;
+		} else {
+			state.uploadError.message = "Unexpected error";
 		}
 	});
 }
