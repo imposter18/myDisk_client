@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Row, Col } from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Checkbox, Form, Input, Row, Col, message } from "antd";
 import * as styles from "./loginForm.module.scss";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import {
@@ -10,6 +10,7 @@ import {
 import { useViewerIsLoadind } from "@/Entities/viewer";
 
 export const LoginForm = () => {
+	const [messageApi, contextHolder] = message.useMessage();
 	const [error, setError] = useState(false);
 	const isLoaging = useViewerIsLoadind();
 	const isFirstLoading = useViewerIsFirsLoadind();
@@ -27,9 +28,20 @@ export const LoginForm = () => {
 			if (res.meta.requestStatus === "rejected") setError(true);
 		});
 	};
+	const regErrorNotification = () => {
+		messageApi.error({
+			content: `«${errorMessage}» `,
+		});
+	};
+	useEffect(() => {
+		if (error && errorMessage) {
+			regErrorNotification();
+		}
+	}, [errorMessage, error]);
 
 	return (
 		<>
+			{contextHolder}
 			<Form
 				className={styles.form}
 				name="basic"
@@ -71,7 +83,7 @@ export const LoginForm = () => {
 									type="primary"
 									htmlType="submit"
 								>
-									Submit
+									Sign in
 								</Button>
 							)}
 						</Form.Item>

@@ -5,7 +5,11 @@ export const Modal = ({ children, onClose, modalRef, visible }: any) => {
 	return (
 		<>
 			{visible && (
-				<div onMouseDown={() => onClose()} className={styles.popup}>
+				<div
+					onMouseDown={() => onClose()}
+					onClick={(e) => e.stopPropagation()}
+					className={styles.popup}
+				>
 					<div
 						onClick={(e) => e.stopPropagation()}
 						onMouseDown={(e) => e.stopPropagation()}

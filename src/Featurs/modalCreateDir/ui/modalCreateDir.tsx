@@ -51,7 +51,7 @@ export const ModalCreateDir = React.memo(
 		};
 
 		return (
-			<>
+			<div className={styles.modalCreateDirWparrer}>
 				<Modal visible={isComponentVisible} onClose={setIsComponentVisible}>
 					<div className={styles.header}>
 						<div className={styles.title}>Create a new folder</div>
@@ -68,7 +68,7 @@ export const ModalCreateDir = React.memo(
 						autoComplete="off"
 						initialValues={{ folderName: "New folder" }}
 					>
-						<Form.Item name="folderName">
+						<Form.Item className={styles.formItem} name="folderName">
 							<Input autoFocus />
 						</Form.Item>
 						{createError && (
@@ -77,17 +77,17 @@ export const ModalCreateDir = React.memo(
 							</span>
 						)}
 						{isLoadingCreateDir ? (
-							<Button type="primary" loading>
+							<Button className={styles.btn} type="primary" loading>
 								Loading
 							</Button>
 						) : (
-							<Button type="primary" htmlType="submit">
+							<Button className={styles.btn} type="primary" htmlType="submit">
 								Create
 							</Button>
 						)}
 					</Form>
 				</Modal>
-			</>
+			</div>
 		);
 	}
 );

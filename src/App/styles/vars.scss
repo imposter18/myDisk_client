@@ -50,6 +50,7 @@
 	--uploader-bg-color: #fff;
 	--uploader-header-color: #2881fd;
 	--close-btn-horer-color: #353535;
+	--btn-click-effect: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 :root[data-theme="dark"] {
@@ -82,4 +83,5 @@
 	--uploader-bg-color: #25262a;
 	--uploader-header-color: #175dc0;
 	--close-btn-horer-color: #fff;
+	--btn-click-effect: 0 0 0 2px rgba(62, 65, 253, 0.5);
 }

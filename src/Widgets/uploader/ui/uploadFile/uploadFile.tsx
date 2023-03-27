@@ -24,6 +24,9 @@ export const UploadFile = ({ file }: props) => {
 			dispatch(removeUploadFile(file.uploadId));
 		}, 230);
 	};
+	const preventDragHandler = (e: React.DragEvent<HTMLImageElement>) => {
+		e.preventDefault();
+	};
 	const isDownload = files.find((item) => item.uploadId === file.uploadId);
 	return (
 		<div className={`${styles.uploadFile} ${hiding ? styles.hidind : null}`}>
@@ -36,9 +39,12 @@ export const UploadFile = ({ file }: props) => {
 					""
 				)}
 			</div>
-			<div className={styles.fileName}>{file.name}</div>
+			<div title={file.name} className={styles.fileName}>
+				{file.name}
+			</div>
 			<div className={styles.progressBarBlock}>
 				<img
+					onDragStart={preventDragHandler}
 					src={returnFileExtensionsIcon(file.type)}
 					alt=""
 					className={styles.img}

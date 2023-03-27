@@ -1,9 +1,8 @@
-import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import * as styles from "./uploader.module.scss";
+import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
 import { clearUploader, hideUploader } from "../../model/store/uploadReducer";
 import { UploadFile } from "../uploadFile/uploadFile";
-
-import * as styles from "./uploader.module.scss";
 
 export const Uploader = () => {
 	const [visibleUploader, setvisibleUploader] = useState(false);
@@ -17,7 +16,6 @@ export const Uploader = () => {
 		setHidingUploader(true);
 	};
 	const isDownload = files.find((item) => item.status === "active");
-	console.log(isDownload, "isDownload");
 	useEffect(() => {
 		if (isVisible) {
 			setvisibleUploader(true);

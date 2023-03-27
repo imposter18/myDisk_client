@@ -4,10 +4,10 @@ import { useAppSelector } from "../hooks/redux";
 
 const PublicRoute = ({ children }: any) => {
 	const { isAuth } = useAppSelector((state) => state.userReducer);
-	const { userName } = useAppSelector((state) => state.userReducer.currentUser);
+	const { email } = useAppSelector((state) => state.userReducer.currentUser);
 	const navigate = useNavigate();
 
-	if (isAuth && userName) {
+	if (isAuth && email) {
 		return <Navigate to={`/drive/my-disk`} />;
 	}
 

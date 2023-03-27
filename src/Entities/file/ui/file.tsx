@@ -14,25 +14,26 @@ import { returnFileExtensionsIcon } from "@/Shared/lib/helpers/returnFileExtensi
 
 interface IProps {
 	file: IFileResponse;
+	className?: string;
 	onClick: (arg: IFileResponse) => void;
 }
 
-export const File = React.memo(({ file, onClick }: IProps) => {
+export const File = React.memo(({ file, onClick, className }: IProps) => {
 	const { ref, isComponentVisible, setIsComponentVisible, points, setPoints } =
 		useComponentVisible();
 	const { id } = useAppSelector((state) => state.userReducer.currentUser);
+	const { view } = useAppSelector((state) => state.viewFileListReducer);
 
 	const contextnMenuHandler = (
 		event: React.MouseEvent<HTMLDivElement> | any
 	) => {
-		// nativeEvent устарело!!!
 		event.stopPropagation();
 		event.preventDefault();
 		setIsComponentVisible(true);
 
 		setPoints({
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
+			x: event.pageX,
+			y: event.pageY,
 		});
 	};
 	const preventDragHandler = (e: React.DragEvent<HTMLImageElement>) => {
@@ -69,34 +70,92 @@ export const File = React.memo(({ file, onClick }: IProps) => {
 			);
 		}
 	};
+	if (view === "List") {
+		return (
+			<>
+				<div
+					onClick={() => onClick(file)}
+					onContextMenu={contextnMenuHandler}
+					className={`${styles.file} ${isComponentVisible && styles.active}`}
+				>
+					{setImg()}
+					<div className={styles.name}>{file.name}</div>
 
-	return (
-		<>
-			<div
-				onClick={() => onClick(file)}
-				onContextMenu={contextnMenuHandler}
-				className={`${styles.file} ${isComponentVisible && styles.active}`}
-			>
-				{setImg()}
-				<div className={styles.name}>{file.name}</div>
+					<div className={styles.date}>
+						{moment(file.date).format("DD.MM.YYYY")}
+					</div>
+					<div className={styles.time}>
+						{moment(file.date).format("HH:mm ")}
+					</div>
+					<div className={styles.size}>
+						{file.type !== "dir" ? sizeFormat(file.size) : ""}
+					</div>
 
-				<div className={styles.date}>
-					{moment(file.date).format("DD.MM.YYYY")}
+					<FileContextMenu
+						setContextMenuVisible={setIsComponentVisible}
+						isContextMenuVisible={isComponentVisible}
+						menuRef={ref}
+						top={points.y}
+						left={points.x}
+						file={file}
+					></FileContextMenu>
 				</div>
-				<div className={styles.time}>{moment(file.date).format("HH:mm ")}</div>
-				<div className={styles.size}>
-					{file.type !== "dir" ? sizeFormat(file.size) : ""}
-				</div>
+			</>
+		);
+	}
+	if (view === "Tiles") {
+		return (
+			<>
+				<div
+					onClick={() => onClick(file)}
+					onContextMenu={contextnMenuHandler}
+					className={`${styles.fileTiles} ${
+						isComponentVisible && styles.active
+					}`}
+				>
+					<div className={styles.imgWrapper}>{setImg()}</div>
 
-				<FileContextMenu
-					setContextMenuVisible={setIsComponentVisible}
-					isContextMenuVisible={isComponentVisible}
-					menuRef={ref}
-					top={points.y}
-					left={points.x}
-					file={file}
-				></FileContextMenu>
-			</div>
-		</>
-	);
+					<div aria-hidden="true" title={file.name} className={styles.name}>
+						{file.name}
+					</div>
+
+					<FileContextMenu
+						setContextMenuVisible={setIsComponentVisible}
+						isContextMenuVisible={isComponentVisible}
+						menuRef={ref}
+						top={points.y}
+						left={points.x}
+						file={file}
+					></FileContextMenu>
+				</div>
+			</>
+		);
+	}
+	if (view === "Large tiles") {
+		return (
+			<>
+				<div
+					onClick={() => onClick(file)}
+					onContextMenu={contextnMenuHandler}
+					className={`${styles.largeTiles} ${
+						isComponentVisible && styles.active
+					}`}
+				>
+					<div className={styles.imgWrapperLarge}>{setImg()}</div>
+					<div aria-hidden="true" title={file.name} className={styles.name}>
+						{file.name}
+					</div>
+
+					<FileContextMenu
+						setContextMenuVisible={setIsComponentVisible}
+						isContextMenuVisible={isComponentVisible}
+						menuRef={ref}
+						top={points.y}
+						left={points.x}
+						file={file}
+					></FileContextMenu>
+				</div>
+			</>
+		);
+	}
 });

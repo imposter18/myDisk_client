@@ -1,10 +1,12 @@
 .rightBlock {
-	position: relative;
+	// position: relative;
 	background-color: var(--disk-bg-color);
 	width: 100%;
-	padding: 8px 8px 40px 8px;
+	padding: 8px 8px 2px 8px;
 	border-bottom-right-radius: 22px;
 	border-top-right-radius: 22px;
+	display: flex;
+	flex-direction: column;
 }
 .topMenu {
 	display: flex;
@@ -14,19 +16,9 @@
 .footerLinks {
 	color: var(--font-color);
 	text-decoration: none;
-	display: inline-block;
-
-	// text-align: end;
 	padding: 8px 14px;
-	position: absolute;
-	bottom: 1px;
-	right: 1px;
-	// display: flex;
-	// justify-content: flex-end;
-	// align-content: flex-end;
-
-	// float: right;
-
+	display: flex;
+	justify-content: flex-end;
 	i {
 		margin-right: 8px;
 	}

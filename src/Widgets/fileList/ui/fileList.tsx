@@ -6,6 +6,9 @@ import { getFileThunk } from "../../../Entities/file/model/thunk/getFileThunk";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Empty, Spin } from "antd";
 import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
+import { ViewList } from "./list/viewList";
+import { ViewTiles } from "./tiles/viewTiles";
+import { LargeTiles } from "./largeTiles/largeTiles";
 
 export const FileList = () => {
 	const { currentDir, files, isLoaging } = useAppSelector(
@@ -13,6 +16,8 @@ export const FileList = () => {
 	);
 	const { sort, derection } = useAppSelector((state) => state.sortFileReducer);
 	const { searchValue } = useAppSelector((state) => state.searchFilesReducer);
+	const { view } = useAppSelector((state) => state.viewFileListReducer);
+
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const params = useParams();
@@ -43,11 +48,6 @@ export const FileList = () => {
 			// );
 		}
 	}, [params.folderId, sort, derection, searchValue]);
-	// useEffect(() => {
-	// 	if (!currentDir) {
-	// 		navigate(`/drive/my-disk`);
-	// 	}
-	// }, [currentDir]);
 
 	const clickHandller = (file: IFileResponse) => {
 		if (file.type === "dir") {
@@ -55,9 +55,38 @@ export const FileList = () => {
 			navigate(`/drive/folder/${file._id}`, { replace: false });
 		}
 	};
+	const returnViewVariant = (view: string) => {
+		if (view === "List") {
+			return (
+				<ViewList
+					files={files}
+					isLoaging={isLoaging}
+					clickHandller={clickHandller}
+				></ViewList>
+			);
+		}
+		if (view === "Tiles") {
+			return (
+				<ViewTiles
+					files={files}
+					isLoaging={isLoaging}
+					clickHandller={clickHandller}
+				></ViewTiles>
+			);
+		}
+		if (view === "Large tiles") {
+			return (
+				<LargeTiles
+					files={files}
+					isLoaging={isLoaging}
+					clickHandller={clickHandller}
+				></LargeTiles>
+			);
+		}
+	};
 
 	return (
-		<>
+		<div className={styles.fileListWrapper}>
 			{!files.length && !currentDir && !isLoaging ? (
 				<Empty
 					className={styles.empty}
@@ -68,16 +97,8 @@ export const FileList = () => {
 					}
 				/>
 			) : (
-				<div className={styles.fileList}>
-					{isLoaging ? (
-						<Spin className={styles.spinner} size="large" />
-					) : (
-						files.map((file) => (
-							<File onClick={clickHandller} file={file} key={file._id}></File>
-						))
-					)}
-				</div>
+				returnViewVariant(view)
 			)}
-		</>
+		</div>
 	);
 };

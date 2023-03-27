@@ -14,6 +14,9 @@ export const deleteFileSlice = createSlice({
 	name: "deleteFileSlice",
 	initialState,
 	reducers: {
+		clearDeleteStore(state) {
+			state = initialState;
+		},
 		deleteinProcess(state) {
 			state.deletedFile = "";
 			state.status = null;
@@ -31,6 +34,7 @@ export const deleteFileSlice = createSlice({
 });
 
 export const {
+	clearDeleteStore,
 	setdeletedFileSuccess,
 	setdeletedFileRejected,
 	deleteinProcess,

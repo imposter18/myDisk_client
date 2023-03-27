@@ -17,38 +17,42 @@ export const LeftDiskBlock = React.memo(({ fileuploadHandler }: Iprops) => {
 		const files = event.target.files;
 		// const files = [...event.target.files];
 
-		console.log(files, "After an extension change the file may refuse to open");
 		fileuploadHandler(files);
 		const inputClear = document.getElementById("upload") as HTMLInputElement;
 		inputClear.value = "";
 	};
 
 	return (
-		<div className={styles.leftBlock}>
-			<div className={styles.topBtnBlock}>
-				<label className={styles.lable} htmlFor="upload">
-					<CastomBtn className={styles.lableBtn} content={"Upload"}></CastomBtn>
-				</label>
-				<input
-					id="upload"
-					multiple={true}
-					onChange={(event) => inputUploadHandler(event)}
-					className={styles.input}
-					type="file"
-				></input>
-				<CastomBtn
-					onClick={() => setIsComponentVisible(true)}
-					content={"Create folder"}
-					className={styles.btnCreateFolder}
-				></CastomBtn>
-			</div>
-			<div className={styles.bottomBlock}>
-				<DiskSpace></DiskSpace>
+		<>
+			<div className={styles.leftBlock}>
+				<div className={styles.topBtnBlock}>
+					<label className={styles.lable} htmlFor="upload">
+						<CastomBtn
+							className={styles.lableBtn}
+							content={"Upload"}
+						></CastomBtn>
+					</label>
+					<input
+						id="upload"
+						multiple={true}
+						onChange={(event) => inputUploadHandler(event)}
+						className={styles.input}
+						type="file"
+					></input>
+					<CastomBtn
+						onClick={() => setIsComponentVisible(true)}
+						content={"Create folder"}
+						className={styles.btnCreateFolder}
+					></CastomBtn>
+				</div>
+				<div className={styles.bottomBlock}>
+					<DiskSpace></DiskSpace>
+				</div>
 			</div>
 			<ModalCreateDir
 				isComponentVisible={isComponentVisible}
 				setIsComponentVisible={setIsComponentVisible}
 			></ModalCreateDir>
-		</div>
+		</>
 	);
 });

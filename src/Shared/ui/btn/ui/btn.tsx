@@ -20,7 +20,7 @@ export const CastomBtn = ({
 		setClick(true);
 		setTimeout(function () {
 			setClick(false);
-		}, 400);
+		}, 300);
 	};
 	return (
 		<div onClick={onClick}>

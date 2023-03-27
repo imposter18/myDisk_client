@@ -7,7 +7,6 @@ import { IResponseError } from "../../lib/types";
 interface IRegistrationPrors {
 	email: string;
 	password: string;
-	userName: string;
 }
 
 export const registrationUser = createAsyncThunk<
@@ -16,9 +15,9 @@ export const registrationUser = createAsyncThunk<
 	{ rejectValue: AxiosError<IResponseError> }
 >(
 	"user/registrationUser",
-	async function ({ email, password, userName }, { rejectWithValue }) {
+	async function ({ email, password }, { rejectWithValue }) {
 		try {
-			const res = await registrationHTTP(email, password, userName);
+			const res = await registrationHTTP(email, password);
 			return res.data as IViewerResponse;
 		} catch (e) {
 			return rejectWithValue(e);

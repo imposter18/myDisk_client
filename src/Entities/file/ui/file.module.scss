@@ -1,17 +1,107 @@
 .file {
-	// margin: 10px 0;
-	// border-bottom: solid 1px var(--color-border);
-	position: relative;
+	// position: relative;
 	display: grid;
-	grid-template-columns: 0.5fr 5fr repeat(4, 1fr);
+	grid-template-columns: 0.5fr 5fr repeat(4, 1fr) 0.1fr;
 	align-items: center;
 	border-radius: 8px;
 	height: 52px;
 
 	&:hover {
 		background-color: var(--file-hover-color);
-		// background-color: rgba(153, 147, 147, 0.2);
-		// background-color: var(--hover-popupItem-color);
+	}
+	.img {
+		border: 1px solid rgba(153, 147, 147, 0.2);
+		object-fit: cover;
+		justify-self: center;
+		width: 40px;
+		height: 40px;
+	}
+	.logo {
+		justify-self: center;
+		width: 40px;
+		height: 40px;
+		filter: var(--fileItem-drop-shadow);
+	}
+}
+.fileTiles {
+	border-radius: 8px;
+	box-sizing: border-box;
+	width: 110px;
+	height: 155px;
+	display: flex;
+	margin-right: 12px;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	padding: 9px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	.img {
+		margin: auto;
+		width: 75px;
+		height: 85px;
+	}
+	.imgWrapper {
+		display: flex;
+		width: 85px;
+		height: 95px;
+	}
+	&:hover {
+		background-color: var(--file-hover-color);
+	}
+	.name {
+		margin-top: 4px;
+		// word-break: break-all;
+		overflow-wrap: break-word;
+		text-overflow: ellipsis;
+		width: 90px;
+		max-height: 35px;
+		overflow: hidden;
+	}
+	.logo {
+		justify-self: center;
+		width: 85px;
+		height: 95px;
+		filter: var(--fileItem-drop-shadow);
+	}
+}
+.largeTiles {
+	border-radius: 8px;
+	box-sizing: border-box;
+	width: 130px;
+	height: 190px;
+	display: flex;
+	margin-right: 20px;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	padding: 9px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	.img {
+		margin: auto;
+		width: 105px;
+		height: 115px;
+	}
+	.imgWrapperLarge {
+		width: 115px;
+		height: 135px;
+		display: flex;
+	}
+	&:hover {
+		background-color: var(--file-hover-color);
+	}
+	.name {
+		margin-top: 4px;
+		white-space: pre-line;
+		width: 115px;
+		overflow: hidden;
+	}
+	.logo {
+		justify-self: center;
+		width: 115px;
+		height: 135px;
+		filter: var(--fileItem-drop-shadow);
 	}
 }
 .active {
@@ -22,22 +112,9 @@
 }
 .name {
 	font-size: 14px;
-	// letter-spacing: 0.3px;
 	color: var(--disk-font-content-color);
 }
-.logo {
-	justify-self: center;
-	width: 40px;
-	height: 40px;
-	filter: var(--fileItem-drop-shadow);
-}
-.img {
-	border: 1px solid rgba(153, 147, 147, 0.2);
-	object-fit: cover;
-	justify-self: center;
-	width: 40px;
-	height: 40px;
-}
+
 .date {
 	grid-column-start: 4;
 	justify-self: right;

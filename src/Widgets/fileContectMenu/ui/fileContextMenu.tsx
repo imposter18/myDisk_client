@@ -81,7 +81,6 @@ export const FileContextMenu = ({
 					</div>
 				</div>
 			)}
-
 			<ModalRenameFile
 				file={file}
 				isComponentVisible={isComponentVisible}

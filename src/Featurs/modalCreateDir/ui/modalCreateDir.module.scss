@@ -1,9 +1,10 @@
-.error {
-	position: absolute;
-	animation: show 1s forwards;
-	color: rgba(248, 24, 24, 0.952);
-	font-family: var(--main-font);
-	font-size: 13px;
+.modalCreateDirWparrer {
+	:global(.ant-form-item) {
+		input {
+			background-color: var(--search-bg-color);
+			color: var(--disk-font-content-color);
+		}
+	}
 }
 
 @keyframes show {
@@ -31,12 +32,6 @@
 		}
 	}
 }
-:global(.ant-form-item) {
-	input {
-		background-color: var(--search-bg-color);
-		color: var(--disk-font-content-color);
-	}
-}
 
 .create {
 	align-self: flex-end;
@@ -52,7 +47,31 @@
 .form {
 	margin: 12px auto 0 auto;
 	width: 90%;
-	button {
-		float: right;
+	display: grid;
+	grid-template-columns: 1fr 0.3fr;
+	grid-template-rows: 1fr 1fr;
+	align-items: center;
+	.formItem {
+		// align-self: center;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		margin-bottom: 16px;
+	}
+	.btn {
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+	.error {
+		hyphens: auto;
+		overflow-wrap: break-word;
+		display: flex;
+		justify-content: left;
+		grid-row-start: 2;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		animation: show 1s forwards;
+		color: rgba(248, 24, 24, 0.952);
+		font-family: var(--main-font);
+		font-size: 13px;
 	}
 }

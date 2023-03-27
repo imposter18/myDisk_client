@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Row, Col } from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Input, Row, Col, message } from "antd";
 import * as styles from "./registrationForm.module.scss";
 import { useAppDispatch } from "@/Shared/lib/hooks/redux";
 import {
@@ -10,21 +10,18 @@ import {
 import { PopupForStatus } from "@/Shared/ui/popupForStatus";
 
 export const RegistrationForm = () => {
+	const [messageApi, contextHolder] = message.useMessage();
 	const [error, setError] = useState(false);
 	const isLoaging = useViewerIsLoadind();
 	const dispatch = useAppDispatch();
 	const errorMessage = useViewerError();
 	const onFinish = (values: {
-		username: string;
 		Email: string;
 		password: string;
 		remember: boolean;
 	}) => {
-		console.log(values);
-		const { username, Email, password, remember } = values;
-		dispatch(
-			registrationUser({ email: Email, password, userName: username })
-		).then((res) => {
+		const { Email, password, remember } = values;
+		dispatch(registrationUser({ email: Email, password })).then((res) => {
 			if (res.meta.requestStatus === "fulfilled") setError(false);
 			if (res.meta.requestStatus === "rejected") setError(true);
 		});
@@ -33,7 +30,16 @@ export const RegistrationForm = () => {
 	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
 	};
-
+	const regErrorNotification = () => {
+		messageApi.error({
+			content: `«${errorMessage}» `,
+		});
+	};
+	useEffect(() => {
+		if (error && errorMessage) {
+			regErrorNotification();
+		}
+	}, [errorMessage, error]);
 	return (
 		<>
 			{/* {error && (
@@ -42,6 +48,7 @@ export const RegistrationForm = () => {
 					typeProps="error"
 				></PopupForStatus>
 			)} */}
+			{contextHolder}
 			<Form
 				className={styles.form}
 				name="basic"
@@ -52,14 +59,6 @@ export const RegistrationForm = () => {
 				onFinishFailed={onFinishFailed}
 				autoComplete="off"
 			>
-				<Form.Item
-					label="Username"
-					name="username"
-					rules={[{ required: true, message: "Please input your username!" }]}
-				>
-					<Input />
-				</Form.Item>
-
 				<Form.Item
 					label="Email"
 					name="Email"
@@ -76,16 +75,7 @@ export const RegistrationForm = () => {
 					<Input.Password />
 				</Form.Item>
 				<Row>
-					<Col span={12} push={1}>
-						{/* <Form.Item
-							name="remember"
-							valuePropName="checked"
-							// wrapperCol={{ offset: 0, span: 12 }}
-							// labelCol={{ span: 8 }}
-						>
-							<Checkbox>Remember me</Checkbox>
-						</Form.Item> */}
-					</Col>
+					<Col span={12} push={1}></Col>
 					<Col className={styles.confirmBtn} span={12}>
 						<Form.Item>
 							{isLoaging ? (
@@ -98,7 +88,7 @@ export const RegistrationForm = () => {
 									type="primary"
 									htmlType="submit"
 								>
-									Submit
+									Sign up
 								</Button>
 							)}
 						</Form.Item>

@@ -4,11 +4,11 @@
 	width: 100%;
 	margin: 200px auto;
 	border-radius: 10px;
-	border: 1px solid var(--color-border);
 	background-color: var(--form-background);
+	// box-shadow: var(--popup-box-shadow);
 }
 
 .form {
 	margin: auto;
-	padding: 60px 30px;
+	padding: 50px 30px 30px 30px;
 }

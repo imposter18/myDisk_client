@@ -13,11 +13,21 @@ export const TopCenterNotificationGrup = () => {
 	const { folderName, isVisibleNot } = useAppSelector(
 		(state) => state.createDirReducer
 	);
+	const { renamingFile, status } = useAppSelector(
+		(state) => state.renameFileReducer
+	);
+	const RenameSuccess = (fileName: string) => {
+		messageApi.open({
+			type: "success",
+			content: `«${fileName}» has been renamed`,
+			// className: "custom-class",
+			// duration: 0,
+		});
+	};
 	const openCreateDirSuccess = (folderName: string) => {
 		messageApi.open({
 			type: "success",
 			content: `Folder «${folderName}» has been created`,
-			// className={`${styles.global}`},
 			className: "custom-class",
 			// duration: 0,
 		});
@@ -41,18 +51,18 @@ export const TopCenterNotificationGrup = () => {
 		if (deletedFile) {
 			messageApi.error({
 				content: `«${deletedFile}» deleted error`,
-				// description: `«${deletedFile}» deleted error`,
-				// placement: "bottomLeft",
 			});
 		} else {
 			messageApi.error({
-				// message: `Error`,
 				content: `Deleted error message: unexpected error`,
-				// description: ,
-				// placement: "bottomLeft",
 			});
 		}
 	};
+	useEffect(() => {
+		if (status === "success") {
+			RenameSuccess(renamingFile);
+		}
+	}, [renamingFile]);
 	useEffect(() => {
 		if (folderName) {
 			openCreateDirSuccess(folderName);

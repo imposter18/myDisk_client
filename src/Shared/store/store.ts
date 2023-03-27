@@ -9,6 +9,7 @@ import { deleteFileReducer } from "@/Featurs/deleteFileBtn";
 import { sortFileReducer } from "@/Featurs/sortFileList";
 import { viewFileListReducer } from "@/Featurs/viewFileList";
 import { searchFilesReducer } from "@/Featurs/searchFiles";
+import { renameFileReducer } from "@/Featurs/modalRenameFile";
 
 export const setupStore = configureStore({
 	reducer: {
@@ -22,7 +23,12 @@ export const setupStore = configureStore({
 		sortFileReducer,
 		viewFileListReducer,
 		searchFilesReducer,
+		renameFileReducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false,
+		}),
 });
 
 export type RootState = ReturnType<typeof setupStore.getState>;

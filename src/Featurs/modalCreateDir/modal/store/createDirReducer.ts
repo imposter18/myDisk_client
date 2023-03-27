@@ -14,6 +14,10 @@ export const createDirSlice = createSlice({
 	name: "CreateDirSlice",
 	initialState,
 	reducers: {
+		clearCreateDirSrore(state) {
+			state = initialState;
+		},
+
 		setVisibleNotCreateDir(state, action) {
 			state.isVisibleNot = true;
 			state.folderName = action.payload;
@@ -21,6 +25,7 @@ export const createDirSlice = createSlice({
 	},
 });
 
-export const { setVisibleNotCreateDir } = createDirSlice.actions;
+export const { setVisibleNotCreateDir, clearCreateDirSrore } =
+	createDirSlice.actions;
 
 export const createDirReducer = createDirSlice.reducer;

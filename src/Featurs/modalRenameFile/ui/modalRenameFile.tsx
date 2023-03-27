@@ -4,6 +4,7 @@ import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { Modal } from "@/Shared/ui/modal";
 import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
+import { setRenameFileRejected, setRenameFileSuccess } from "../model";
 import * as styles from "./modalRenameFile.module.scss";
 
 interface IProps {
@@ -17,29 +18,41 @@ export const ModalRenameFile = ({
 	isComponentVisible,
 	setIsComponentVisible,
 }: IProps) => {
+	const [createError, setCreateError] = useState(false);
 	const dispatch = useAppDispatch();
 	const { isLoadingRename, renameError } = useAppSelector(
 		(state) => state.FileReducer
 	);
+	useEffect(() => {
+		let timer: any;
+		if (createError) {
+			timer = setTimeout(() => {
+				setCreateError(false);
+			}, 3000);
+		}
+		return () => clearTimeout(timer);
+	}, [createError]);
 	const onFinish = ({ renameInput }: { renameInput: string }) => {
-		console.log(renameInput, "renameInput");
-		console.log(file._id, " file._id");
 		dispatch(renameFileThunk({ newName: renameInput, id: file._id })).then(
 			(res) => {
 				if (res.meta.requestStatus === "fulfilled") {
+					setCreateError(false);
 					setIsComponentVisible(false);
+					dispatch(setRenameFileSuccess(file.name));
 				}
 				if (res.meta.requestStatus === "rejected") {
+					setCreateError(true);
+					dispatch(setRenameFileRejected(file.name));
 				}
 			}
 		);
 	};
 
-	const onClose = () => {
+	const onClose = (e: any) => {
 		setIsComponentVisible(false);
 	};
 	return (
-		<>
+		<div className={styles.modalRenameWrapper}>
 			<Modal onClose={onClose} visible={isComponentVisible}>
 				<div className={styles.header}>
 					<div className={styles.title}>Rename</div>
@@ -56,23 +69,23 @@ export const ModalRenameFile = ({
 					autoComplete="off"
 					initialValues={{ renameInput: `${file.name}` }}
 				>
-					<Form.Item name="renameInput">
+					<Form.Item className={styles.formItem} name="renameInput">
 						<Input autoFocus />
 					</Form.Item>
-					{renameError && (
+					{createError && (
 						<span className={styles.error}>{renameError.message}</span>
 					)}
 					{isLoadingRename ? (
-						<Button type="primary" loading>
+						<Button className={styles.btn} type="primary" loading>
 							Loading
 						</Button>
 					) : (
-						<Button type="primary" htmlType="submit">
+						<Button className={styles.btn} type="primary" htmlType="submit">
 							Rename
 						</Button>
 					)}
 				</Form>
 			</Modal>
-		</>
+		</div>
 	);
 };
