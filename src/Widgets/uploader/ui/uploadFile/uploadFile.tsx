@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import * as styles from "./uploadFile.module.scss";
-import { IFileResponse } from "@/Shared/Types/response/IFileResponse";
 import { useAppDispatch, useAppSelector } from "@/Shared/lib/hooks/redux";
-import { DiskPage } from "@/Pages/disk";
 import { removeUploadFile } from "../../model/store/uploadReducer";
-import folder from "@/Shared/assets/img/extensions/folder.svg";
-import fileEarmark from "@/Shared/assets/img/extensions/fileEarmark.svg";
 import { Progress } from "antd";
 import { returnFileExtensionsIcon } from "@/Shared/lib/helpers/returnFileExtensionsIcon";
 import { IFileToUpload } from "../../model/types/types";
@@ -55,11 +51,6 @@ export const UploadFile = ({ file }: props) => {
 					size="small"
 					status={file.status}
 				/>
-				{/* <div
-					className={styles.uploadBar}
-					style={{ width: file.progress + "%" }}
-				></div>
-				<div className={styles.progress}>{file.progress}%</div> */}
 			</div>
 		</div>
 	);

@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development webpack serve --config webpackConfig/webpack.dev.js",
-		"build": "cross-env NODE_ENV=production webpack --config webpackConfig/webpack.prod.js",
+		"build": "cross-env NODE_OPTIONS=--max-old-space-size=600 NODE_ENV=production webpack --config webpackConfig/webpack.prod.js",
 		"server": "node server.js"
 	},
 	"author": "",

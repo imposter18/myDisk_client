@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import "./styles/index.scss";
 import { Registration } from "@/Pages/registrationPage";
 import { AuthPage } from "@/Pages/authPage";
