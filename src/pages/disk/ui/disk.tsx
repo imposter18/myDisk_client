@@ -15,7 +15,7 @@ export const DiskPage = React.memo(() => {
 	const { currentDir } = useAppSelector((state) => state.FileReducer);
 
 	const dispatch = useAppDispatch();
-
+	//for git change hash
 	const dragEnterHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
