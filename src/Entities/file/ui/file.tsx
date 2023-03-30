@@ -53,7 +53,7 @@ export const File = React.memo(({ file, onClick, className }: IProps) => {
 		if (file.type === "jpg" || file.type === "png") {
 			return (
 				<img
-					src={`http://localhost:5000/api/files/${id}/${file.path}`}
+					src={`${process.env.REACT_APP_API_URL}/files/${id}/${file.path}`}
 					alt="logo"
 					className={styles.img}
 					onDragStart={preventDragHandler}

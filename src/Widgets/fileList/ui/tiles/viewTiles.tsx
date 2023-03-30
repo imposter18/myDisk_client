@@ -12,7 +12,11 @@ interface IProps {
 export const ViewTiles = ({ files, isLoaging, clickHandller }: IProps) => {
 	return (
 		<>
-			<div className={styles.fileListTiles}>
+			<div
+				className={`${styles.fileListTiles} ${
+					isLoaging ? styles.fileListloading : ""
+				}`}
+			>
 				{isLoaging ? (
 					<Spin className={styles.spinner} size="large" />
 				) : (

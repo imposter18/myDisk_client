@@ -11,8 +11,9 @@ import PublicRoute from "@/Shared/lib/hoc/publicRoute";
 import { DiskPage } from "@/Pages/disk";
 import { useAppSelector } from "../Shared/lib/hooks/redux";
 import { Redirect } from "@/Pages/redirect";
-import { Alert, Col, Row, Space, notification } from "antd";
+import { Alert, Col, Row, Space, notification, Spin } from "antd";
 import { useTheme } from "@/Shared/lib/theme";
+import { SpinnerWithTitle } from "@/Shared/ui/spinnerWithTitle";
 
 const App = () => {
 	const theme = useTheme();
@@ -27,10 +28,9 @@ const App = () => {
 	}, [theme]);
 
 	if (firstLoading) {
-		return (
-			<h1 style={{ margin: "100px auto", textAlign: "center" }}>Loading...</h1>
-		);
+		return <SpinnerWithTitle title={"Loadind app..."}></SpinnerWithTitle>;
 	}
+
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>

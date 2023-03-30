@@ -2,6 +2,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const paths = require("./paths");
 
@@ -15,6 +16,8 @@ module.exports = {
 	},
 
 	plugins: [
+		new Dotenv(),
+
 		new CleanWebpackPlugin(),
 
 		new CopyWebpackPlugin({
@@ -32,8 +35,8 @@ module.exports = {
 
 		new HtmlWebpackPlugin({
 			template: paths.src + "/index.html",
-			title: "webpack Boilerplate",
-			favicon: paths.src + "/Shared/assets/img/favicon/favicon.ico",
+			title: "My_cloud",
+			favicon: paths.src + "/Shared/assets/img/favicon/favicon.png",
 			filename: "index.html", // output file
 		}),
 	],

@@ -34,11 +34,17 @@
 	0% {
 		transform: translateY(0);
 	}
+	20% {
+		opacity: 0.3;
+	}
+	70% {
+		opacity: 0;
+	}
 
 	100% {
 		display: none;
 		transform: translateY(500px);
-		opacity: 1;
+		opacity: 0;
 	}
 }
 .header {

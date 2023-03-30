@@ -12,7 +12,11 @@ interface IProps {
 export const LargeTiles = ({ files, isLoaging, clickHandller }: IProps) => {
 	return (
 		<>
-			<div className={styles.fileListLargeTiles}>
+			<div
+				className={`${styles.fileListLargeTiles} ${
+					isLoaging ? styles.fileListloading : ""
+				}`}
+			>
 				{isLoaging ? (
 					<Spin className={styles.spinner} size="large" />
 				) : (

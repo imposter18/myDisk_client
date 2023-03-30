@@ -1,8 +1,7 @@
 import axios from "axios";
 import { IViewerResponse } from "@/Shared/Types/response/IViewerResponse";
 
-export const API_URL = "http://localhost:5000/api";
-export const API_URL_STATIC = "http://localhost:5000/";
+export const API_URL = process.env.REACT_APP_API_URL;
 
 const api = axios.create({
 	withCredentials: true,
@@ -15,7 +14,6 @@ api.interceptors.request.use((config) => {
 });
 api.interceptors.response.use(
 	(config) => {
-		// console.log(config, "config");
 		return config;
 	},
 	async (error) => {
@@ -27,7 +25,6 @@ api.interceptors.response.use(
 		) {
 			originalRequrst._isRetry = true;
 			try {
-				// console.log("refresh");
 				const res = await axios.get<IViewerResponse>(`${API_URL}/refresh`, {
 					withCredentials: true,
 				});

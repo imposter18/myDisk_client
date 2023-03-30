@@ -25,6 +25,7 @@ module.exports = merge(common, {
 							importLoaders: 2,
 							sourceMap: false,
 							modules: {
+								namedExport: true,
 								localIdentName: "[name]__[local]--[hash:base64:5]",
 							},
 						},

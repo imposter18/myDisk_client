@@ -66,6 +66,7 @@
 	display: flex;
 	margin: 3px 0;
 	height: 24px;
+	// :global(color: var(--disk-font-content-color);)
 }
 .uploadBar {
 	background-color: green;
@@ -73,6 +74,10 @@
 }
 .progress {
 	margin-top: 15px;
+	color: var(--disk-font-content-color);
+	// span {
+	// 	color: var(--disk-font-content-color);
+	// }
 }
 .img {
 	width: 32px;
