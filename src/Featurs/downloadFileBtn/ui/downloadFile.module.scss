@@ -1,8 +1,11 @@
 .btn {
+	text-decoration: none;
 	width: 100%;
 	color: var(--disk-font-content-color);
+	display: flex;
+	// justify-content: left;
 	// text-align: center;
-	// align-items: center;
+	align-items: center;
 	i {
 		color: var(--disk-font-content-color);
 		font-size: 18px;

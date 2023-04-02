@@ -70,7 +70,10 @@ export const RegistrationForm = () => {
 				<Form.Item
 					label="Password"
 					name="password"
-					rules={[{ required: true, message: "Please input your password!" }]}
+					rules={[
+						{ required: true, message: "Please input your password!" },
+						{ type: "string", min: 4 },
+					]}
 				>
 					<Input.Password />
 				</Form.Item>

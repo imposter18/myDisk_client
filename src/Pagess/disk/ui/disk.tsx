@@ -6,7 +6,7 @@ import { Uploader } from "@/Widgets/uploader";
 import { changeUploadStatus } from "@/Widgets/uploader/model/store/uploadReducer";
 import { LeftBottomNotificationGrup } from "@/Widgets/leftBottomNotificationGrup/leftBottomNotificationGrup";
 import { TopCenterNotificationGrup } from "@/Widgets/topCenterNotificationGrup";
-import { LeftDiskBlock } from "./leftDiskBlock/leftDiskBlock";
+import { LeftDiskBlock } from "./leeftDiskBlock/leeftDiskBlock";
 import { RightDiskBlock } from "./rightBlock/rightBlock";
 
 export const DiskPage = React.memo(() => {
@@ -15,7 +15,6 @@ export const DiskPage = React.memo(() => {
 	const { currentDir } = useAppSelector((state) => state.FileReducer);
 
 	const dispatch = useAppDispatch();
-	//for git change hash
 	const dragEnterHandler = (event: React.DragEvent<HTMLInputElement>) => {
 		event.preventDefault();
 		event.stopPropagation();

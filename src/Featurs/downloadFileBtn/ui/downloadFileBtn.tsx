@@ -15,12 +15,21 @@ export const DownloadFileBtn = ({ file, className }: Iprops) => {
 		downloadFileHTTP(file);
 	};
 	return (
-		<button
+		// <button
+		// 	className={`${styles.btn} ${className}`}
+		// 	onClick={downloadClickHandler}
+		// >
+		// 	<i className="bi bi-cloud-arrow-down-fill"></i>
+		// 	Download
+		// </button>
+
+		<a
 			className={`${styles.btn} ${className}`}
-			onClick={downloadClickHandler}
+			href={`${process.env.REACT_APP_API_URL}\\download?id=${file._id}`}
+			download
 		>
 			<i className="bi bi-cloud-arrow-down-fill"></i>
 			Download
-		</button>
+		</a>
 	);
 };
