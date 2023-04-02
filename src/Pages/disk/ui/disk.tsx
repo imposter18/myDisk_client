@@ -6,7 +6,7 @@ import { Uploader } from "@/Widgets/uploader";
 import { changeUploadStatus } from "@/Widgets/uploader/model/store/uploadReducer";
 import { LeftBottomNotificationGrup } from "@/Widgets/leftBottomNotificationGrup/leftBottomNotificationGrup";
 import { TopCenterNotificationGrup } from "@/Widgets/topCenterNotificationGrup";
-import { LeftDiskBlock } from "./leeftDiskBlock/leeftDiskBlock";
+import { LeftDiskBlock } from "./leftDiskBlock/leftDiskBlock";
 import { RightDiskBlock } from "./rightBlock/rightBlock";
 
 export const DiskPage = React.memo(() => {
