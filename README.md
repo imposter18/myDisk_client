@@ -37,3 +37,6 @@
 * Библиотека компонентов Ant design
 * Scss modules
 * Express
+* local Storage
+* cookies  
+
