@@ -5,6 +5,7 @@
 Пожалуйста, используйте диск только для ознакомления! После просмотра очень желательно все удалить т.к место на сервере ограниченно.
 
 # Запуск
+!!Для запуска необходимо создать файл `.env`. Что в нем должно быть указанно в файле `.env.exemple`
 ```javascript
 	"scripts": {
 		"start": "cross-env NODE_ENV=development webpack serve --config webpackConfig/webpack.dev.js",
